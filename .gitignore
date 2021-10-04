@@ -1,0 +1,8 @@
+en_images
+__pycache__
+*.pyc
+*.swp
+files.txt
+tbr
+*.json
+*.zip
