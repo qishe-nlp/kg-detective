@@ -21,23 +21,21 @@ def print_doc(doc):
   for t in doc:
     print("{} {} {} {} {}".format(t.text, t.tag_, t.pos_, t.dep_, t.lemma_))
 
-def graph(doc):
+def graph(doc, lang):
   svg = displacy.render(doc, style="dep", jupyter=False)
   file_name = '-'.join([w.text for w in doc if not w.is_punct]) + ".svg"
-  output_path = Path("en_images/" + file_name)
+  output_path = Path(lang+ "_images/" + file_name)
   output_path.open("w", encoding="utf-8").write(svg)
 
 def display(sentences, nlp):
-  docs = []
   for s in sentences:
-    #doc = nlp(s)
-    #docs.append(doc)
-    #print("*"*10)
+    doc = nlp(s)
+    print("*"*10)
     print(s)
-    #print_kg(doc)
+    print_kg(doc)
     #print_doc(doc)
-    #print("*"*10)
-    #graph(doc)
+    print("*"*10)
+    graph(doc, nlp.meta["lang"])
 
 
 def _write_to_csv(fields, content, csvfile="review.csv"):

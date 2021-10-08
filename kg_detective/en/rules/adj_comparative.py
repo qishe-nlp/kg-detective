@@ -16,8 +16,10 @@ def search_out(doc, nlp):
   token_matcher = Matcher(nlp.vocab)
   patterns = [
     [{"POS": "ADV", "OP": "*"}, {"TAG": "JJR"}, {"LOWER": "than", "OP": "?"}],
-    [{"POS": "ADV", "OP": "*"}, {"LOWER": "more"}, {"POS": "ADJ"}, {"LOWER": "than", "OP": "?"}],
+    [{"POS": "ADV", "OP": "*"}, {"LOWER": "more"}, {"TAG": "JJ"}, {"LOWER": "than", "OP": "?"}],
     [{"POS": "ADV", "OP": "*"}, {"TAG": "JJR"}, {"LOWER": "and"}, {"TAG": "JJR"}],
+    [{"POS": "DET", "OP": "?"}, {"POS": "ADV", "OP": "*"}, {"TAG": "JJR"}, {"POS": "NOUN"}],
+    [{"POS": "DET", "OP": "?"}, {"POS": "ADV", "OP": "*"}, {"LOWER": "more"}, {"TAG": "JJ"}, {"POS": "NOUN"}],
   ]
   token_matcher.add("adj_comparative", patterns)
 

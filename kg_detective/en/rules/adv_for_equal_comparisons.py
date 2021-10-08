@@ -29,15 +29,9 @@ def search_out(doc, nlp):
       },
       {
         "LEFT_ID": "A",
-        "REL_OP": ">",
+        "REL_OP": ".",
         "RIGHT_ID": "right_as",
-        "RIGHT_ATTRS": {"DEP": "prep", "LOWER": "as"}
-      },
-      {
-        "LEFT_ID": "right_as",
-        "REL_OP": ">",
-        "RIGHT_ID": "B",
-        "RIGHT_ATTRS": {"DEP": "pobj"}
+        "RIGHT_ATTRS": {"POS":"ADP", "LOWER": "as"}
       },
     ],
   ]

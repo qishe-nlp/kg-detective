@@ -1,3 +1,6 @@
+from spacy.matcher import Matcher, PhraseMatcher, DependencyMatcher
+from kg_detective.lib import merge
+
 def search_out(doc, nlp):
   """Search for  
 

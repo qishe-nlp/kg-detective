@@ -16,7 +16,7 @@ def search_out(doc, nlp):
 
   matcher = Matcher(nlp.vocab)
   patterns = [
-    [{"POS": "PROPN", "OP": "+"}],
+    [{"POS": "DET", "OP": "?"}, {"POS": "PROPN", "OP": "+"}],
     [{"POS": {"IN": ["NOUN", "PROPN"]}}, {"POS": "PART", "TAG": "POS", "OP": "+"}, {"POS": "PROPN"}]
   ]
   matcher.add("noun_proper", patterns)

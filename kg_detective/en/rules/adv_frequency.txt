@@ -29,7 +29,7 @@ rarely
 regularly
 scarcely ever
 seldom
-sometimes
+sometime
 usually
 weekly
 yearly

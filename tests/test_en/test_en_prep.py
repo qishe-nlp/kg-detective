@@ -6,15 +6,15 @@ lang = "en"
 pkg = PKG_INDICES[lang]
 
 prep_of_time_sentences = [
-  "- When were you born? - I was born on a cold morning in 1996.",
+  "I was born on a cold morning in 1996.",
   "A big earthquake hit Japan on the afternoon of March 11th, 2011.",
   "The English teacher told me to get there at half past ten.",
   "We often go to the Children's Palace on Sunday.",
   "She usually gets to school at 7:30 in the morning.",
   "Can you come here on the morning of April 5?",
   "I know my mother's birthday is in June.",
-  "We have been in China for three years. We like it very much.",
-  "- When will the second class begin? - In two minutes.",
+  "We have been in China for three years.",
+  "When will the second class begin? In two minutes.",
   "I have stayed in that country since 1995.",
 ]
 
@@ -27,16 +27,16 @@ def test_prep_of_time():
 
 
 prep_of_movement_sentences = [
-  "The high-speed train between Qingdao and Beijing travels faster now. The train ride takes only about three hours.",
+  "The high-speed train between Qingdao and Beijing travels faster now.",
   "On sunny days, my grandma often reads a novel by the window.",
   "We planted some flowers in the garden yesterday.",
   "The earth goes around the sun.",
-  "- Bill, did you see Tom? - Yes, he just parked his car here and then hurried across the street.",
+  "He just parked his car here and then hurried across the street.",
   "Frank held his breath under the water to search for his ring in the swimming pool.",
-  "- Judy, what's the weather like in Beijing? - It's summer there, so it's hot and rainy.",
-  "- Excuse me. Where is the nearest bookstore? - Go along Center Street and you'll find it.",
+  "Judy, what's the weather like in Beijing?",
+  "Go along Center Street and you'll find it.",
   "I can't see Lucy because she is behind the tree.",
-  "- Excuse me, sir. Where is the cinema? - It's the on fourth floor.",
+  "It's on the fourth floor.",
 ]
 
 def test_prep_of_movement():
@@ -48,15 +48,15 @@ def test_prep_of_movement():
 
 
 prep_of_manner_sentences = [
-  "Our foreign teacher often goes to work by bike. He likes cycling very much.",
-  "How convenient the way is! We can pay money by scanning QR codes in many shops.",
-  "This story is in simple English. My little sister can read It.",
+  "Our foreign teacher often goes to work by bike.",
+  "We can pay money by scanning QR codes in many shops.",
+  "This story is in simple English.",
   "The little girl made money by selling flowers.",
   "I made the coat with my own hands. It was made by hand, not with a machine.",
   "I study for a test by working with a group.",
-  "- How do you learn English so well? - By chatting with my uncle in America online.",
-  "- How do you travel to school every day? - I go by bus.",
-  "- How are you going to the Summer Palace? - We’re going there by bike.",
+  "How do you learn English so well? By chatting with my uncle in America online.",
+  "How do you travel to school every day? I go by bus.",
+  "How are you going to the Summer Palace? We’re going there by bike.",
   "I usually walk to school, but by bus when it rains.",
 ]
 
@@ -69,16 +69,16 @@ def test_prep_of_manner():
 
 
 prep_with_verb_sentences = [
-  "Ladies and Gentlemen, welcome to Beijing! And if you need any help, please call me at 010-5558 6390.",
+  "And if you need any help, please call me at 010-5558 6390.",
   "In the world, more than 30% of schools do not provide safe drinking water for about 570 million children.",
   "He drove so fast at the turn that the car almost went off the road.",
   "I have a new model car. I got it from my dad.",
   "I will give a T-shirt to my brother as a birthday present.",
-  "- Mr. Wang's work goes beyond teaching, and he always thinks of the children first and takes good care of them. - Yes, he was praised as one of the 'People Who Moved Yangzhou'.",
+  "Mr. Wang's work goes beyond teaching, and he always thinks of the children first and takes good care of them.",
   "Ben was helping his mother when the rain began to beat heavily against the windows.",
   "To start with, I found the job boring, but soon I got used to it.",
-  "- What are you doing? - I'm looking for the kids. They should be back for dinner now.",
-  "- Come on, please give me some ideas about the project. - With so much work filling my mind, I’ll almost break down.",
+  "I'm looking for the kids.",
+  "With so much work filling my mind, I’ll almost break down.",
 ]
 
 def test_prep_with_verb():
@@ -89,16 +89,16 @@ def test_prep_with_verb():
   display(sentences, nlp)
 
 prep_with_adj_sentences = [
-  "Frank is an independent boy. His parents are proud of him.",
-  "- Are your teacher hard on all of you? - Except Jerry, because he is much younger than others.",
-  "- I want to watch TV the whole day after the long journey. - You shouldn't watch TV too much. It's bad for your eyes.",
+  "His parents are proud of him.",
+  "Are your teacher hard on all of you?",
+  "It's bad for your eyes.",
   "It's very important for us to make a plan before a new term begins.",
-  "Stephen Hawking was famous as a scientist, he made a great contribution to the world, and he died on March 14th, 2018.",
+  "Stephen Hawking was famous as a scientist.",
   "Who is better at playing basketball, you or your brother?",
   "China successfully launched a spacecraft on the far side of the moon, which, contrary to misunderstanding, is not always dark.",
   "It was obvious that the meeting was concerned with the housing reform and everyone present was concerned for their own interests.",
   "Mary was so surprised at what Tom had do to him.",
-  "The funny cartoon 'Xiyangyang and Huitanglang' is popular with kids."
+  "The funny cartoon 'Xiyangyang and Huitanglang' is popular with kids.",
 ]
 
 def test_prep_with_adj():

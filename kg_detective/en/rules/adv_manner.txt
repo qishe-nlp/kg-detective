@@ -128,3 +128,4 @@ wearily
 well
 wildly
 wisely
+wrongly
