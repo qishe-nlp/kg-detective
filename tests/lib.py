@@ -33,7 +33,7 @@ def display(sentences, nlp):
     print("*"*10)
     print(s)
     print_kg(doc)
-    #print_doc(doc)
+    print_doc(doc)
     print("*"*10)
     graph(doc, nlp.meta["lang"])
 

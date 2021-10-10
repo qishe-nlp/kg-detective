@@ -24,19 +24,19 @@ INTERJ_RULES = ["interj_interj"]
 
 SEN_LABELS = ["SIMPLE_SEN", "COMPOUND_SEN", "NOMINAL_CLAUSE", "RELATIVE_CLAUSE", "ADVERBIAL_CLAUSE", "SUBJUNCTIVE_MOOD"]
 
-SIMPLE_SEN_RULES= ["s_p", "s_c_p", "s_p_o", "s_p_io_o", "s_p_o_c"]
+SIMPLE_SEN_RULES= ["simple_s_p", "simple_s_c_p", "simple_s_p_o", "simple_s_p_io_o", "simple_s_p_o_c"]
 
 COMPOUND_SEN_RULES = ["compound_sen"]
 
-NOMINAL_CLAUSE_RULES = ["subject_clause", "object_clause", "predicative_clause", "appositive_clause"]
+NOMINAL_CLAUSE_RULES = ["nominal_subject_clause", "nominal_object_clause", "nominal_predicative_clause", "nominal_appositive_clause"]
 
-RELATIVE_CLAUSE_RULES = ["restrictive_clause", "non_restrictive_clause"]
+RELATIVE_CLAUSE_RULES = ["relative_restrictive_clause", "relative_non_restrictive_clause"]
 
 ADVERBIAL_CLAUSE_RULES = ["adverbial_clause_of_time", "adverbial_clause_of_reason", "adverbial_clause_of_comparison", "adverbial_clause_of_condition", "adverbial_clause_of_concession", "adverbial_clause_of_purpose", "adverbial_clause_of_result"]
 
-SUBJUNCTIVE_MOOD_RULES = ["present_unreal", "past_unreal", "future_unreal", "inversion_in_subjunctive_mood"]
+SUBJUNCTIVE_MOOD_RULES = ["subjunctive_present", "subjunctive_past", "subjunctive_future", "subjunctive_inversion_in_mood"]
 
-LABELS = SEN_LABELS
+LABELS = VOCAB_LABELS + SEN_LABELS
 
 LABEL_RULES = {label: getattr(sys.modules[__name__], label+"_RULES") for label in LABELS}
 
