@@ -56,9 +56,10 @@ def test_subjunctive_inversion_in_mood():
   display(sentences, nlp)
 
 
-def test_subjuntive_mood():
-  sentences = subjunctive_present_sentences + subjunctive_past_sentences + subjunctive_future_sentences + subjunctive_inversion_in_mood_sentences
+_sentences = subjunctive_present_sentences + subjunctive_past_sentences + subjunctive_future_sentences + subjunctive_inversion_in_mood_sentences
 
+def test_subjuntive_mood():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["SUBJUNCTIVE_MOOD"]})
   display(sentences, nlp)

@@ -1,6 +1,6 @@
 import sys
 
-LABELS = ["NOUN", "ART", "VERB", "ADJ", "PREP", "PRON", "ADV", "ZAHL", "CONJ", "FRAG"]
+VOCAB_LABELS = ["NOUN", "ART", "VERB", "ADJ", "PREP", "PRON", "ADV", "ZAHL", "CONJ", "FRAG"]
 
 NOUN_RULES = ["noun_kasus", "noun_genus", "noun_pluralform"]
 
@@ -21,6 +21,12 @@ ZAHL_RULES = ["zahl_grund", "zahl_ordnung", "zahl_verteilung", "zahl_wiederholun
 CONJ_RULES = ["conj_einfache", "conj_zweiteilige"]
 
 FRAG_RULES = ["frag_frag"]
+
+SEN_LABELS = ["NEBENSATZ"]
+
+NEBENSATZ_RULES = ["satz_adverbial", "satz_relativ", "satz_subjekt", "satz_objekt", "satz_prädikativ"]
+
+LABELS = VOCAB_LABELS + SEN_LABELS
 
 LABEL_RULES = {label: getattr(sys.modules[__name__], label+"_RULES") for label in LABELS}
 

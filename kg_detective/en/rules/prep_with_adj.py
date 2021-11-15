@@ -39,8 +39,8 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (aux, adj, prep) in matches:
-    span = " ".join([doc[i].text for i in [aux, adj, prep]])
-    result.append(span)
+    span_text = " ".join([doc[i].text for i in [aux, adj, prep]])
+    result.append({"text": span_text})
 
   return result
    

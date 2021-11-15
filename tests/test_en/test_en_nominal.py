@@ -86,9 +86,10 @@ def test_nominal_appositive_clause():
   display(sentences, nlp)
 
 
-def test_():
-  sentences = nominal_subject_clause_sentences + nominal_object_clause_sentences + nominal_predicative_clause_sentences + nominal_appositive_clause_sentences
+_sentences = nominal_subject_clause_sentences + nominal_object_clause_sentences + nominal_predicative_clause_sentences + nominal_appositive_clause_sentences
 
+def test_():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["NOMINAL_CLAUSE"]})
   display(sentences, nlp)

@@ -288,13 +288,14 @@ def test_verb_transitive():
   nlp.add_pipe('kg', config={"rules": ["verb_transitive"]})
   display(sentences, nlp)
 
+_sentences = verb_passive_voice_sentences + verb_simple_present_tense_sentences + verb_simple_past_tense_sentences + verb_simple_future_tense_sentences
+_sentences = _sentences + verb_present_progressive_tense_sentences + verb_past_progressive_tense_sentences + verb_present_perfect_tense_sentences
+_sentences = _sentences + verb_past_perfect_tense_sentences + verb_copular_sentences + verb_non_finite_sentences + verb_modal_sentences
+_sentences = _sentences + verb_auxiliary_sentences + verb_transitive_sentences + verb_intransitive_sentences
+
+
 def test_verb():
-  sentences = verb_passive_voice_sentences + verb_simple_present_tense_sentences + verb_simple_past_tense_sentences + verb_simple_future_tense_sentences
-  sentences = sentences + verb_present_progressive_tense_sentences + verb_past_progressive_tense_sentences + verb_present_perfect_tense_sentences
-  sentences = sentences + verb_past_perfect_tense_sentences + verb_copular_sentences + verb_non_finite_sentences + verb_modal_sentences
-  sentences = sentences + verb_auxiliary_sentences + verb_transitive_sentences + verb_intransitive_sentences
-
-
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["VERB"]})
   display(sentences, nlp)

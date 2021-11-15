@@ -7,7 +7,7 @@ pkg = PKG_INDICES[lang]
 
 compound_sen_sentences = [
   "The sun came out and the grass dried.",
-  "Not only are you funny, but also you are witty.",
+  "Not only you are funny, but also you are witty.",
   "The first was not good, neither was the second.",
   "He did not go, nor did his brother go.",
   "On the one hand I have to work, on the other hand, I have a great many visitors.",
@@ -26,6 +26,9 @@ compound_sen_sentences = [
   "Mother is cooking in the kitchen, while father is watching TV in the sitting room.",
   "My shoes are worn out, so I need new ones.",
   "The day is short, for it is now December.",
+  "How can they sing and fly so free?",
+  "The swan swam towards the prince and looked into his eyes.",
+  "This cast a spell on him, and he was turned to stone.",
 ]
 
 def test_compound_sen():
@@ -35,10 +38,10 @@ def test_compound_sen():
   nlp.add_pipe('kg', config={"rules": ["compound_sen"]})
   display(sentences, nlp)
 
+_sentences = compound_sen_sentences 
 
 def test_compound():
-  sentences = compound_sen_sentences 
-
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["COMPOUND_SEN"]})
   display(sentences, nlp)

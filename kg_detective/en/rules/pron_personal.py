@@ -10,6 +10,7 @@ def search_out(doc, nlp):
   """
 
 
-  result = [t for t in doc if t.tag_ == "PRP"]
+  _result = [t for t in doc if t.tag_ == "PRP"]
+  result = [{"text": t.text} for t in _result]
   return result
    

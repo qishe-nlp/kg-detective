@@ -15,6 +15,6 @@ def search_out(doc, nlp):
   for t in verbs:
     deps = [c.dep_ for c in t.children]
     if len(set(deps).intersection(black_children_deps))==0:
-      result.append(t)
+      result.append({"text": t.text})
   return result
    

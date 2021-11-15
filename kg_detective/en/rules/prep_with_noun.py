@@ -39,8 +39,8 @@ def search_out(doc, nlp):
 
   for _, (noun, _, _) in matches:
     noun_tree = " ".join([e.text for e in doc[noun].subtree])
-    span = noun_tree
-    result.append(span)
+    span_text = noun_tree
+    result.append({"text": span_text})
 
   return result
    

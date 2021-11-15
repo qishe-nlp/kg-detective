@@ -6,7 +6,7 @@ lang = "de"
 pkg = PKG_INDICES[lang]
 
 verb_tempus_perfekt_sentences = [
-  "- Hast du etwas von Helmut gehört? - Ja, gestern bin ich ihm zufällig begegnet.",
+  "Hast du etwas von Helmut gehört? Ja, gestern bin ich ihm zufällig begegnet.",
   "Vor einem Jahr ist ein Beamter in den Ruhestand getreten.",
   "Er ist zu spät gekommen. Er hat den Bus verpasst.",
   "Das da ist Eva? Kaum zu glauben, wie groß sie im letzten Jahr gewachsen ist.",
@@ -15,14 +15,10 @@ verb_tempus_perfekt_sentences = [
   "Diese Anzeige hat gestern in der Zeitung gestanden.",
   "Wir haben uns erst vor einem Monat in München kennen gelernt.",
   "Letzte Nacht habe ich nicht gut geschlafen, ich bin fast nicht eingeschlafen.",
-  "Endlich hat man diesen Vertrag abgeschlossen.",
-  "Diese Nachricht hat uns tief ergriffen.",
-  "Heute hat der Chef mit den Gästen aus Japan ein Gespräch geführt.",
   "Letztes Jahr sind die Preise um drei Prozent gestiegen.",
   "Was hast du denn im letzten Test für eine Note bekommen?",
-  "- Was ist richtig? - Was ist hier denn passiert?",
+  "Was ist richtig? Was ist hier denn passiert?",
   "Haben Sie sich mit dem Sekretariat in Verbindung gesetzt?",
-  "Wer hat eigentlich bestimmt, dass das Institut geschlossen wird?",
   "Sie hat mir ihren Freund vorgestellt.",
   "Die Zeitung hat die Worte des Bundespräsidenten veröffentlicht.",
   "Mein Chef hat sein Versprechen gebrochen.",
@@ -41,7 +37,7 @@ verb_tempus_prätertum_sentences = [
   "An der Wand hing vorher ein schönes Bild von München.",
   "Gestern traf ich zufällig meinen alten Freund im Stadtzentrum.",
   "In der Nacht schlief sie wegen Kopfschmerzen schlecht.",
-  "Am letzten Wochenende blieb ich zu Hause.",
+  "Am letzten Wochenende belieb ich zu Hause.",
   "Er griff in die Tasche seiner Jacke.",
   "Gestern Abend saß ich mit meiner Freundin sehr lange Zeit im Cafe.",
   "Es war 2014. Ich sah sie wieder im Urlaub.",
@@ -139,18 +135,17 @@ def test_verb_modus_konjunktiv_1():
 
 verb_modus_konjunktiv_2_sentences = [
   "Wenn der Zug keine Verspätung gehabt hätte, wäre ich schon in Berlin angekommen.",
-  "- Kommst du mit ins Kino? - Ich würde gerne mit euch kommen, aber ich muss noch arbeiten.",
+  "Kommst du mit ins Kino? Ich würde gerne mit euch kommen, aber ich muss noch arbeiten.",
   "Sie wollen in der Volkshochschule Deutsch lernen. Dürfte ich fragen, warum Sie gerade Deutsch lernen wollen?",
   "Wirklich schade! Ich wäre gestern gerne dabei gewesen.",
   "Er war nicht taub. Aber er tat so, als wäre er taub.",
-  "- Möchten Sie einen Kaffee? - Ehrlich gesagt, mir wäre eine Tasse Tee lieber.",
+  "Möchten Sie einen Kaffee? Ehrlich gesagt, mir wäre eine Tasse Tee lieber.",
   "Monika wollte heute kommen, aber sie ist noch nicht da. Wenn sie bloß käme!",
   "Ich würde Ihnen helfen, wenn ich könnte.",
   "Sehr schön sieht das aus! Ich würde mir das natürlich gerne kaufen, aber mir fehlt im Moment das Geld dazu.",
   "Am besten wäre ich zu Hause geblieben, aber ich musste leider hingehen.",
   "Sie können hier Weiterarbeiten. Wenn das ginge, wäre ich froh.",
   "Hättest du nicht so viel für diesen gebrauchten Wagen verlangt, wäre er schon längst verkauft!",
-  " - Ich habe Halsweh. - Du solltest viel Tee trinken.",
   "Zwei Männer machten in München auf Polizisten den Eindruck, als stünden sie unter dem Einfluss von Drogen.",
   "Hättest du mich gestern darum gebeten, hätte ich dir gerne geholfen.",
 ]
@@ -164,7 +159,7 @@ def test_verb_modus_konjunktiv_2():
 
 
 verb_genus_passiv_sentences = [
-  "- Hat Professor Schulz Sie geprüft? - Ja, von ihm bin ich geprüft worden.",
+  "Hat Professor Schulz Sie geprüft? Ja, von ihm bin ich geprüft worden.",
   "Das Zimmer soll von meiner Frau aufgeräumt werden.",
   "Vergessen Sie nicht, dass vor der Reise ins Ausland das Visum beantragt werden muss!",
   "Bei uns wird am Wochenende nicht gearbeitet.",
@@ -174,11 +169,11 @@ verb_genus_passiv_sentences = [
   "Zum Text sind schon einige Fragen gestellt worden.",
   "Ich weiß nicht, ob das Problem schon hat gelöst werden müssen.",
   "Er behauptet, niemals vorher gefragt worden zu sein.",
-  "Die alte.Frau ist schwer krank, sie muss sofort ins Krankenhaus gebracht werden.",
+  "Die alte Frau ist schwer krank, sie muss sofort ins Krankenhaus gebracht werden.",
   "Der Bedarf an Arbeitskräften muss bald gedeckt werden.",
   "Endlich wurde dieser Vertrag abgeschlossen.",
   "Die Straßen sind von den Bauarbeitern gebaut worden.",
-  "- Wer kann den Plan erfüllen? Welcher Passivsatz ist richtig? - Von wem kann der Plan erfüllt werden?",
+  "Wer kann den Plan erfüllen? Welcher Passivsatz ist richtig? Von wem kann der Plan erfüllt werden?",
   "Die inneren Angelegenheiten eines Landes dürfen nicht eingemischt werden.",
   "Das Auto muss auf die Qualität geprüft werden.",
   "Das Fernsehgerät ist kaputt. Es muss sofort repariert werden.",
@@ -195,7 +190,6 @@ def test_verb_genus_passiv():
 
 verb_trennbare_sentences = [
   "Die Gäste sind sehr spät angekommen.",
-  "Haben die Zeitungen diese wichtige Nachricht veröffentlicht?",
   "Peter hat die Prüfung bestanden, er ist nicht durchgefallen.",
   "Ihr habt das Zimmer noch nicht aufgesetzt.",
   "Wir haben das Fenster schon aufgegeben.",
@@ -203,7 +197,6 @@ verb_trennbare_sentences = [
   "Kann ich auf dieser Bank ein Konto anfangen?",
   "Ich lerne Tag und Nacht, denn ich muss nächste Woche eine Prüfung ablegen.",
   "Die Firma hat ihn zum 1. Juni entlassen. Dann hat ihn die andere Firma wieder eingestellt.",
-  "Die Regierung hat entscheidet, dass neue Arbeitsplätze geschaffen werden müssen.",
 ]
 
 def test_verb_trennbare():
@@ -214,16 +207,12 @@ def test_verb_trennbare():
   display(sentences, nlp)
 
 verb_untrennbare_sentences = [
-  "Er hat sein Studium 2013 mit dem Staatsexamen abgeschlossen.",
-  "Nach bestandener Prüfung warf er seine Bücher aus dem Fenster.",
   "Der Kaffee ist kalt. Du musst den Ober rufen und dich berichten.",
   "Die Bedingungen im Berufsverkehr werden in der Stadt durch langfristige Planung vermehrt.",
   "Wenn er angegriffen wird, muss er sich verteidigen.",
   "Die Luft erhält Sauerstoff.",
   "Wir haben darüber lange gesprochen und uns schließlich für Ihren Vorschlag entschieden.",
-  "- Fährt der Zug bis München? - Nein, Sie müssen zweimal umsteigen.",
   "Was hast du denn im letzten Test für eine Note bekommen?",
-  "Viele Länder müssen aus dem Ausland Autos einführen.",
 ]
 
 def test_verb_untrennbare():
@@ -237,13 +226,12 @@ verb_modal_sentences = [
   "Die Regierung hat entschieden, dass neue Arbeitsplätze geschaffen werden müssen.",
   "Der Chef hat gesagt, du sollst zu ihm kommen.",
   "Du darfst Ursula auf keinen Fall etwas verraten, ich will sie überraschen.",
-  "- Habt ihr schon Tickets? - Nein, wir müssen noch welche besorgen.",
+  "Habt ihr schon Tickets? Nein, wir müssen noch welche besorgen.",
   "Eigentlich wollte ich schon früh aufbrechen, aber dann bin ich doch noch bis zum Abend bei meiner Schwester geblieben.",
-  "- Hast du gestern Nacht besser schlafen können? - Ja, ich habe eine Schlaftablette genommen.",
+  "Hast du gestern Nacht besser schlafen können? Ja, ich habe eine Schlaftablette genommen.",
   "Das Kind ist schwer verletzt, es muss sofort ins Krankenhaus gebracht werden.",
   "Peter hat heute viel Arbeit. Er kann leider nicht kommen.",
   "Hier darfst du nicht hineingehen! Da ist doch ein Schild: 'KEIN EINGANG!'",
-  "Ich möchte einen Tee bitte.",
 ]
 
 def test_verb_modal():
@@ -275,29 +263,15 @@ def test_verb_reflexive():
   display(sentences, nlp)
 
 ergänzungen_common = [
+]
+
+verb_ergänzungen_im_akkusativ_sentences = ergänzungen_common + [
   "Diese Bluse ist mir zu eng. Kann ich sie umtauschen?",
   "Ich habe die Kinder zum Arzt gebracht. Was fehlt ihnen denn?",
   "Die Universität hat ihn zum Studium zugelassen.",
   "Endlich haben beide Firmen einen Vertrag abgeschlossen.",
-  "Heute hat der Chef ein Gespräch mit den Gästen aus Japan geführt.",
-  "Aber schließlich erteilte er der Bank den Auftrag, das Geld an mich auszuzahlen.",
-  "Wer möchte noch eine Frage stellen?",
-  "Wer hat gestern den Vortrag gehalten?",
-  "Sie hat mir ihren Freund vorgestellt.",
   "Bitte, nehmen Sie noch ein Stück Kuchen!",
-  "Er hat mir seinen Plan genau erklärt.",
-  "Sie ähnelt ihrer Mutter sehr.",
-  "Der Chef vertraut seiner Sekretärin sehr.",
-  "Der Lärm schadet der Gesundheit der Menschen.",
-  "Ich habe ihm das Buch geschenkt.",
-  "Wir gedenken der Soldaten, die im Krieg gefallen sind.",
-  "Die Fahrt zur Arbeit kostet mich zwei Stunden.",
-  "Die Polizei entzog dem Fahrer den Führerschein.",
-  "Der Arzt verschrieb dem Patienten das Medikament.",
   "Die traurige Geschichte hat uns tief ergriffen.",
-]
-
-verb_ergänzungen_im_akkusativ_sentences = ergänzungen_common + [
 ]
 
 def test_verb_ergänzungen_im_akkusativ():
@@ -309,6 +283,10 @@ def test_verb_ergänzungen_im_akkusativ():
 
 
 verb_ergänzungen_im_dativ_sentences = ergänzungen_common + [
+  "Ich habe die Kinder zum Arzt gebracht. Was fehlt ihnen denn?",
+  "Sie ähnelt ihrer Mutter sehr.",
+  "Der Chef vertraut seiner Sekretärin sehr.",
+  "Der Lärm schadet der Gesundheit der Menschen.",
 ]
 
 def test_verb_ergänzungen_im_dativ():
@@ -319,6 +297,12 @@ def test_verb_ergänzungen_im_dativ():
   display(sentences, nlp)
 
 verb_ergänzungen_im_dativ_akkusativ_sentences = ergänzungen_common + [
+  "Aber schließlich erteilte er der Bank den Auftrag, das Geld an mich auszuzahlen.",
+  "Sie hat mir ihren Freund vorgestellt.",
+  "Er hat mir seinen Plan genau erklärt.",
+  "Ich habe ihm das Buch geschenkt.",
+  "Die Polizei entzog dem Fahrer den Führerschein.",
+  "Der Arzt verschrieb dem Patienten das Medikament.",
 ]
 
 def test_verb_ergänzungen_im_dativ_akkusativ():
@@ -329,6 +313,10 @@ def test_verb_ergänzungen_im_dativ_akkusativ():
   display(sentences, nlp)
 
 verb_ergänzungen_im_akkusativ_akkusativ_sentences = ergänzungen_common + [
+  "Die Fahrt zur Arbeit kostet mich zwei Stunden.",
+  "Das nenne ich ein schönes Fest.",
+  "Der Lehrer lehrt die Schüler Grammatik.",
+  "Er schimpft ihn einen Dummkopf.",
 ]
 
 def test_verb_ergänzungen_im_akkusativ_akkusativ():
@@ -340,6 +328,9 @@ def test_verb_ergänzungen_im_akkusativ_akkusativ():
 
 
 verb_ergänzungen_im_genitiv_sentences = ergänzungen_common + [
+  "Wir gedenken der Soldaten, die im Krieg gefallen sind.",
+  "Es bedarf keiner weiteren Erklärung.",
+  "Die Einzelheiten bedarf noch der Prüfung.",
 ]
 
 def test_verb_ergänzungen_im_genitiv():
@@ -350,7 +341,17 @@ def test_verb_ergänzungen_im_genitiv():
   display(sentences, nlp)
 
 verb_ergänzungen_mit_präposition_sentences = ergänzungen_common + [
+  "Ich habe die Kinder zum Arzt gebracht. Was fehlt ihnen denn?",
+  "Die Universität hat ihn zum Studium zugelassen.",
+  "Aber schließlich erteilte er der Bank den Auftrag, das Geld an mich auszuzahlen.",
+  "Wir haben mit dem Lehrbuch Teil 1 angefangen.",
+  "Es hängt ganz von dir ab, ob du die Prüfung bestehst.",
+  "Er verfügt über reiche Erfahrungen.",
+  "Die Polizei zweifelt an seiner Aussage.",
+  "Alle Schüler wollen an dem Ausflug teilnehmen.",
+  "Die Erwachsenen erinnern sich sehr gern an ihre Kinderheit.",
 ]
+
 
 def test_verb_ergänzungen_mit_präposition():
   sentences = verb_ergänzungen_mit_präposition_sentences 
@@ -380,19 +381,13 @@ def test_verb_zu_infinitiv():
   display(sentences, nlp)
 
 partizip_common = [
-  "Nach bestandener Prüfung warf er seine Bücher aus dem Fenster.",
-  "Bei dieser Firma brauchst du dich gar nicht zu bewerben, die nimmt nur Leute mit abgeschlossener Ausbildung.",
-  "Die Fallschirme öffneten sich nacheinander, sobald die Soldaten aus dem fliegenden Flugzeug gesprungen waren.",
-  "Der Verletzte war nur zu retten, indem er sofort operiert wurde.",
-  "Die von mir bestellten Bücher sind heute angekommen.",
-  "Seine Leistlung ist überraschend.",
-  "Das Fenster ist geöffnet.",
-  "Die Kinder gingen gestern lachend ins Kino.",
-  "Diese Firma hat mir einen Vertrag unterzeichnet geschickt.",
-  "Die Studenten haben die anzuerkennende Leistung vollgebracht.",
 ]
 
 verb_partizip_1_sentences = partizip_common + [
+  "Nach bestandener Prüfung warf er seine Bücher aus dem Fenster.",
+  "Die Fallschirme öffneten sich nacheinander, sobald die Soldaten aus dem fliegenden Flugzeug gesprungen waren.",
+  "Seine Leistlung ist überraschend.",
+  "Die Kinder gingen gestern lachend ins Kino.",
   "Sie kommt weinend nach Hause.",
   "Der Film ist spannend.",
   "Die Europareise ist anstrengend.",
@@ -409,10 +404,14 @@ def test_verb_partizip_1():
   display(sentences, nlp)
 
 verb_partizip_2_sentences =  partizip_common + [
+  "Bei dieser Firma brauchst du dich gar nicht zu bewerben, die nimmt nur Leute mit abgeschlossener Ausbildung.",
+  "Der Verletzte war nur zu retten, indem er sofort operiert wurde.",
+  "Die von mir bestellten Bücher sind heute angekommen.",
+  "Das Fenster ist geöffnet.",
+  "Diese Firma hat mir einen Vertrag unterzeichnet geschickt.",
   "Sie schauten sich das Fußballspiel gespannt an.",
-  "Der Fenster ist geöffnet.",
-  "Der Platz ist besetzt.", 
-  "Der angekommene Zug hat eine halbe Stunde Verspätung.", 
+  "Der Platz ist besetzt.",
+  "Der angekommene Zug hat eine halbe Stunde Verspätung.",
   "Das ins Chinesische übersetzte Buch ist gut.",
   "Der Angestellte hat viel Arbeit zu tun.",
 ]
@@ -455,9 +454,9 @@ def test_verb_funktionsverbgefüge():
   display(sentences, nlp)
 
 verb_nominalisierung_sentences = [
-  "Er betreut den Abbruch seines Studiums.",
-  "Sie braucht immer viel Zeit für die Korrektur der Aufsätze.",
-  "Wir erwarten die Ankunft des Zuges.",
+  "Das ist unser Haus.",
+  "Ihre Tochter wird später Ärztin.",
+  "Ich heiße Anna.",
 ]
 
 def test_verb_nominalisierung():
@@ -467,14 +466,16 @@ def test_verb_nominalisierung():
   nlp.add_pipe('kg', config={"rules": ["verb_nominalisierung"]})
   display(sentences, nlp)
 
-def test_verb():
-  sentences = verb_tempus_perfekt_sentences + verb_tempus_prätertum_sentences + verb_tempus_präsens_sentences + verb_tempus_futur_1_sentences + verb_tempus_plusquaperfekt_sentences
-  sentences = sentences + verb_modus_imperativ_sentences + verb_modus_konjunktiv_1_sentences + verb_modus_konjunktiv_2_sentences + verb_genus_passiv_sentences
-  sentences = sentences + verb_trennbare_sentences + verb_untrennbare_sentences + verb_modal_sentences + verb_reflexive_sentences
-  sentences = sentences + verb_ergänzungen_im_akkusativ_sentences + verb_ergänzungen_im_dativ_sentences + verb_ergänzungen_im_dativ_akkusativ_sentences + verb_ergänzungen_im_genitiv_sentences
-  sentences = sentences + verb_ergänzungen_mit_präposition_sentences + verb_zu_infinitiv_sentences + verb_partizip_1_sentences + verb_partizip_2_sentences
-  sentences = sentences + verb_funktionsverbgefüge_sentences + verb_nominalisierung_sentences
+_sentences = verb_tempus_perfekt_sentences + verb_tempus_prätertum_sentences + verb_tempus_präsens_sentences + verb_tempus_futur_1_sentences + verb_tempus_plusquaperfekt_sentences
+_sentences = _sentences + verb_modus_imperativ_sentences + verb_modus_konjunktiv_1_sentences + verb_modus_konjunktiv_2_sentences + verb_genus_passiv_sentences
+_sentences = _sentences + verb_trennbare_sentences + verb_untrennbare_sentences + verb_modal_sentences + verb_reflexive_sentences
+_sentences = _sentences + verb_ergänzungen_im_akkusativ_sentences + verb_ergänzungen_im_dativ_sentences + verb_ergänzungen_im_dativ_akkusativ_sentences + verb_ergänzungen_im_genitiv_sentences
+_sentences = _sentences + verb_ergänzungen_mit_präposition_sentences + verb_zu_infinitiv_sentences + verb_partizip_1_sentences + verb_partizip_2_sentences
+_sentences = _sentences + verb_funktionsverbgefüge_sentences + verb_nominalisierung_sentences
 
+
+def test_verb():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["VERB"]})
   display(sentences, nlp)

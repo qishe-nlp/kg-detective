@@ -17,11 +17,17 @@ def search_out(doc, nlp):
   dep_patterns = [
     [
       {
-        "RIGHT_ID": "verb",
+        "RIGHT_ID": "root",
+        "RIGHT_ATTRS": {"POS": {"IN": ["VERB", "AUX"]}, "DEP": "ROOT"},
+      },
+      {
+        "LEFT_ID": "root",
+        "REL_OP": ">",
+        "RIGHT_ID": "subject_verb",
         "RIGHT_ATTRS": {"POS": {"IN": ["VERB", "AUX"]}, "DEP": "csubj"}
       },
       {
-        "LEFT_ID": "verb",
+        "LEFT_ID": "subject_verb",
         "REL_OP": ">",
         "RIGHT_ID": "subj",
         "RIGHT_ATTRS": {"DEP": {"IN": ["nsubj", "nsubjpass"]}, "TAG": {"IN": ["WDT", "WP", "WP$", "WRB"]}}
@@ -31,9 +37,10 @@ def search_out(doc, nlp):
   dep_matcher.add("nominal_subject_clause", dep_patterns)
   matches = dep_matcher(doc)
 
-  for _, (verb, _) in matches:
+  for _, (root, verb, _) in matches:
     subj_span = " ".join([e.text for e in doc[verb].subtree])
-    result.append(subj_span)
+    object_span = doc[root+1:].text
+    result.append({"subject": subj_span, "predicate": doc[root], "object": object_span})
 
   return result
    

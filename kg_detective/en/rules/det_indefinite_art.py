@@ -1,5 +1,6 @@
 def search_out(doc, nlp):
   IN_ARTS = ["a", "an"]
-  result = [t for t in doc if t.text.lower() in IN_ARTS]
+  _result = [t for t in doc if t.text.lower() in IN_ARTS]
+  result = [{"text": t.text} for t in _result]
   return result
    

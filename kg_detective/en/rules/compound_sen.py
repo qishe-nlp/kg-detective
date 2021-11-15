@@ -38,13 +38,16 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (A, conj, B) in matches:
-    A_subtrees = [t.subtree for t in doc[A].children if t.dep_ not in ["cc", "conj"]]
-    A_span = " ".join(([" ".join([e.text for e in st]) for st in A_subtrees]))
-    B_span = " ".join([e.text for e in doc[B].subtree])
-    conj_span = doc[conj].text
-    result.append(A_span)
-    result.append(conj_span)
-    result.append(B_span)
+    is_valid = any([e.dep_=="nsubj" for e in doc[B].children])
+    if is_valid:
+      A_subtrees = [t.subtree for t in doc[A].children if t.dep_ not in ["cc", "conj"]]
+      A_range = sum([[e.i for e in st] for st in A_subtrees], [])
+      A_range.append(A)
+
+      A_span = doc[min(A_range):max(A_range)+1].text
+      B_span = " ".join([e.text for e in doc[B].subtree])
+      conj_span = doc[conj].text
+      result.append({"sen A": A_span, "conj": conj_span, "sen B": B_span})
 
   return result
    

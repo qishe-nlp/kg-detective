@@ -1,4 +1,5 @@
 def search_out(doc, nlp):
-  result = [t for t in doc if t.pos_=="INTJ"]
+  _result = [t for t in doc if t.pos_=="INTJ"]
+  result = [{"text": t.text} for t in _result]
   return result
    

@@ -26,10 +26,9 @@ def test_prep_mit_akkusativ():
   display(sentences, nlp)
 
 prep_mit_dativ_sentences = [
-  "- Wo wohnt Johannes? - Er wohnt bei einer Familie in Wien.",
+  "Wo wohnt Johannes? Er wohnt bei einer Familie in Wien.",
   "Franz ist nicht sehr aktiv. Er bleibt immer zu Hause.",
   "Cecile Zemp ist Schweizerin. Sie kommt aus Zürich.",
-  "Frau Lett reist oft für ihren Job. Diesen Monat reist sie von Rom nach Paris.",
   "Herr Blume ist Architekt. Er arbeitet seit drei Jahren in München.",
   "Ich bin sehr müde. Ich möchte jetzt nach Hause gehen.",
   "Alle meine Verwandten sprechen Deutsch, außer meinem Vater.",
@@ -52,7 +51,7 @@ prep_mit_akkusativ_order_dativ_sentences = [
   "Meine Bücher liegen auf dem Schreibtisch.",
   "Der Junge sitzt nicht gern neben der Schwester.",
   "Er hängt die Lampe über den Tisch.",
-  "Die Schuhe stehen unter dem  Bett.",
+  "Die Schuhe stehen unter dem Bett.",
   "Das Sofa steht zwischen den Stühlen.",
   "Er bringt das Fahrrad hinter das Haus.",
   "Mein Vater sitzt im Sessel.",
@@ -67,7 +66,7 @@ def test_prep_mit_akkusativ_order_dativ():
 
 prep_mit_genitiv_sentences = [
   "Der Mann bleibt wegen der Verspätung im Flughafen.",
-  "- Er war nicht in der Stadt - die Polizei hat ihn außerhalb der Stadt gefunden.",
+  "Er war nicht in der Stadt. Die Polizei hat ihn außerhalb der Stadt gefunden.",
   "Ich mag keine Tiere. Ich wollte ein Fahrrad statt einer Katze zum Geburtstag bekommen.",
   "Die Party hat viel Spaß gemacht. Während der Party haben wir alle viel getrunken.",
   "Trotz meiner Hausaufgaben habe ich gestern einen Brief geschrieben.",
@@ -86,14 +85,12 @@ def test_prep_mit_genitiv():
   display(sentences, nlp)
 
 prep_temporale_sentences = [
-  "Von jetzt an machen wir die Arbeit zu zweit.",
   "Im Sommer fahren viele Deutsche an die Ostsee.",
   "Seit zwei Jahren leme ich hier Deutsch.",
   "Am Sonntag gehen Elke und ich in die Oper.",
   "Zu Weihnachten bekommen die Kinder viele Geschenke.",
   "Von acht bis zwölf Uhr haben wir Deutschunterricht.",
   "Sie hat irgendwann zwischen Ostem und Pfingsten Geburtstag.",
-  "Bei Regen sind die Straßen nass und glatt.",
   "Der Schulbus fährt nur der innerhalb Schulzeit.",
   "Musst du in der Nacht arbeiten?",
 ]
@@ -105,9 +102,11 @@ def test_prep_temporale():
   nlp.add_pipe('kg', config={"rules": ["prep_temporale"]})
   display(sentences, nlp)
 
-def test_prep():
-  sentences = prep_mit_akkusativ_sentences + prep_mit_dativ_sentences + prep_mit_akkusativ_order_dativ_sentences + prep_mit_genitiv_sentences + prep_temporale_sentences
 
+_sentences = prep_mit_akkusativ_sentences + prep_mit_dativ_sentences + prep_mit_akkusativ_order_dativ_sentences + prep_mit_genitiv_sentences + prep_temporale_sentences
+
+def test_prep():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["PREP"]})
   display(sentences, nlp)

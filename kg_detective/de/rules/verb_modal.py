@@ -12,5 +12,22 @@ def search_out(doc, nlp):
     list: list of spacy.tokens.Span
   """
   result = []
+
+  dep_matcher = DependencyMatcher(nlp.vocab)
+  dep_patterns = [
+    [
+      {
+        "RIGHT_ID": "modal_verb",
+        "RIGHT_ATTRS": {"TAG": {"IN": ["VMFIN", "VMINF"]}}
+      },
+    ],
+  ]
+  dep_matcher.add("verb_modal", dep_patterns)
+  matches = dep_matcher(doc)
+
+  for _, (modal_verb, ) in matches:
+    span_text = doc[modal_verb].text
+    result.append({"text": span_text})
+
   return result
    

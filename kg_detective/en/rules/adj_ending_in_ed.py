@@ -8,6 +8,8 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Token
   """
-  result = [t for t in doc if t.pos_=="ADJ" and t.tag_=="JJ" and len(t.text)>3 and t.text[-2:]=="ed"]
+  _result = [t for t in doc if t.pos_=="ADJ" and t.tag_=="JJ" and len(t.text)>3 and t.text[-2:]=="ed"]
+  
+  result = [{"text": t.text} for t in _result]
   return result
    

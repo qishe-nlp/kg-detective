@@ -159,10 +159,11 @@ def test_adv_superlative():
   nlp.add_pipe('kg', config={"rules": ["adv_superlative"]})
   display(sentences, nlp)
 
-def test_adv():
-  sentences = adv_of_frequency_sentences + adv_of_manner_sentences + adv_of_time_sentences + adv_of_place_sentences + adv_of_degree_sentences
-  sentences = sentences + adv_for_equal_comparisons_sentences + adv_comparative_sentences + adv_superlative_sentences
+_sentences = adv_of_frequency_sentences + adv_of_manner_sentences + adv_of_time_sentences + adv_of_place_sentences + adv_of_degree_sentences
+_sentences = _sentences + adv_for_equal_comparisons_sentences + adv_comparative_sentences + adv_superlative_sentences
 
+def test_adv():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ADV"]})
   display(sentences, nlp)

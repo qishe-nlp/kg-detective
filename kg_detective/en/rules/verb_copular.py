@@ -61,8 +61,8 @@ def search_out(doc, nlp):
 
   for _, (copular, copular_obj) in matches:
     if copular < copular_obj:
-      span = doc[copular].text + " " + " ".join([e.text for e in doc[copular_obj].subtree])
-      result.append(span)
+      span_text = doc[copular].text + " " + " ".join([e.text for e in doc[copular_obj].subtree])
+      result.append({"text": span_text})
 
   return result
    

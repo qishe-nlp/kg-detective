@@ -10,6 +10,7 @@ def search_out(doc, nlp):
   """
 
 
-  result = [t for t in doc if t.tag_ in ["WP", "WP$", "WDT", "WRB"] and t.dep_ in ['nsubj', 'dobj']]
+  _result = [t for t in doc if t.tag_ in ["WP", "WP$", "WDT", "WRB"] and t.dep_ in ['nsubj', 'dobj']]
+  result = [{"text": t.text} for t in _result]
   return result
    

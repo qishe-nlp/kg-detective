@@ -149,10 +149,12 @@ def test_pron_interrogative():
   nlp.add_pipe('kg', config={"rules": ["pron_interrogative"]})
   display(sentences, nlp)
 
-def test_pron():
-  sentences = pron_personal_sentences + pron_possessive_sentences + pron_reflexive_sentences + pron_demonstrative_sentences
-  sentences = sentences + pron_indefinite_sentences + pron_relative_sentences + pron_interrogative_sentences
+_sentences = pron_personal_sentences + pron_possessive_sentences + pron_reflexive_sentences + pron_demonstrative_sentences
+_sentences = _sentences + pron_indefinite_sentences + pron_relative_sentences + pron_interrogative_sentences
 
+
+def test_pron():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["PRON"]})
   display(sentences, nlp)

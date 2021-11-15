@@ -12,10 +12,6 @@ conj_einfache_sentences = [
   "Meine Tochter heißt Lisa. Sie will in London studieren oder in Dublin.",
   "In seiner Freizeit trifft er sich lieber mit Freunden oder er geht schwimmen.",
   "Er geht gern schwimmen, denn er mag Wasser.",
-  "Aber er macht auch andere Dinge gern: Er macht sowohl gern Wanderungen als auch Radtouren.",
-  "Aber er mag keine Ballsportarten: Er spielt weder gern Volleyball noch Fußball.",
-  "Nächstes Jahr will ich entweder nach Paris oder in die Schweiz.",
-  "Er ist zwar klein, aber kräftig.",
 ]
 
 def test_conj_einfache():
@@ -40,9 +36,11 @@ def test_conj_zweiteilige():
   nlp.add_pipe('kg', config={"rules": ["conj_zweiteilige"]})
   display(sentences, nlp)
 
-def test_conj():
-  sentences = conj_einfache_sentences + conj_zweiteilige_sentences
 
+_sentences = conj_einfache_sentences + conj_zweiteilige_sentences
+
+def test_conj():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["CONJ"]})
   display(sentences, nlp)

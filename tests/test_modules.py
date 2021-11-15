@@ -17,11 +17,12 @@ def print_modules(LABEL_RULES, rules=None):
   for importer, modname, ispkg in pkgutil.iter_modules(package.__path__):
     module_names.append(modname) 
     #print(modname)
-    print("Found submodule {} (is a package: {})".format(modname, ispkg))
+    #print("Found submodule {} (is a package: {})".format(modname, ispkg))
 
   defined_rule_names = get_all_rules(LABEL_RULES)
 
   for name in module_names:
+    #pass
     assert(name in defined_rule_names)
 
   for name in defined_rule_names:
@@ -29,6 +30,6 @@ def print_modules(LABEL_RULES, rules=None):
     assert(name in module_names)
  
 def test_modules():
-  print_modules(EN_LABEL_RULES, en_rules)
+  #print_modules(EN_LABEL_RULES, en_rules)
   #print_modules(DE_LABEL_RULES, de_rules)
-  #print_modules(ES_LABEL_RULES, es_rules)
+  print_modules(ES_LABEL_RULES, es_rules)

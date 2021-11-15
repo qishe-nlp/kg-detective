@@ -80,9 +80,10 @@ def test_det_definite_art():
   nlp.add_pipe('kg', config={"rules": ["det_definite_art"]})
   display(sentences, nlp)
 
-def test_det():
-  sentences = det_cardinal_num_sentences + det_ordinal_num_sentences + det_definite_art_sentences + det_indefinite_art_sentences
+_sentences = det_cardinal_num_sentences + det_ordinal_num_sentences + det_definite_art_sentences + det_indefinite_art_sentences
 
+def test_det():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["DETERMINER"]})
   display(sentences, nlp)

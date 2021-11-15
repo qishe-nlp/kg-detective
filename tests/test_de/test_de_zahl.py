@@ -81,10 +81,12 @@ def test_zahl_bruch():
   display(sentences, nlp)
 
 
-def test_zahl():
-  sentences = zahl_grund_sentences + zahl_ordnung_sentences + zahl_verteilung_sentences + zahl_wiederholung_sentences
-  sentences = sentences + zahl_vervielfältigung_sentences + zahl_bruch_sentences
+_sentences = zahl_grund_sentences + zahl_ordnung_sentences + zahl_verteilung_sentences + zahl_wiederholung_sentences
+_sentences = _sentences + zahl_vervielfältigung_sentences + zahl_bruch_sentences
 
+
+def test_zahl():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ZAHL"]})
   display(sentences, nlp)

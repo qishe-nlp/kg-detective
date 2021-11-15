@@ -36,7 +36,8 @@ ADVERBIAL_CLAUSE_RULES = ["adverbial_clause_of_time", "adverbial_clause_of_reaso
 
 SUBJUNCTIVE_MOOD_RULES = ["subjunctive_present", "subjunctive_past", "subjunctive_future", "subjunctive_inversion_in_mood"]
 
-LABELS = VOCAB_LABELS + SEN_LABELS
+LABELS = VOCAB_LABELS# + SEN_LABELS
 
 LABEL_RULES = {label: getattr(sys.modules[__name__], label+"_RULES") for label in LABELS}
+
 

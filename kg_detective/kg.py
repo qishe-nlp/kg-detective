@@ -15,7 +15,7 @@ def get_rules(LABEL_RULES, labels, rules):
   rs += rules
 
   if len(rs) == 0:
-    rs = get_all_rules()
+    rs = get_all_rules(LABEL_RULES)
 
   return rs
 

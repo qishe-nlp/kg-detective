@@ -64,7 +64,30 @@ def search_out(doc, nlp):
         "RIGHT_ATTRS": {"DEP": "pobj"}
       },
     ],
-
+    [
+      {
+        "RIGHT_ID": "adj",
+        "RIGHT_ATTRS": {"POS": "ADJ", "DEP": "amod"}
+      },
+      {
+        "LEFT_ID": "adj",
+        "REL_OP": ">",
+        "RIGHT_ID": "left_as",
+        "RIGHT_ATTRS": {"DEP": "advmod", "LOWER": "as"}
+      },
+      {
+        "LEFT_ID": "adj",
+        "REL_OP": "<",
+        "RIGHT_ID": "noun",
+        "RIGHT_ATTRS": {"POS": "NOUN"}
+      },
+      {
+        "LEFT_ID": "noun",
+        "REL_OP": ".",
+        "RIGHT_ID": "right_as",
+        "RIGHT_ATTRS": {"LOWER": "as", "POS": "ADP"}
+      },
+    ],
   ]
   dep_matcher.add("adj_equal_comprison", dep_patterns)
   matches = dep_matcher(doc)
@@ -74,7 +97,7 @@ def search_out(doc, nlp):
   refined_matches = merge(dep_ranges)
   for start, end in refined_matches:
     span = doc[start:end]
-    result.append(span)
+    result.append({"text": span.text})
 
   return result
    

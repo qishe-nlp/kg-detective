@@ -128,10 +128,11 @@ def test_prep_with_noun():
   nlp.add_pipe('kg', config={"rules": ["prep_with_noun"]})
   display(sentences, nlp)
 
-def test_prep():
-  sentences = prep_of_time_sentences + prep_of_movement_sentences + prep_of_manner_sentences
-  sentences = sentences + prep_with_verb_sentences + prep_with_adj_sentences + prep_with_noun_sentences
+_sentences = prep_of_time_sentences + prep_of_movement_sentences + prep_of_manner_sentences
+_sentences = _sentences + prep_with_verb_sentences + prep_with_adj_sentences + prep_with_noun_sentences
 
+def test_prep():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["PREP"]})
   display(sentences, nlp)

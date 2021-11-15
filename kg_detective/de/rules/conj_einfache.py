@@ -12,5 +12,21 @@ def search_out(doc, nlp):
     list: list of spacy.tokens.Span
   """
   result = []
+
+  dep_matcher = DependencyMatcher(nlp.vocab)
+  dep_patterns = [
+    [
+      {
+        "RIGHT_ID": "conj",
+        "RIGHT_ATTRS": {"TAG": "KON", "POS": "CCONJ", "DEP": "cd"}
+      },
+    ],
+  ]
+  dep_matcher.add("conj_einfache", dep_patterns)
+  matches = dep_matcher(doc)
+
+  for _, (conj, ) in matches:
+    span_text = doc[conj].text 
+    result.append({"text": span_text})
+
   return result
-   

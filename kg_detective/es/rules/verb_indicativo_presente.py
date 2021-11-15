@@ -12,5 +12,21 @@ def search_out(doc, nlp):
     list: list of spacy.tokens.Span
   """
   result = []
+
+  token_matcher = Matcher(nlp.vocab)
+  patterns = [
+    [{"POS": {"IN": ["VERB", "AUX"]}, "MORPH": {"IS_SUPERSET": ["Mood=Ind", "Tense=Pres", "VerbForm=Fin"]}}],
+  ]
+  token_matcher.add("verb_indicativo_presente", patterns)
+
+  matches = token_matcher(doc)
+  token_ranges = [(start, end) for _, start, end in matches]
+
+  refined_matches = merge(token_ranges)
+  for start, end in refined_matches:
+    span = doc[start:end].text
+    result.append({"text": span})
+
+
   return result
    

@@ -10,6 +10,7 @@ def search_out(doc, nlp):
   """
 
 
-  result = [t for t in doc if t.text.lower() in ["this", "that", "those", "these"]]
+  _result = [t for t in doc if t.text.lower() in ["this", "that", "those", "these"]]
+  result = [{"text": t.text} for t in _result]
   return result
    

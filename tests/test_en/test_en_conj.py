@@ -44,9 +44,10 @@ def test_conj_coordinating():
   nlp.add_pipe('kg', config={"rules": ["conj_coordinating"]})
   display(sentences, nlp)
 
-def test_conj():
-  sentences = conj_subordinating_sentences + conj_coordinating_sentences
+_sentences = conj_subordinating_sentences + conj_coordinating_sentences
 
+def test_conj():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["CONJ"]})
   display(sentences, nlp)

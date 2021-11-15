@@ -34,8 +34,8 @@ def search_out(doc, nlp):
   for _, (verb, prep) in matches:
     if prep > verb:
       verb_tree = [e.subtree for e in doc[verb].rights if e.pos_!="PUNCT" and e.dep_ not in ["dep", "cc", "conj"]]
-      span = doc[verb].text + " " + " ".join([" ".join([e.text for e in st]) for st in verb_tree])
-      result.append(span)
+      span_text = doc[verb].text + " " + " ".join([" ".join([e.text for e in st]) for st in verb_tree])
+      result.append({"text": span_text})
 
   return result
    

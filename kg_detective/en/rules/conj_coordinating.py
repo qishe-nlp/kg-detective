@@ -49,8 +49,8 @@ def search_out(doc, nlp):
     #print(B_children)
     A_tree = doc[min(A_children):max(A_children)+1]
     B_tree = doc[min(B_children):max(B_children)+1]
-    span = A_tree.text + " " + doc[conj].text + " " +B_tree.text
-    result.append(span)
+    span_text = A_tree.text + " " + doc[conj].text + " " +B_tree.text
+    result.append({"text": span_text})
 
   return result
    

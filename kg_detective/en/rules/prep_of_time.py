@@ -34,8 +34,8 @@ def search_out(doc, nlp):
 
   for _, (prep, time_obj) in matches:
     if any([t.like_num or t.pos_=="NUM" for t in doc[time_obj].subtree]):
-      span = doc[prep].text + " " + " ".join([t.text for t in doc[time_obj].subtree])
-      result.append(span)
+      span_text = doc[prep].text + " " + " ".join([t.text for t in doc[time_obj].subtree])
+      result.append({"text": span_text})
 
   return result
    

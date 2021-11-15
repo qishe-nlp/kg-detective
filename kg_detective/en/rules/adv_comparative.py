@@ -27,7 +27,7 @@ def search_out(doc, nlp):
   refined_matches = merge(token_ranges)
   for start, end in refined_matches:
     span = doc[start:end]
-    result.append(span)
+    result.append({"text": span.text})
 
   return result
    

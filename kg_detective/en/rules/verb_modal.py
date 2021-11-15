@@ -10,6 +10,7 @@ def search_out(doc, nlp):
 
   result = []
 
-  result = [t for t in doc if t.tag_=="MD"]
+  _result = [t for t in doc if t.tag_=="MD"]
+  result = [{"text": t.text} for t in _result]
   return result
    

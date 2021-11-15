@@ -38,12 +38,15 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (P, S, O) in matches:
-    subj_span = " ".join([e.text for e in doc[S].subtree])
-    obj_span = " ".join([e.text for e in doc[O].subtree])
-    result.append(subj_span)
-    result.append(doc[P].text)
-    result.append(obj_span)
-
+    black = ['dative', 'oprd']
+    is_valid = all([c.dep_ not in black for c in doc[P].children])
+    if is_valid:
+      subj_span = " ".join([e.text for e in doc[S].subtree])
+      obj_span = " ".join([e.text for e in doc[O].subtree])
+      predicate_range = [l.i for l in doc[P].lefts if l.dep_=="aux"]
+      predicate_range.append(P)
+      predicate_span = doc[min(predicate_range): max(predicate_range)+1].text
+      result.append({"subject": subj_span, "predicate": predicate_span, "object": obj_span})
 
   return result
    

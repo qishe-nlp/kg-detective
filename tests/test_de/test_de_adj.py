@@ -6,16 +6,8 @@ lang = "de"
 pkg = PKG_INDICES[lang]
 
 adj_ohne_steigerung_sentences = [
-  "Das ist ein schöner Fernseher und kostet viel weniger, als man gedacht hat.",
   "Wir sollen diese Aufgabe so schnell wie möglich beenden.",
-  "Je schnelleren Fortschritt man macht, desto mehr Lust hat man zu lernen.",
-  "Ab 1. Januar können wir endlich in einer größeren Wohnung wohnen.",
-  "Das ist mir zu teuer. Der Preis ist ja viel höher, als ich gedacht habe.",
-  "Lieber Herr Nachbar! Ich möchte Sie bitten, nach 22 Uhr das Radio leiser zu stellen.",
-  "Das Flugzeug fliegt am schnellsten.",
-  "Das Kleid ist mir zu teuer. Haben Sie kein billigeres ?",
   "Deine Tochter ist so alt wie mein Sohn.",
-  "Der Zug ist das schnellste Verkehrsmittel.",
 ]
 
 def test_adj_ohne_steigerung():
@@ -27,15 +19,11 @@ def test_adj_ohne_steigerung():
 
 adj_komparativ_sentences = [
   "Das ist ein schöner Fernseher und kostet viel weniger, als man gedacht hat.",
-  "Wir sollen diese Aufgabe so schnell wie möglich beenden.",
   "Je schnelleren Fortschritt man macht, desto mehr Lust hat man zu lernen.",
   "Ab 1. Januar können wir endlich in einer größeren Wohnung wohnen.",
   "Das ist mir zu teuer. Der Preis ist ja viel höher, als ich gedacht habe.",
   "Lieber Herr Nachbar! Ich möchte Sie bitten, nach 22 Uhr das Radio leiser zu stellen.",
-  "Das Flugzeug fliegt am schnellsten.",
   "Das Kleid ist mir zu teuer. Haben Sie kein billigeres ?",
-  "Deine Tochter ist so alt wie mein Sohn.",
-  "Der Zug ist das schnellste Verkehrsmittel.",
 ]
 
 def test_adj_komparativ():
@@ -46,15 +34,7 @@ def test_adj_komparativ():
   display(sentences, nlp)
 
 adj_superlativ_sentences = [
-  "Das ist ein schöner Fernseher und kostet viel weniger, als man gedacht hat.",
-  "Wir sollen diese Aufgabe so schnell wie möglich beenden.",
-  "Je schnelleren Fortschritt man macht, desto mehr Lust hat man zu lernen.",
-  "Ab 1. Januar können wir endlich in einer größeren Wohnung wohnen.",
-  "Das ist mir zu teuer. Der Preis ist ja viel höher, als ich gedacht habe.",
-  "Lieber Herr Nachbar! Ich möchte Sie bitten, nach 22 Uhr das Radio leiser zu stellen.",
   "Das Flugzeug fliegt am schnellsten.",
-  "Das Kleid ist mir zu teuer. Haben Sie kein billigeres ?",
-  "Deine Tochter ist so alt wie mein Sohn.",
   "Der Zug ist das schnellste Verkehrsmittel.",
 ]
 
@@ -72,7 +52,7 @@ adj_deklination_sentences = [
   "Die helle Bluse passt gut zu dem Rock.",
   "Die Zugspitze ist der höchste Berg in Deutschland.",
   "Der gestern in Berlin angekommene IC-Zug wird heute wieder abfahren.",
-  "- Wo kaufen Sie ein? - Bei ALDI. Da gibt es immer viele günstige Sonderangebote.",
+  "Wo kaufen Sie ein? Bei ALDI. Da gibt es immer viele günstige Sonderangebote.",
   "Am Rand der kleinen Stadt ist ein Wald.",
   "Und in dem Wald steht ein altes Haus.",
   "Eine steile Treppe führt in den Keller.",
@@ -109,10 +89,6 @@ def test_adj_norminalisierte():
 adj_ergänzung_mit_präposition_sentences = [
   "Der Lehrer ist zufrieden mit dem Erfolg der Schüler.",
   "Solange ich bei meinen Eltern wohne, bin ich von ihnen abhängig.",
-  "Sie kommen von nah und fern.",
-  "Ich habe ihm klipp und klar meine Meinung gesagt.",
-  "Ich habe es ihm lang und breit erklärt, aber er hat es trotzdem nicht verstanden.",
-  "Sie hat ein schiefes Bild von ihm.",
   "Der Vater ist stolz auf seinen Sohn.",
   "Ich warte gespannt auf deine Antwort.",
   "Sport ist gut für die Gesundheit.",
@@ -126,10 +102,12 @@ def test_adj_ergänzung_mit_präposition():
   nlp.add_pipe('kg', config={"rules": ["adj_ergänzung_mit_präposition"]})
   display(sentences, nlp)
 
-def test_adj():
-  sentences = adj_ohne_steigerung_sentences + adj_komparativ_sentences + adj_superlativ_sentences + adj_deklination_sentences
-  sentences = sentences + adj_norminalisierte_sentences + adj_ergänzung_mit_präposition_sentences
+_sentences = adj_ohne_steigerung_sentences + adj_komparativ_sentences + adj_superlativ_sentences + adj_deklination_sentences
+_sentences = _sentences + adj_norminalisierte_sentences + adj_ergänzung_mit_präposition_sentences
 
+
+def test_adj():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ADJ"]})
   display(sentences, nlp)

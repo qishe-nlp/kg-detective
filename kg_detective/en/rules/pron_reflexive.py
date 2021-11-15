@@ -14,6 +14,7 @@ def search_out(doc, nlp):
   REFLEXIVE = open(pkg_path + '/pron_reflexive.txt', 'r').read().splitlines() 
 
 
-  result = [t for t in doc if t.text.lower() in REFLEXIVE]
+  _result = [t for t in doc if t.text.lower() in REFLEXIVE]
+  result = [{"text": t.text} for t in _result]
   return result
    

@@ -44,14 +44,13 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (P, S, IO, O) in matches:
-    subj_span = " ".join([e.text for e in doc[S].subtree])
-    obj_span = " ".join([e.text for e in doc[O].subtree])
-    iobj_span = " ".join([e.text for e in doc[IO].subtree])
-    result.append(subj_span)
-    result.append(doc[P].text)
-    result.append(iobj_span)
-    result.append(obj_span)
-
+    black = ['attr', 'ccomp', 'oprd']
+    is_valid = all([c.dep_ not in black for c in doc[P].children])
+    if is_valid:
+      subj_span = " ".join([e.text for e in doc[S].subtree])
+      obj_span = " ".join([e.text for e in doc[O].subtree])
+      iobj_span = " ".join([e.text for e in doc[IO].subtree])
+      result.append({"subject": subj_span, "predicate": doc[P].text, "indirect object": iobj_span, "direct object": obj_span})
 
   return result
    

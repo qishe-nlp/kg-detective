@@ -9,5 +9,6 @@ def search_out(doc, nlp):
     list: list of spacy.tokens.Token
   """
 
-  result = [t for t in doc if t.tag_ in ["NN", "NNS"]]
+  _result = [t for t in doc if t.tag_ in ["NN", "NNS"]]
+  result = [{"text": t.text for t in _result}]
   return result

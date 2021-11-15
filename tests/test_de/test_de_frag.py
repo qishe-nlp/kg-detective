@@ -26,9 +26,10 @@ def test_frag_frag():
   display(sentences, nlp)
 
 
-def test_frag():
-  sentences = frag_frag_sentences 
+_sentences = frag_frag_sentences 
 
+def test_frag():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["FRAG"]})
   display(sentences, nlp)

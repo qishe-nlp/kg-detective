@@ -124,11 +124,12 @@ def test_adverbial_clause_of_result():
   nlp.add_pipe('kg', config={"rules": ["adverbial_clause_of_result"]})
   display(sentences, nlp)
 
+_sentences = adverbial_clause_of_time_sentences + adverbial_clause_of_reason_sentences + adverbial_clause_of_comparison_sentences + adverbial_clause_of_condition_sentences
+_sentences = _sentences + adverbial_clause_of_concession_sentences + adverbial_clause_of_purpose_sentences + adverbial_clause_of_result_sentences
+
 
 def test_adverbial_clause():
-  sentences = adverbial_clause_of_time_sentences + adverbial_clause_of_reason_sentences + adverbial_clause_of_comparison_sentences + adverbial_clause_of_condition_sentences
-  sentences = sentences + adverbial_clause_of_concession_sentences + adverbial_clause_of_purpose_sentences + adverbial_clause_of_result_sentences
-
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ADVERBIAL_CLAUSE"]})
   display(sentences, nlp)

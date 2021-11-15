@@ -31,7 +31,7 @@ def search_out(doc, nlp):
   for start, end in refined_matches:
     span = doc[start:end]
     if any([e.pos_ == "PRON" for e in list(span)]):
-      result.append(span) 
+      result.append({"text": span.text}) 
 
   return result
    

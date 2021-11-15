@@ -75,9 +75,12 @@ def test_simple_s_p_o_c():
   nlp.add_pipe('kg', config={"rules": ["simple_s_p_o_c"]})
   display(sentences, nlp)
 
+_sentences = simple_s_p_sentences + simple_s_c_p_sentences + simple_s_p_o_sentences + simple_s_p_io_o_sentences
+_sentences = _sentences + simple_s_p_o_c_sentences
+
+
 def test_simple_sen():
-  sentences = simple_s_p_sentences + simple_s_c_p_sentences + simple_s_p_o_sentences + simple_s_p_io_o_sentences
-  sentences = sentences + simple_s_p_o_c_sentences
+  sentences = _sentences
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["SIMPLE_SEN"]})

@@ -45,9 +45,11 @@ def test_relative_non_restrictive_clause():
   display(sentences, nlp)
 
 
-def test_relative_clause():
-  sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
 
+_sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
+
+def test_relative_clause():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["RELATIVE_CLAUSE"]})
   display(sentences, nlp)

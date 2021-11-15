@@ -129,10 +129,12 @@ def test_adj_superlative():
   nlp.add_pipe('kg', config={"rules": ["adj_superlative"]})
   display(sentences, nlp)
 
-def test_adj():
-  sentences = adj_ending_in_ing_sentences + adj_ending_in_ed_sentences + adj_order_sentences + adj_for_equal_comparisons_sentences
-  sentences = sentences + adj_comparative_sentences + adj_superlative_sentences
+_sentences = adj_ending_in_ing_sentences + adj_ending_in_ed_sentences + adj_order_sentences + adj_for_equal_comparisons_sentences
+_sentences = _sentences + adj_comparative_sentences + adj_superlative_sentences
 
+
+def test_adj():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ADJ"]})
   display(sentences, nlp)

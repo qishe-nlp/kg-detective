@@ -6,16 +6,6 @@ lang = "es"
 pkg = PKG_INDICES[lang]
 
 _sentences = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
 ]
 
 def test_():

@@ -34,8 +34,8 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (verb, obj) in matches:
-    span = doc[verb].text + " " + " ".join([e.text for e in doc[obj].subtree])
-    result.append(span)
+    span_text = doc[verb].text + " " + " ".join([e.text for e in doc[obj].subtree])
+    result.append({"text": span_text})
 
   return result
    

@@ -33,8 +33,8 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   for _, (prep, method_obj) in matches:
-    span = doc[prep].text + " " + " ".join([t.text for t in doc[method_obj].subtree])
-    result.append(span)
+    span_text = doc[prep].text + " " + " ".join([t.text for t in doc[method_obj].subtree])
+    result.append({"text": span_text})
 
   return result
    
