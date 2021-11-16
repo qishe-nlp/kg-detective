@@ -6,34 +6,8 @@ from importlib import import_module
 import os.path, pkgutil
 
 
-lang = "de"
+lang = "es"
 pkg = PKG_INDICES[lang]
-
-def _add_bracket(ex):
-  return "(" + ex + ")" if ex!=None else ""
-
-def sen_structure(sentences, nlp):
-  content = []
-  for s in sentences:
-    doc = nlp(s)
-    structure_with_explanation = trs(doc, doc._.structure, lang)
-    analysis = " ".join([t["text"] + _add_bracket(t["explanation"]) for t in structure_with_explanation])
-    _data = {
-      "sentence": s,
-      "analysis": analysis,
-      "tbr": analysis,
-    }
-    content.append(_data) 
-  return content
-
-def test_structure_tbr_gen():
-  data = get_lang_sens(lang) 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('structure')
-
-  for name, sentences in data.items():
-    content = sen_structure(sentences, nlp) 
-    write_to_csv(["sentence", "analysis", "tbr"], content, csvfile="tbr/structure_"+name+".csv")
 
 def sen_kg(sentences, nlp, rules):
   content = {}
@@ -50,7 +24,7 @@ def sen_kg(sentences, nlp, rules):
       content[r].append(info)
   # write to multiple files
   for k, v in content.items():
-    write_to_csv(["sentence", k], v, csvfile="tbr/kg_"+k+".csv")
+    write_to_csv(["sentence", k], v, csvfile="tbr/{}/kg_{}.csv".format(lang, k))
 
 def test_kg_tbr_gen():
   #sentences = read_json('./S0405.json')

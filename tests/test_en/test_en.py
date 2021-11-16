@@ -10,13 +10,6 @@ pkg = PKG_INDICES[lang]
 
 _sentences = get_lang_sens(lang)["test_en_compound"] 
 
-def test_en_structure():
-  sentences = _sentences
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('structure')
-  display_structure(sentences, nlp)
-
 def test_en_kg():
   sentences = _sentences
 

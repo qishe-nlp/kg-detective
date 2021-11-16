@@ -30,14 +30,3 @@ LABELS = VOCAB_LABELS + SEN_LABELS
 
 LABEL_RULES = {label: getattr(sys.modules[__name__], label+"_RULES") for label in LABELS}
 
-def gen_trans():
-  data = {}
-  for label in LABELS:
-    rule_en = getattr(sys.modules[__name__], label+"_RULES")
-    rule_cn = ["" for i in range(len(rule_en))]
-    pairs = zip(rule_en, rule_cn)
-    for en, cn in pairs:
-      data[en] = cn
-  print(data)
-
-#gen_trans()

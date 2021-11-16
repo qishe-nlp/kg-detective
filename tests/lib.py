@@ -1,5 +1,5 @@
 from spacy.language import Language
-from kg_detective import KG, Structure, trs
+from kg_detective import KG
 from spacy import displacy
 from pathlib import Path
 import json
@@ -11,19 +11,6 @@ import os.path, pkgutil
 @Language.factory("kg", default_config={"labels": [], "rules": []})
 def create_kg(nlp: Language, name: str, labels: list, rules: list):
   return KG(nlp, labels=labels, rules=rules)
-  
-@Language.factory("structure")
-def create_kg(nlp: Language, name: str):
-  return Structure(nlp)
- 
-def print_structure(doc, lang):
-  content = doc._.structure
-  print(content)
-  print(lang)
-  analysis = trs(doc, content, lang)
-  print(analysis)
-  #for c in content:
-  #  print("{}\t{}\t{}\t{}".format(c["text"], c["dep"], c["start"], c["end"]))
 
 
 def print_kg(doc):
@@ -42,17 +29,6 @@ def graph(doc, lang):
   file_name = '-'.join([w.text for w in doc if not w.is_punct]) + ".svg"
   output_path = Path(lang+ "_images/" + file_name)
   output_path.open("w", encoding="utf-8").write(svg)
-
-def display_structure(sentences, nlp):
-  for s in sentences:
-    doc = nlp(s)
-    print("*"*10)
-    print(s)
-    print_structure(doc, nlp.meta["lang"])
-    #print_doc(doc)
-    print("*"*10)
-    graph(doc, nlp.meta["lang"])
-
 
 def display(sentences, nlp):
   for s in sentences:
