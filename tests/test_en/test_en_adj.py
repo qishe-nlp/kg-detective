@@ -11,9 +11,9 @@ adj_ending_in_ing_sentences = [
   "His frightened looks and trembling hands suggested that he was very afraid.",
   "Is he interesting?",
   "The film was disappointing.",
-  "It’s sometimes embarrassing when you have to ask people for money.",
-  "It’s really annoying when a train is late and there’s no explanation.",
-  "The film Harry Potter Ⅳ is very exciting.",
+  "It's sometimes embarrassing when you have to ask people for money.",
+  "It's really annoying when a train is late and there's no explanation.",
+  "The film Harry Potter IV is very exciting.",
   "What boring films!",
   "The film KING KONG is a very moving one.",
 ]
@@ -27,14 +27,14 @@ def test_adj_with_ing_ending():
 
 
 adj_ending_in_ed_sentences = [
-  "Laws that punish parents for their little children’s actions against the laws get parents worried.",
+  "Laws that punish parents for their little children's actions against the laws get parents worried.",
   "Dad will be very surprised.",
   "We were very shocked when we heard the news.",
   "Dad was so exhausted when he came home from work.",
   "I was really amazed when I was offered it.",
   "When they heard the surprising news, they were surprised to look at each other.",
   "All of us were excited when we watched the exciting football match.",
-  "I’m interested in computers but I’m not good at using it.",
+  "I'm interested in computers but I'm not good at using it.",
   "Disneyland is so wonderful that no one feels bored there.",
   "The girl is little but she is not frightened of dogs.",
 ]
@@ -49,7 +49,7 @@ def test_adj_with_ed_ending():
 
 adj_order_sentences = [
   "The little white wooden house is as if it has not been lived in for years.",
-  "This pretty little Spanish girl is Linda’s cousin.",
+  "This pretty little Spanish girl is Linda's cousin.",
   "Excuse me. Can I borrow your cheap blue plastic pencil box?",
   "We visited some friends, and spent the last few sunny days at the seaside.",
   "Tom is old enough to go to school.",
@@ -115,7 +115,7 @@ adj_superlative_sentences = [
   "Chieng Mai has been one of the hottest tourist places for Chinese since the movie Lost in Thailand was shown.",
   "Of all the CD players in the shop, this one is the cheapest.",
   "The Changjiang River is one of the longest rivers in the world.",
-  "I’m very proud that Beijing is one of the biggest cities in the world.",
+  "I'm very proud that Beijing is one of the biggest cities in the world.",
   "Who do you think is the funniest actor?",
   "The Yellow River is the second longest river in our country.",
   "Chinese becomes one of the world's most important languages.",
