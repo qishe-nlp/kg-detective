@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "kg-detective"
-version = "0.1.4"
-description = ""
-authors = ["Your Name <you@example.com>"]
+version = "0.1.5"
+description = "Knowledge Graph recognizer component for spacy pipeline"
+authors = ["Phoenix Grey <phoenix.grey0108@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-spacy = "^3.2.0"
+spacy = "^3.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

@@ -465,6 +465,7 @@ _sentences = _sentences + verb_subjuntivo_pretérito_perfecto_sentences + verb_s
  
 
 def test_verb():
+  sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["VERB"]})
   display(sentences, nlp)

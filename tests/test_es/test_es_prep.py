@@ -50,7 +50,7 @@ _sentences = prep_con_adjetivo_sentences + prep_con_verbo_sentences
 def test_prep():
   sentences = _sentences
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"labels": ["prep"]})
+  nlp.add_pipe('kg', config={"labels": ["PREP"]})
   display(sentences, nlp)
 
 
