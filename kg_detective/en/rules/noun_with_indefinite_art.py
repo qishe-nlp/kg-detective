@@ -1,8 +1,8 @@
-from spacy.matcher import Matcher
+from spacy.matcher import DependencyMatcher
 from kg_detective.lib import merge
 
 def search_out(doc, nlp):
-  """Search for indefinite article followed by noun 
+  """Search for indefinite article with noun 
 
   Args:
     doc (spacy.tokens.Doc): doc to be analyzed
@@ -11,19 +11,49 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-
   result = []
 
-  matcher = Matcher(nlp.vocab)
-  patterns = [
-    [{"LOWER": {"IN": ["a", "an"]}}, {"POS": "ADV", "OP": "*"}, {"POS": "ADJ", "OP": "*"}, {"POS": "NOUN", "OP": "+"}],
+  # pattern: as ... as ...
+  dep_matcher = DependencyMatcher(nlp.vocab)
+  dep_patterns = [
+    [
+      {
+        "RIGHT_ID": "noun",
+        "RIGHT_ATTRS": {"POS":"NOUN"}
+      },
+      {
+        "LEFT_ID": "noun",
+        "REL_OP": ">>",
+        "RIGHT_ID": "indefart",
+        "RIGHT_ATTRS": {"POS": "DET", "LEMMA": {"IN": ["a", "an"]}}
+      },
+    ],
   ]
-  matcher.add("noun_indefinite_art", patterns)
+  dep_matcher.add("det_indefinite_art", dep_patterns)
+  matches = dep_matcher(doc)
 
-  matches = matcher(doc)
-  ranges = [(start, end) for _, start, end in matches]
-  refined_matches = merge(ranges)
+  token_ranges = []
+  for _, (noun, indefart) in matches:
+    noun_tree = [list(e.subtree) for e in doc[noun].lefts]  
+    noun_enum = sum(noun_tree, [])
+    noun_enum.sort()
+    indefart_assertion = indefart in [e.i for e in noun_enum] 
+    noun_assertion = len(noun_enum)>0 and noun_enum[-1].i - noun_enum[0].i + 1 == len(noun_enum) and noun == noun_enum[-1].i + 1
+    
+    if indefart_assertion and noun_assertion:
+      token_ranges.append((noun_enum[0].i, noun+1))
+  
+  refined_matches = merge(token_ranges)
+  s = 0
   for start, end in refined_matches:
-    span = doc[start:end]
-    result.append({"text": span.text})
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result

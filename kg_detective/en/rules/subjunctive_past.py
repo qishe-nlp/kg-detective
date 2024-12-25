@@ -49,12 +49,30 @@ def search_out(doc, nlp):
   dep_matcher.add("subjunctive_past", dep_patterns)
   matches = dep_matcher(doc)
 
+  token_ranges = []
   for _, (core_verb, advcl_verb, aux_core_have, aux_core_md, aux_advcl) in matches:
-    clause_ordered_tree = [e.i for e in doc[advcl_verb].subtree]
-    clause_ordered_tree.sort()
-    clause_span = " ".join([doc[i].text for i in clause_ordered_tree])
-    result.append(doc[aux_core_md:core_verb+1].text)
-    result.append(clause_span)
+    clause_tree = [e.i for e in doc[advcl_verb].subtree]
+    clause_tree.sort()
+
+    verb_assertion = aux_core_have + 1 == core_verb and aux_core_md < aux_core_have
+    clause_assertion = len(clause_tree) == clause_tree[-1] - clause_tree[0] + 1
+  
+    if verb_assertion and clause_assertion:
+      token_ranges.append((aux_core_md, core_verb+1))
+      token_ranges.append((clause_tree[0], clause_tree[-1]+1))
+
+  refined_matches = merge(token_ranges)
+  s = 0
+  for start, end in refined_matches:
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
 
   return result
-   
+ 

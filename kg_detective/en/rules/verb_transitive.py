@@ -33,9 +33,24 @@ def search_out(doc, nlp):
   dep_matcher.add("verb_transitive", dep_patterns)
   matches = dep_matcher(doc)
 
+  token_ranges = []
   for _, (verb, obj) in matches:
-    span_text = doc[verb].text + " " + " ".join([e.text for e in doc[obj].subtree])
-    result.append({"text": span_text})
+    tree = list(doc[obj].subtree)
+    if verb < obj and tree[-1].i - tree[0].i == len(tree)-1:
+      token_ranges.append((verb, tree[-1].i+1))
 
+  refined_matches = merge(token_ranges)
+  s = 0
+  for start, end in refined_matches:
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result
    

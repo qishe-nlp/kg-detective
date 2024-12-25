@@ -38,13 +38,6 @@ det_ordinal_num_sentences = [
   "In the Ukraine, a fifth of the population are Russian speakers.",
 ]
 
-def test_det_ordinal_num():
-  sentences = det_ordinal_num_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["det_ordinal_num"]})
-  display(sentences, nlp)
-
 det_indefinite_art_sentences = [
   "When you visit a museum you must ask for permission before taking photographs inside it.",
   "It's not easy for Tom to find a job because he has been in prison for many years.",

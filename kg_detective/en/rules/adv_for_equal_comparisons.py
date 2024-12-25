@@ -31,7 +31,7 @@ def search_out(doc, nlp):
         "LEFT_ID": "A",
         "REL_OP": ".",
         "RIGHT_ID": "right_as",
-        "RIGHT_ATTRS": {"POS":"ADP", "LOWER": "as"}
+        "RIGHT_ATTRS": {"POS": {"IN": ["ADP", "SCONJ"]}, "LOWER": "as"}
       },
     ],
   ]
@@ -41,9 +41,16 @@ def search_out(doc, nlp):
 
   # merge ranges
   refined_matches = merge(dep_ranges)
+  s = 0
   for start, end in refined_matches:
-    span = doc[start:end]
-    result.append({"text": span.text})
-
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result
-   

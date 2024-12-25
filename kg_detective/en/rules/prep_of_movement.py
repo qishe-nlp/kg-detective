@@ -32,9 +32,23 @@ def search_out(doc, nlp):
   dep_matcher.add("prep_movement", dep_patterns)
   matches = dep_matcher(doc)
 
+  token_ranges = []
   for _, (prep, movement_obj) in matches:
-    span_text = doc[prep].text + " " + " ".join([t.text for t in doc[movement_obj].subtree])
-    result.append({"text": span_text})
+    tree = list(doc[movement_obj].subtree)
+    if tree[0].i == prep + 1:
+      token_ranges.append((prep, tree[-1].i+1))
 
+  refined_matches = merge(token_ranges)
+  s = 0
+  for start, end in refined_matches:
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result
-   

@@ -99,13 +99,6 @@ noun_possessive_sentences = [
   "This is the most popular music of one of the famous musicians' I have ever heard.",
 ]
 
-def test_noun_possessive():
-  sentences = noun_possessive_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_possessive"]})
-  display(sentences, nlp)
-
 
 _sentences = noun_proper_sentences + noun_countability_sentences + noun_with_indefinite_art_sentences + noun_with_definite_art_sentences + noun_possessive_sentences
 def test_noun():

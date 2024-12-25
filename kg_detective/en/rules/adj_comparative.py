@@ -27,9 +27,16 @@ def search_out(doc, nlp):
   token_ranges = [(start, end) for _, start, end in matches]
 
   refined_matches = merge(token_ranges)
+  s = 0
   for start, end in refined_matches:
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
     span = doc[start:end].text
-    result.append({"text": span})
-
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result
-   

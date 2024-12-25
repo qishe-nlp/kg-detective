@@ -59,10 +59,28 @@ def search_out(doc, nlp):
   dep_matcher.add("verb_copular", dep_patterns)
   matches = dep_matcher(doc)
 
+  token_ranges = []
   for _, (copular, copular_obj) in matches:
-    if copular < copular_obj:
-      span_text = doc[copular].text + " " + " ".join([e.text for e in doc[copular_obj].subtree])
-      result.append({"text": span_text})
+    copular_obj_tree = [e.i for e in doc[copular_obj].subtree]
+    copular_obj_tree.sort()
 
+    copular_assertion = copular < copular_obj
+    copular_tree_assertion = len(copular_obj_tree) == copular_obj_tree[-1] - copular_obj_tree[0] + 1 
+    if copular_assertion and copular_tree_assertion:
+      token_ranges.append((copular, copular+1))
+      token_ranges.append((copular_obj_tree[0], copular_obj_tree[-1]+1))
+
+  refined_matches = merge(token_ranges)
+  s = 0
+  for start, end in refined_matches:
+    if start > s:
+      span = doc[s:start].text
+      result.append({"text": span, "highlight": False})
+    span = doc[start:end].text
+    result.append({"text": span, "highlight": True})
+    s = end
+  if s < len(doc):
+    span = doc[s:].text
+    result.append({"text": span, "highlight": False})
+ 
   return result
-   

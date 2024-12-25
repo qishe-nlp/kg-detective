@@ -55,7 +55,7 @@ pron_reflexive_sentences = [
   "I could look after myself when I was five.",
   "Teenagers should learn to protect themselves from all kinds of danger.",
   "Can you cook by yourself?",
-  "The film ifself is very fun.",
+  "The film itself is very fun.",
   "Don't worry about your daughter, she can look after herself well.",
   "I made it all by myself last week.",
 ]
@@ -80,13 +80,6 @@ pron_demonstrative_sentences = [
   "Where did you buy it? I want to buy one too.",
 ]
 
-def test_pron_demonstrative():
-  sentences = pron_demonstrative_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_demonstrative"]})
-  display(sentences, nlp)
-
 
 pron_indefinite_sentences = [
   "Both of them are interesting. And I've read them several times.",
@@ -100,13 +93,6 @@ pron_indefinite_sentences = [
   "Today, too many trees are still being cut down somewhere in the world.",
   "All of the boys in Class Four are playing games.",
 ]
-
-def test_pron_indefinite():
-  sentences = pron_indefinite_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_indefinite"]})
-  display(sentences, nlp)
 
 
 pron_relative_sentences = [

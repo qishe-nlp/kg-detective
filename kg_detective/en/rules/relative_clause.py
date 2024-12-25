@@ -17,27 +17,36 @@ def search_out(doc, nlp):
   dep_patterns = [
     [
       {
-        "RIGHT_ID": "copular",
-        "RIGHT_ATTRS": {"POS": "AUX", "DEP": "ROOT", "LEMMA": "be"}
+        "RIGHT_ID": "noun",
+        "RIGHT_ATTRS": {"POS": "NOUN"}
       },
       {
-        "LEFT_ID": "copular",
+        "LEFT_ID": "noun",
         "REL_OP": ">",
-        "RIGHT_ID": "predicative",
-        "RIGHT_ATTRS": {"DEP": {"IN": ["ccomp", "advcl"]}}
+        "RIGHT_ID": "clause",
+        "RIGHT_ATTRS": {"DEP": "relcl"}
       },
     ],
   ]
-  dep_matcher.add("nominal_predicative_clause", dep_patterns)
+  dep_matcher.add("relative_clause", dep_patterns)
   matches = dep_matcher(doc)
 
   token_ranges = []
-  for _, (copular, predicative) in matches:
-    predicative_tree = [e.i for e in doc[predicative].subtree]
-    predicative_tree.sort()
+  for _, (noun, clause) in matches:
+    whole_noun_tree = [e.i for e in doc[noun].subtree]
+    clause_tree = [e.i for e in doc[clause].subtree]
+  
+    noun_tree = list(set(whole_noun_tree) - set(clause_tree))
 
-    if len(predicative_tree) == predicative_tree[-1] - predicative_tree[0] + 1:
-      token_ranges.append((predicative_tree[0], predicative_tree[-1]+1)) 
+    noun_tree.sort()
+    clause_tree.sort()
+
+    noun_assertion = len(noun_tree) == noun_tree[-1] - noun_tree[0] + 1
+    clause_assertion = len(clause_tree) == clause_tree[-1] - clause_tree[0] + 1
+
+    if noun_assertion and clause_assertion:
+      token_ranges.append((noun_tree[0], noun_tree[-1]+1))
+      token_ranges.append((clause_tree[0], clause_tree[-1]+1)) 
 
   refined_matches = merge(token_ranges)
   s = 0
@@ -51,5 +60,6 @@ def search_out(doc, nlp):
   if s < len(doc):
     span = doc[s:].text
     result.append({"text": span, "highlight": False})
- 
+
   return result
+   

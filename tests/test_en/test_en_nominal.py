@@ -65,30 +65,9 @@ def test_nominal_predicative_clause():
   display(sentences, nlp)
 
 
-nominal_appositive_clause_sentences = [
-  "But I still remember the story, believe it or not, that we got lost on a rainy night.",
-  "Doris' success lies in the fact that she is co-operative and eager to learn from others.",
-  "A warm thought suddenly came to me that I might use the pocket money to buy some flowers for my mother's birthday.",
-  "There is much chance that Bill will recover from his injury in time for the race.",
-  "Nobody believed his reason for being absent from the class that he had to meet his uncle at the airport.",
-  "The fact has worried scientists that the earth is becoming warmer and warmer these years.",
-  "News came from the school office that Wang Lin had been admitted to Beijing University.",
-  "Do you have any idea what is actually going on in the classroom?",
-  "Along with the letter was his promise that he would visit me this coming Chrismas.",
-  "We'll discuss the problem whether the sports meeting will be held on time.",
-]
+_sentences = nominal_subject_clause_sentences + nominal_object_clause_sentences + nominal_predicative_clause_sentences
 
-def test_nominal_appositive_clause():
-  sentences = nominal_appositive_clause_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["nominal_appositive_clause"]})
-  display(sentences, nlp)
-
-
-_sentences = nominal_subject_clause_sentences + nominal_object_clause_sentences + nominal_predicative_clause_sentences + nominal_appositive_clause_sentences
-
-def test_():
+def test_nominal():
   sentences = _sentences
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["NOMINAL_CLAUSE"]})

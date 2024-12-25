@@ -47,10 +47,20 @@ def search_out(doc, nlp):
     B_children.append(B)
     #print(A_children)
     #print(B_children)
-    A_tree = doc[min(A_children):max(A_children)+1]
-    B_tree = doc[min(B_children):max(B_children)+1]
-    span_text = A_tree.text + " " + doc[conj].text + " " +B_tree.text
-    result.append({"text": span_text})
+    
+    A_tree_range = (min(A_children), max(A_children)+1)
+    B_tree_range = (min(B_children), max(B_children)+1)
 
+    s = 0
+    if s < A_tree_range[0]:
+      result.append({"text": doc[s:A_tree_range[0]], "highlight": False})
+    result.append({"text": doc[A_tree_range[0]:A_tree_range[1]], "highlight": True, "meta": "pre"})
+    s = A_tree_range[1]
+    if s < conj:
+      result.append({"text": doc[s:conj], "highlight": False})
+    result.append({"text": doc[conj], "highlight": True, "meta": "conj"}) 
+    s = conj+1
+    if s < B_tree_range[0]:
+      result.append({"text": doc[s:B_tree_range[0]], "highlight": False})
+    result.append({"text": doc[B_tree_range[0]:B_tree_range[1]], "highlight": True, "meta": "post"})
   return result
-   

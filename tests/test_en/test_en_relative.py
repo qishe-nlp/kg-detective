@@ -17,13 +17,6 @@ relative_restrictive_clause_sentences = [
   "A graduation ceremony is a custom which takes place when students graduate from a school.",
 ]
 
-def test_relative_restrictive_clause():
-  sentences = relative_restrictive_clause_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["relative_restrictive_clause"]})
-  display(sentences, nlp)
-
 relative_non_restrictive_clause_sentences = [
   "John invited about 40 people to his wedding, most of whom are family members.",
   "After the flooding, people were suffering in that area, who urgently needed clean water, medicine and shelter to survive.",
@@ -37,14 +30,12 @@ relative_non_restrictive_clause_sentences = [
 ]
 
 
-def test_relative_non_restrictive_clause():
-  sentences = relative_non_restrictive_clause_sentences 
+def test_relative_clause_rules():
+  sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["relative_non_restrictive_clause"]})
+  nlp.add_pipe('kg', config={"rules": ["relative_clause"]})
   display(sentences, nlp)
-
-
 
 _sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
 

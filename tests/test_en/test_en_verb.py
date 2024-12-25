@@ -207,14 +207,6 @@ verb_non_finite_sentences = [
   "Drawing upon his years of experience in the business, Zhang Yong, Alibaba's newly appointed CEO, came up with a novel idea for increasing sales.",
 ]
 
-def test_verb_non_finite():
-  sentences = verb_non_finite_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_non_finite"]})
-  display(sentences, nlp)
-
-
 verb_modal_sentences = [
   "It wasn't right to me that such near neighbors should not know one another.",
   "We'll make the final decision on our scheme. Should you change your mind, please inform us as soon as possible.",
@@ -248,14 +240,6 @@ verb_auxiliary_sentences = [
   "Amy worked hard at school. So she did.",
   "Louise is very good at study. - So am I.",
 ]
-
-def test_verb_auxiliary():
-  sentences = verb_auxiliary_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_auxiliary"]})
-  display(sentences, nlp)
-
 
 verb_intransitive_sentences = [
   "I think he lives at No.386 West Street.",
