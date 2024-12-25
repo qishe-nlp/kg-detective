@@ -26,11 +26,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12.2' 
-      - name: Display Python version
-        run: python --version
       - name: Build and publish to test pypi
-        uses: JRubics/poetry-publish@v1.16
+        uses: JRubics/poetry-publish@v2.0
         with:
+          python_version: "3.12.2"
           pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_name: 'kg-detective'
           repository_url: 'https://test.pypi.org/legacy/'
