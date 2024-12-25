@@ -8,7 +8,7 @@ import os.path, pkgutil
 lang = "en"
 pkg = PKG_INDICES[lang]
 
-_sentences = get_lang_sens(lang)["test_en_compound"] 
+_sentences = get_lang_sens(lang)["test_en_adj"] 
 
 def test_en_kg():
   sentences = _sentences

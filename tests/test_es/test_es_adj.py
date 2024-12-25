@@ -113,26 +113,6 @@ def test_adj_posesivos():
   nlp.add_pipe('kg', config={"rules": ["adj_posesivos"]})
   display(sentences, nlp)
 
-_sentences = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-]
-
-def test_():
-  sentences = _sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": [""]})
-  display(sentences, nlp)
-
 _sentences = adj_comparativa_sentences + adj_demostrativos_sentences + adj_género_y_número_sentences + adj_indefinidos_sentences
 _sentences = _sentences + adj_posesivos_sentences
 # + xxxx_sentences

@@ -22,7 +22,7 @@ def test_coordinales():
   sentences = coordinales_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["coordinales"]})
+  nlp.add_pipe('kg', config={"rules": ["coordinale"]})
   display(sentences, nlp)
 
 _sentences = coordinales_sentences

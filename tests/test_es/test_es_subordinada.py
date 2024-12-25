@@ -238,6 +238,6 @@ _sentences = _sentences + subordinada_final_sentences + subordinada_concesiva_se
 def test_subordinada():
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["SUBORDINADA"]})
-  display(sentences, nlp)
+  display(_sentences, nlp)
 
 
