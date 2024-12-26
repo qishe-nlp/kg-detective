@@ -53,14 +53,14 @@ def search_out(doc, nlp):
 
     s = 0
     if s < A_tree_range[0]:
-      result.append({"text": doc[s:A_tree_range[0]], "highlight": False})
-    result.append({"text": doc[A_tree_range[0]:A_tree_range[1]], "highlight": True, "meta": "pre"})
+      result.append({"text": doc[s:A_tree_range[0]].text, "highlight": False})
+    result.append({"text": doc[A_tree_range[0]:A_tree_range[1]].text, "highlight": True, "meta": "pre"})
     s = A_tree_range[1]
     if s < conj:
-      result.append({"text": doc[s:conj], "highlight": False})
-    result.append({"text": doc[conj], "highlight": True, "meta": "conj"}) 
+      result.append({"text": doc[s:conj].text, "highlight": False})
+    result.append({"text": doc[conj].text, "highlight": True, "meta": "conj"}) 
     s = conj+1
     if s < B_tree_range[0]:
-      result.append({"text": doc[s:B_tree_range[0]], "highlight": False})
-    result.append({"text": doc[B_tree_range[0]:B_tree_range[1]], "highlight": True, "meta": "post"})
+      result.append({"text": doc[s:B_tree_range[0]].text, "highlight": False})
+    result.append({"text": doc[B_tree_range[0]:B_tree_range[1]].text, "highlight": True, "meta": "post"})
   return result

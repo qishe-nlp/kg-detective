@@ -51,7 +51,7 @@ def search_out(doc, nlp):
         span = doc[s:adj].text
         result.append({"text": span, "highlight": False})
       s = prep + 1
-      span = doc[adj:s]
+      span = doc[adj:s].text
       result.append({"text": span, "highlight": True})
   if s < len(doc):
     span = doc[s:].text
