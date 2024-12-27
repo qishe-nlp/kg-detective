@@ -9,7 +9,7 @@ ADJ_RULES = ["adj_ending_in_ed", "adj_ending_in_ing", "adj_order", "adj_for_equa
 
 ADV_RULES = ["adv_of_frequency", "adv_of_manner", "adv_of_time", "adv_of_place", "adv_of_degree", "adv_for_equal_comparisons", "adv_comparative", "adv_superlative"]
 
-PREP_RULES = ["prep_of_time", "prep_of_movement", "prep_of_manner", "prep_with_verb", "prep_with_adj", "prep_with_noun"]
+PREP_RULES = ["prep_with_verb", "prep_with_adj", "prep_with_noun"]
 
 VERB_RULES = ["verb_passive_voice", "verb_simple_present_tense", "verb_simple_past_tense", "verb_simple_future_tense", "verb_present_progressive_tense", "verb_past_progressive_tense", "verb_present_perfect_tense", "verb_past_perfect_tense", "verb_copular", "verb_modal", "verb_transitive", "verb_intransitive"]
 

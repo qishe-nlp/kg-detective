@@ -52,7 +52,14 @@ kg_en_cn = {
   'conj_subordinating': '从属连词',
   'conj_coordinating': '并列连词',
   'interj_interj': '感叹词',
-  'simple_s_p': 'simple_s_p', 'simple_s_c_p': 'simple_s_c_p', 'simple_s_p_o': 'simple_s_p_o', 'simple_s_p_io_o': 'simple_s_p_io_o', 'simple_s_p_o_c': 'simple_s_p_o_c', 'compound_sen': 'compound_sen', 'nominal_subject_clause': 'nominal_subject_clause', 'nominal_object_clause': 'nominal_object_clause', 'nominal_predicative_clause': 'nominal_predicative_clause', 'nominal_appositive_clause': 'nominal_appositive_clause', 'relative_restrictive_clause': 'relative_restrictive_clause', 'relative_non_restrictive_clause': 'relative_non_restrictive_clause', 'adverbial_clause_of_time': 'adverbial_clause_of_time', 'adverbial_clause_of_reason': 'adverbial_clause_of_reason', 'adverbial_clause_of_comparison': 'adverbial_clause_of_comparison', 'adverbial_clause_of_condition': 'adverbial_clause_of_condition', 'adverbial_clause_of_concession': 'adverbial_clause_of_concession', 'adverbial_clause_of_purpose': 'adverbial_clause_of_purpose', 'adverbial_clause_of_result': 'adverbial_clause_of_result', 'subjunctive_present': 'subjunctive_present', 'subjunctive_past': 'subjunctive_past', 'subjunctive_future': 'subjunctive_future', 'subjunctive_inversion_in_mood': 'subjunctive_inversion_in_mood'}
+  'nominal_subject_clause': '主语从句',
+  'nominal_object_clause': '宾语从句',
+  'nominal_predicative_clause': '表语从句',
+  'relative_clause': '定语从句',
+  'subjunctive_present': '现在虚拟',
+  'subjunctive_past': '过去虚拟',
+  'subjunctive_future': '将来虚拟',
+}
 
 
 

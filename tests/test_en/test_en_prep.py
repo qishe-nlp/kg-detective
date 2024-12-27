@@ -18,14 +18,6 @@ prep_of_time_sentences = [
   "I have stayed in that country since 1995.",
 ]
 
-def test_prep_of_time():
-  sentences = prep_of_time_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["prep_of_time"]})
-  display(sentences, nlp)
-
-
 prep_of_movement_sentences = [
   "The high-speed train between Qingdao and Beijing travels faster now.",
   "On sunny days, my grandma often reads a novel by the window.",
@@ -38,13 +30,6 @@ prep_of_movement_sentences = [
   "I can't see Lucy because she is behind the tree.",
   "It's on the fourth floor.",
 ]
-
-def test_prep_of_movement():
-  sentences = prep_of_movement_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["prep_of_movement"]})
-  display(sentences, nlp)
 
 
 prep_of_manner_sentences = [
@@ -59,14 +44,6 @@ prep_of_manner_sentences = [
   "How are you going to the Summer Palace? We’re going there by bike.",
   "I usually walk to school, but by bus when it rains.",
 ]
-
-def test_prep_of_manner():
-  sentences = prep_of_manner_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["prep_of_manner"]})
-  display(sentences, nlp)
-
 
 prep_with_verb_sentences = [
   "And if you need any help, please call me at 010-5558 6390.",

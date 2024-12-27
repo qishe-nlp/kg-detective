@@ -18,7 +18,7 @@ def search_out(doc, nlp):
     [
       {
         "RIGHT_ID": "verb",
-        "RIGHT_ATTRS": {"POS": {"IN": ["VERB", "AUX"]}, "DEP": {"IN": ["ROOT", "xcomp"], "LEMMA": {"NOT_IN": ["be"]}}}
+        "RIGHT_ATTRS": {"POS": {"IN": ["VERB", "AUX"]}, "DEP": {"IN": ["ROOT", "xcomp"]}, "LEMMA": {"NOT_IN": ["be"]}}
       },
       {
         "LEFT_ID": "verb",

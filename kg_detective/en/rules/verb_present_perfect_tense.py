@@ -18,7 +18,7 @@ def search_out(doc, nlp):
   have_verb_ed = [
     {
       "RIGHT_ID": "core_verb",
-      "RIGHT_ATTRS": {"POS": "VERB", "TAG": "VBN"}
+      "RIGHT_ATTRS": {"POS": "VERB", "TAG": "VBN", "DEP": "ROOT"}
     },
     {
       "LEFT_ID": "core_verb",

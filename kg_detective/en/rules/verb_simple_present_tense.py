@@ -11,7 +11,7 @@ def search_out(doc, nlp):
 
   result = []
 
-  _result = [t for t in doc if t.tag_ in ["VBZ", "VBP", "VB"] and not any([c.dep_=="aux" for c in t.children])]
+  _result = [t for t in doc if t.tag_ in ["VBZ", "VBP", "VB"] and t.dep_ == "ROOT" and "Tense=Pres" in t.morph]
   s = 0
   for t in _result:
     i = t.i

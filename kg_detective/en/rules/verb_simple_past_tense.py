@@ -9,7 +9,7 @@ def search_out(doc, nlp):
   """
   result = []
 
-  _result = [t for t in doc if t.tag_ == "VBD"]
+  _result = [t for t in doc if t.tag_ == "VBD" and t.dep_ == "ROOT"]
   s = 0
   for t in _result:
     i = t.i

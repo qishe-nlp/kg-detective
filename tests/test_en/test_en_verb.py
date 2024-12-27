@@ -37,6 +37,9 @@ verb_simple_present_tense_sentences = [
   "Tom has an English class today.",
   "If it is fine tomorrow, I will go fishing with you.",
   "Does Zhang Ming get up early every day?",
+  "Geography is finding patterns and connections between places and seemingly unrelated processes, digging deeper into the stories behind facts and asking, why is this happening here?",
+  "Hi, I'm Alizé Carrère, and welcome to Crash Course Geography!",
+  "My own research has taken me to the far corners of the Earth to explore, study, and document these types of issues.",
 ]
 
 def test_verb_simple_present_tense():
@@ -54,7 +57,7 @@ verb_simple_past_tense_sentences = [
   "When I was a baby, I lived in Beijing.",
   "Could you tell me what he said at the meeting? I didn't take part in it.",
   "I called you at seven and you didn't pick up.",
-  "Linda, why were you late for school yesterday? Because l woke up late.",
+  "Linda, why were you late for school yesterday? Because I woke up late.",
   "Could you please tell me where you bought the book yesterday?",
   "Excuse me, could you tell me how the accident happened? Sorry, sir. I wasn't there at that time yesterday.",
   "Could you tell me why you came late yesterday? Because my bike was broken on my way here.",

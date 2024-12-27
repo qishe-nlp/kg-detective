@@ -34,6 +34,7 @@ nominal_object_clause_sentences = [
   "Could you tell me when you will start your vacation?",
   "I don't remember where I bought the book yesterday.",
   "Could you please tell me when they will arrive tomorrow?",
+  "And one of the most amazing things I've learned while traveling such a distance and diverse locations is how remarkably connected we are to each other and our planet.",
 ]
 
 
@@ -55,6 +56,8 @@ nominal_predicative_clause_sentences = [
   "The friendly atmosphere is what I like.",
   "Home is where somebody notices when you are no longer there.",
   "The question that puzzled them is how it is that they can get rid of the air pollution in the area.",
+  "And one of the most amazing things I've learned while traveling such a distance and diverse locations is how remarkably connected we are to each other and our planet."
+
 ]
 
 def test_nominal_predicative_clause():
