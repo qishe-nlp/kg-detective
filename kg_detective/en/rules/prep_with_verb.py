@@ -82,13 +82,10 @@ def search_out(doc, nlp):
   s = 0
   for start, end, meta in refined_matches:
     if start > s:
-      text = doc[s:start].text
-      result.append({"text": text})
-    text = doc[start:end].text
-    result.append({"text": text, "meta": meta})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    text = doc[s:].text
-    result.append({"text": text})
+    result.append({"text": doc[s:].text})
 
   return result

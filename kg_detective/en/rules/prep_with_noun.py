@@ -43,7 +43,7 @@ def search_out(doc, nlp):
     noun_tree = [e.i for e in noun_core.subtree]
     noun_tree_assertion =  len(noun_tree) == noun_tree[-1]-noun_tree[0]+1
     if noun_tree_assertion:
-      raw_matches.append((noun_tree[0], noun_tree[-1]+1, {"noun_core": noun_core, "gid": index}))
+      raw_matches.append((noun_tree[0], noun_tree[-1]+1, {"sign": "noun_phrase", "noun_core": noun_core.text, "gid": index}))
 
   dep_matcher.remove("prep_with_noun")
 
@@ -53,13 +53,10 @@ def search_out(doc, nlp):
   s = 0
   for start, end, meta in refined_matches:
     if start > s:
-      text = doc[s:start].text
-      result.append({"text": text})
-    text = doc[start:end].text
-    result.append({"text": text, "meta": meta})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    text = doc[s:].text
-    result.append({"text": text})
+    result.append({"text": doc[s:].text})
 
   return result
