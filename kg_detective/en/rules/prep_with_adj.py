@@ -39,22 +39,23 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   s = 0
-  for _, (aux, adj, prep) in matches:
+  for index, (_, [aux, adj, prep]) in enumerate(matches):
     if adj == prep-1:
       if aux > s:
         span = doc[s:aux].text
-        result.append({"text": span, "highlight": False})
+        result.append({"text": span})
       span = doc[aux].text
-      result.append({"text": span, "highlight": True})
+      result.append({"text": span, "meta": {"sign": "aux", "aux_lemma": doc[aux].lemma_, "gid": index}})
       s = aux+1
       if adj > s:
         span = doc[s:adj].text
-        result.append({"text": span, "highlight": False})
+        result.append({"text": span})
       s = prep + 1
       span = doc[adj:s].text
-      result.append({"text": span, "highlight": True})
+      result.append({"text": span, "meta": {"sign": "adj_prep", "adj_lemma": doc[adj].lemma_, "gid": index}})
   if s < len(doc):
     span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
+    result.append({"text": span})
+  dep_matcher.remove("prep_with_adj")
+
   return result

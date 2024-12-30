@@ -11,15 +11,15 @@ def search_out(doc, nlp):
 
 
   _result = [t for t in doc if t.tag_ == "PRP"]
+
   result = []
   s = 0
-  for t in _result:
+  for index, t in enumerate(_result):
     i = t.i
     if i > s:
-      span = doc[s:i].text
-      result.append({"text": span, "highlight": False}) 
-    result.append({"text": t.text, "highlight": True})
+      result.append({"text": doc[s:i].text}) 
+    result.append({"text": t.text, "meta": {"sign": "personal_pron", "gid": index}})
     s = i+1
   if s < len(doc):
-    result.append({"text": doc[s:].text, "highlight": False})
+    result.append({"text": doc[s:].text})
   return result

@@ -31,25 +31,28 @@ def search_out(doc, nlp):
   dep_matcher.add("nominal_object_clause", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (verb, obj) in matches:
-    obj_tree = [e.i for e in doc[obj].subtree]
+  raw_matches = []
+  for index, (_, [verb_id, clause_id]) in enumerate(matches):
+    obj_tree = [e.i for e in doc[clause_id].subtree]
     obj_tree.sort()
 
-    if len(obj_tree) == obj_tree[-1] - obj_tree[0] + 1:
-      token_ranges.append((obj_tree[0], obj_tree[-1]+1)) 
+    obj_assertion = len(obj_tree) == obj_tree[-1]-obj_tree[0]+1
+    if obj_assertion:
+      raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": doc[verb_id].lemma_, "gid": index}))
+      raw_matches.append((obj_tree[0], obj_tree[-1]+1, {"sign":"obj_clause", "gid": index})) 
 
-  refined_matches = merge(token_ranges)
+  dep_matcher.remove("nominal_object_clause")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
-  return result
+    result.append({"text": doc[s:].text})
+
+  return result 

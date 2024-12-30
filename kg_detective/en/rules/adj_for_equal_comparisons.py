@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import merge, refine
 
 def search_out(doc, nlp):
   """Search for adjective for equal comparisons 
@@ -64,46 +64,47 @@ def search_out(doc, nlp):
         "RIGHT_ATTRS": {"DEP": "pobj"}
       },
     ],
-    [
-      {
-        "RIGHT_ID": "adj",
-        "RIGHT_ATTRS": {"POS": "ADJ", "DEP": "amod"}
-      },
-      {
-        "LEFT_ID": "adj",
-        "REL_OP": ">",
-        "RIGHT_ID": "left_as",
-        "RIGHT_ATTRS": {"DEP": "advmod", "LOWER": "as"}
-      },
-      {
-        "LEFT_ID": "adj",
-        "REL_OP": "<",
-        "RIGHT_ID": "noun",
-        "RIGHT_ATTRS": {"POS": "NOUN"}
-      },
-      {
-        "LEFT_ID": "noun",
-        "REL_OP": ".",
-        "RIGHT_ID": "right_as",
-        "RIGHT_ATTRS": {"LOWER": "as", "POS": "ADP"}
-      },
-    ],
   ]
+
   dep_matcher.add("adj_equal_comprison", dep_patterns)
   matches = dep_matcher(doc)
-  dep_ranges = [(token_ids[1], token_ids[-1]+1) for _, token_ids in matches]
 
-  refined_matches = merge(dep_ranges)
+  raw_matches = []
+  for index, (_, [adj_core_id, left_as_id, right_as_id, obj_core_id]) in enumerate(matches):
+    adj_core = doc[adj_core_id]
+    obj_core = doc[obj_core_id]
+
+    adj_subtree = [list(e.subtree) for e in adj_core.children if e.dep_ not in ["cc", "conj", "punct"]]
+    adj_tree = [e.i for e in sum(adj_subtree, [])]
+    adj_tree.append(adj_core_id)
+    adj_tree.sort()
+    obj_tree = [e.i for e in obj_core.subtree]
+    obj_tree.sort()
+
+    adj_assertion = len(adj_tree) == adj_tree[-1]-adj_tree[0]+1
+    obj_assertion = len(obj_tree) == obj_tree[-1]-obj_tree[0]+1 and obj_tree[0]==right_as_id+1
+
+    print(adj_assertion)
+    print(obj_assertion)
+    if adj_assertion and obj_assertion:    
+      raw_matches.append((adj_tree[0], obj_tree[0], {"sign": "as_adj_as", "adj_lemma": adj_core.lemma_, "gid": index}))
+      raw_matches.append((obj_tree[0], obj_tree[-1]+1, {"sign": "as_obj", "gid": index}))
+
+  dep_matcher.remove("adj_equal_comprison")
+
+  refined_matches = refine(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      text = doc[s:start].text
+      result.append({"text": text})
+    text = doc[start:end].text
+    result.append({"text": text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
+    text = doc[s:].text
+    result.append({"text": text})
+
   return result

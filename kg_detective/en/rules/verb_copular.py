@@ -59,28 +59,31 @@ def search_out(doc, nlp):
   dep_matcher.add("verb_copular", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (copular, copular_obj) in matches:
-    copular_obj_tree = [e.i for e in doc[copular_obj].subtree]
-    copular_obj_tree.sort()
+  raw_matches = []
+  for index, (_, [copular_id, pred_id]) in enumerate(matches):
+    pred_tree = [e.i for e in doc[pred_id].subtree]
+    pred_tree.sort()
 
-    copular_assertion = copular < copular_obj
-    copular_tree_assertion = len(copular_obj_tree) == copular_obj_tree[-1] - copular_obj_tree[0] + 1 
-    if copular_assertion and copular_tree_assertion:
-      token_ranges.append((copular, copular+1))
-      token_ranges.append((copular_obj_tree[0], copular_obj_tree[-1]+1))
+    copular_assertion = copular_id<pred_id
+    pred_tree_assertion = len(pred_tree)==pred_tree[-1]-pred_tree[0]+1 
 
-  refined_matches = merge(token_ranges)
+    if copular_assertion and pred_tree_assertion:
+      raw_matches.append((copular_id, copular_id+1, {"sign": "copular_part", "copular_lemma": doc[copular_id].lemma_, "gid": index}))
+      raw_matches.append((pred_tree[0], pred_tree[-1]+1, {"sign": "pred_part", "gid": index}))
+
+  dep_matcher.remove("verb_copular")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
-  return result
+    result.append({"text": doc[s:].text})
+
+  return result 
+

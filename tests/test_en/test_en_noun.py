@@ -14,7 +14,7 @@ noun_proper_sentences = [
   "Which is the second month of the year? February.",
   "His name is Jim Smith.",
   "Teachers need to work on Teachers' Day.",
-  "June 1st is Children' s Day.",
+  "June 1st is Children's Day.",
   "Michael, how much do you know about the Dragon Boat Festival? People usually eat rice dumplings to remember Qu Yuan.",
 ]
 
@@ -37,14 +37,6 @@ noun_countability_sentences = [
   "Do you know how many teeth a horse has and how many feet a bee has?",
   "He only had two slices of bread for breakfast.",
 ]
-
-def test_noun_countability():
-  sentences = noun_countability_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_countability"]})
-  display(sentences, nlp)
-
 
 noun_with_indefinite_art_sentences = [
   "I have a pet cat.",

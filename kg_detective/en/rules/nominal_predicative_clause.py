@@ -31,25 +31,28 @@ def search_out(doc, nlp):
   dep_matcher.add("nominal_predicative_clause", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (copular, predicative) in matches:
-    predicative_tree = [e.i for e in doc[predicative].subtree]
+  raw_matches = []
+  for index, (_, [copular_id, clause_id]) in enumerate(matches):
+    predicative_tree = [e.i for e in doc[clause_id].subtree]
     predicative_tree.sort()
 
-    if len(predicative_tree) == predicative_tree[-1] - predicative_tree[0] + 1:
-      token_ranges.append((predicative_tree[0], predicative_tree[-1]+1)) 
+    predicative_assertion = len(predicative_tree) == predicative_tree[-1] - predicative_tree[0] + 1
+    if predicative_assertion:
+      raw_matches.append((copular_id, copular_id+1, {"sign": "copular_part", "copular_lemma": doc[copular_id].lemma_, "gid": index})) 
+      raw_matches.append((predicative_tree[0], predicative_tree[-1]+1, {"sign": "pred_clause", "gid": index})) 
 
-  refined_matches = merge(token_ranges)
+  dep_matcher.remove("nominal_predicative_clause")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
-  return result
+    result.append({"text": doc[s:].text})
+
+  return result 

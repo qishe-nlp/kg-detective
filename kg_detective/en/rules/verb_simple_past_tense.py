@@ -10,14 +10,14 @@ def search_out(doc, nlp):
   result = []
 
   _result = [t for t in doc if t.tag_ == "VBD" and t.dep_ == "ROOT"]
+
   s = 0
-  for t in _result:
+  for index, t in enumerate(_result):
     i = t.i
     if i > s:
-      span = doc[s:i].text
-      result.append({"text": span, "highlight": False}) 
-    result.append({"text": t.text, "highlight": True})
+      result.append({"text": doc[s:i].text}) 
+    result.append({"text": t.text, "meta": {"sign": "verbed", "gid": index}})
     s = i+1
   if s < len(doc):
-    result.append({"text": doc[s:].text, "highlight": False})
+    result.append({"text": doc[s:].text})
   return result

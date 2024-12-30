@@ -49,30 +49,31 @@ def search_out(doc, nlp):
   dep_matcher.add("subjunctive_past", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (core_verb, advcl_verb, aux_core_have, aux_core_md, aux_advcl) in matches:
-    clause_tree = [e.i for e in doc[advcl_verb].subtree]
+  raw_matches = []
+  for index, (_, [core_verb_id, advcl_verb_id, core_aux_have_id, core_aux_md_id, advcl_aux_id]) in enumerate(matches):
+    clause_tree = [e.i for e in doc[advcl_verb_id].subtree]
     clause_tree.sort()
 
-    verb_assertion = aux_core_have + 1 == core_verb and aux_core_md < aux_core_have
-    clause_assertion = len(clause_tree) == clause_tree[-1] - clause_tree[0] + 1
+    verb_assertion = core_aux_have_id+1==core_verb_id and core_aux_md_id < core_aux_have_id
+    clause_assertion = len(clause_tree)==clause_tree[-1]-clause_tree[0]+1
   
     if verb_assertion and clause_assertion:
-      token_ranges.append((aux_core_md, core_verb+1))
-      token_ranges.append((clause_tree[0], clause_tree[-1]+1))
+      raw_matches.append((core_aux_md_id, core_verb_id+1, {"sign": "verb_part", "gid": index}))
+      raw_matches.append((clause_tree[0], clause_tree[-1]+1, {"sign": "clause_part", "gid": index}))
 
-  refined_matches = merge(token_ranges)
+  dep_matcher.remove("subjunctive_past")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
+    result.append({"text": doc[s:].text})
 
-  return result
- 
+  return result 
+

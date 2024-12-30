@@ -18,13 +18,6 @@ adj_ending_in_ing_sentences = [
   "The film KING KONG is a very moving one.",
 ]
 
-def test_adj_with_ing_ending():
-  sentences = adj_ending_in_ing_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_ending_in_ing"]})
-  display(sentences, nlp)
-
 
 adj_ending_in_ed_sentences = [
   "Laws that punish parents for their little children's actions against the laws get parents worried.",
@@ -39,13 +32,7 @@ adj_ending_in_ed_sentences = [
   "The girl is little but she is not frightened of dogs.",
 ]
 
-def test_adj_with_ed_ending():
-  sentences = adj_ending_in_ed_sentences 
  
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_ending_in_ed"]})
-  display(sentences, nlp)
-
 
 adj_order_sentences = [
   "The little white wooden house is as if it has not been lived in for years.",
@@ -60,14 +47,6 @@ adj_order_sentences = [
   "The husband gave his wife all half his income in order to please her.",
 ]
 
-def test_adj_order():
-  sentences = adj_order_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_order"]})
-  display(sentences, nlp)
-
-
 adj_for_equal_comparisons_sentences = [
   "Music is as popular as sports.",
   "This room is twice as big as that one.",
@@ -81,7 +60,7 @@ adj_for_equal_comparisons_sentences = [
   "This is as good an example as the other is.",
 ]
 
-def test_adj_equal_comparisons():
+def test_adj_for_equal_comparisons():
   sentences = adj_for_equal_comparisons_sentences
  
   nlp = spacy.load(pkg)

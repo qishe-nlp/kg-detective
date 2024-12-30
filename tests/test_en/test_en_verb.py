@@ -252,13 +252,6 @@ verb_intransitive_sentences = [
   "The cooking time needed depends on the size of the potato.",
 ]
 
-def test_verb_intransitive():
-  sentences = verb_intransitive_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_intransitive"]})
-  display(sentences, nlp)
-
 verb_transitive_sentences = [
   "I always reach school at 7:00 am.",
   "I can't see it clearly.",

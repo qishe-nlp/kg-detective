@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import merge, refine
 
 def search_out(doc, nlp):
   """Search for prepositions with verb 
@@ -22,34 +22,73 @@ def search_out(doc, nlp):
       },
       {
         "LEFT_ID": "verb",
-        "REL_OP": ">",
+        "REL_OP": ">++",
         "RIGHT_ID": "prep",
-        "RIGHT_ATTRS": {"DEP": {"IN": ["prep", "prt"]}, "POS": "ADP"}
+        "RIGHT_ATTRS": {"DEP": "prt", "POS": "ADP"}
       },
+    ],
+    [
+      {
+        "RIGHT_ID": "verb",
+        "RIGHT_ATTRS": {"POS": "VERB"}
+      },
+      {
+        "LEFT_ID": "verb",
+        "REL_OP": ">++",
+        "RIGHT_ID": "prep",
+        "RIGHT_ATTRS": {"DEP": "prep", "POS": "ADP"}
+      },
+      {
+        "LEFT_ID": "prep",
+        "REL_OP": ">++",
+        "RIGHT_ID": "pobj",
+        "RIGHT_ATTRS": {"DEP": "pobj"}
+      }
     ],
   ]
   dep_matcher.add("prep_with_verb", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (verb, prep) in matches:
-    if prep > verb:
-      verb_tree = [list(e.subtree) for e in doc[verb].rights if e.pos_!="PUNCT" and e.dep_ not in ["dep", "cc", "conj"]]
-      verb_enum = sum(verb_tree, [])
-      if verb_enum[-1].i - verb_enum[0].i == len(verb_enum)-1 and verb == verb_enum[0].i-1:
-        token_ranges.append((verb, verb_enum[-1].i+1))
+  raw_matches = []
+  for index, (_, token_ids) in enumerate(matches):
+    verb_core = doc[token_ids[0]]
+    prep_core = doc[token_ids[1]]
 
-  refined_matches = merge(token_ranges)
+    verb_subtree = [list(e.subtree) for e in verb_core.rights if e.dep_ not in ["punct", "cc", "conj"]]
+    _verb_tree = sum(verb_subtree, [])
+    _verb_tree.append(verb_core)
+    verb_tree = [e.i for e in _verb_tree]
+    verb_tree.sort()
+    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1 and verb_core.i==verb_tree[0]
+ 
+    prep_tree = [e.i for e in prep_core.subtree]
+    prep_tree.sort()
+    prep_assertion = len(prep_tree)==prep_tree[-1]-prep_tree[0]+1 and prep_core.i==prep_tree[0]
+
+    print(verb_assertion)
+    print(prep_assertion)
+    if verb_assertion and prep_assertion:
+      if len(prep_tree)==1: # prt
+        raw_matches.append((verb_tree[0], verb_tree[-1]+1, {"sign": "verb_prt", "verb_lemma": verb_core.lemma_, "gid": index}))
+      else:
+        raw_matches.append((verb_tree[0], prep_tree[0], {"sign": "verb_part", "verb_lemma": verb_core.lemma_, "gid": index}))
+        raw_matches.append((prep_tree[0], prep_tree[-1]+1, {"sign": "prep_part", "gid": index}))
+
+  dep_matcher.remove("prep_with_verb")
+      
+  refined_matches = refine(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      text = doc[s:start].text
+      result.append({"text": text})
+    text = doc[start:end].text
+    result.append({"text": text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
+    text = doc[s:].text
+    result.append({"text": text})
+
   return result

@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import merge, refine
 
 def search_out(doc, nlp):
   """Search for prepositions with noun 
@@ -37,23 +37,29 @@ def search_out(doc, nlp):
   dep_matcher.add("prep_with_noun", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (noun, _, _) in matches:
-    tree = list(doc[noun].subtree)
-    if tree[-1].i - tree[0].i == len(tree)-1:
-      token_ranges.append((tree[0].i, tree[-1].i+1))
+  raw_matches = []
+  for index, (_, token_ids) in enumerate(matches):
+    noun_core = doc[token_ids[0]]
+    noun_tree = [e.i for e in noun_core.subtree]
+    noun_tree_assertion =  len(noun_tree) == noun_tree[-1]-noun_tree[0]+1
+    if noun_tree_assertion:
+      raw_matches.append((noun_tree[0], noun_tree[-1]+1, {"noun_core": noun_core, "gid": index}))
 
-  refined_matches = merge(token_ranges)
+  dep_matcher.remove("prep_with_noun")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      text = doc[s:start].text
+      result.append({"text": text})
+    text = doc[start:end].text
+    result.append({"text": text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
+    text = doc[s:].text
+    result.append({"text": text})
+
   return result

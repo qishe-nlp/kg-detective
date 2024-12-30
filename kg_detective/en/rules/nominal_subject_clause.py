@@ -37,25 +37,27 @@ def search_out(doc, nlp):
   dep_matcher.add("nominal_subject_clause", dep_patterns)
   matches = dep_matcher(doc)
 
-  token_ranges = []
-  for _, (root, verb, _) in matches:
-    subj_tree = [e.i for e in doc[verb].subtree]
+  raw_matches = []
+  for index, (_, [_, clause_id, _]) in enumerate(matches):
+    subj_tree = [e.i for e in doc[clause_id].subtree]
     subj_tree.sort()
 
-    if len(subj_tree) == subj_tree[-1] - subj_tree[0] + 1:
-      token_ranges.append((subj_tree[0], subj_tree[-1]+1)) 
+    subj_assertion = len(subj_tree) == subj_tree[-1]-subj_tree[0]+1
+    if subj_assertion:
+      raw_matches.append((subj_tree[0], subj_tree[-1]+1, {"sign": "subj_clause", "gid": index})) 
 
-  refined_matches = merge(token_ranges)
+  dep_matcher.remove("nominal_subject_clause")
+
+  refined_matches = merge(raw_matches)
+
+  # TODO: mark(doc, refined_matches)
   s = 0
-  for start, end in refined_matches:
+  for start, end, meta in refined_matches:
     if start > s:
-      span = doc[s:start].text
-      result.append({"text": span, "highlight": False})
-    span = doc[start:end].text
-    result.append({"text": span, "highlight": True})
+      result.append({"text": doc[s:start].text})
+    result.append({"text": doc[start:end].text, "meta": meta})
     s = end
   if s < len(doc):
-    span = doc[s:].text
-    result.append({"text": span, "highlight": False})
- 
-  return result
+    result.append({"text": doc[s:].text})
+
+  return result 

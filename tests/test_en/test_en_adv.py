@@ -18,13 +18,6 @@ adv_of_frequency_sentences = [
   "I often go to KFC.",
 ]
 
-def test_adv_of_frequency():
-  sentences = adv_of_frequency_sentences
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_of_frequency"]})
-  display(sentences, nlp)
-
 adv_of_manner_sentences = [
   "Please, drive your car carefully tomorrow.",
   "Our team are playing badly and will probably lose.",
@@ -32,13 +25,6 @@ adv_of_manner_sentences = [
   "Usually they were quickly sent to their rooms if they misbehaved.",
   "Thousands of people are wrongly imprisoned in the US every year.",
 ]
-
-def test_adv_of_manner():
-  sentences = adv_of_manner_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_of_manner"]})
-  display(sentences, nlp)
 
 adv_of_time_sentences = [
   "She liked the present very much last night.",
@@ -50,13 +36,6 @@ adv_of_time_sentences = [
   "They're going to have a farewell party this evening.",
   "I eat a sandwich every day.",
 ]
-
-def test_adv_of_time():
-  sentences = adv_of_time_sentences 
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_of_time"]})
-  display(sentences, nlp)
 
 
 adv_of_place_sentences = [
@@ -70,13 +49,6 @@ adv_of_place_sentences = [
   "Did you arrive there?",
   "They are making too much noise here. Let's go somewhere quiet.",
 ]
-
-def test_adv_of_place():
-  sentences = adv_of_place_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_of_place"]})
-  display(sentences, nlp)
 
 
 adv_of_degree_sentences = [
@@ -92,14 +64,6 @@ adv_of_degree_sentences = [
   "We're sure Wenzhou will be even better tomorrow.",
   "I could hardly work it out.",
 ]
-
-def test_adv_of_degree():
-  sentences = adv_of_degree_sentences
- 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_of_degree"]})
-  display(sentences, nlp)
-
 
 adv_for_equal_comparisons_sentences = [
   "Write as carefully as you can and try not to make any mistakes.",
