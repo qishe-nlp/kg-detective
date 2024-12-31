@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge, refine
+from kg_detective.lib import merge
 
 def search_out(doc, nlp):
   """Search for adverbs for equal comparisons 
@@ -117,7 +117,7 @@ def search_out(doc, nlp):
 
   dep_matcher.remove("adv_equal_comprison")
 
-  refined_matches = refine(raw_matches)
+  refined_matches = merge(raw_matches)
 
   # TODO: mark(doc, refined_matches)
   s = 0

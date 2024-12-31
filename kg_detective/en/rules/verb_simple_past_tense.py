@@ -16,7 +16,7 @@ def search_out(doc, nlp):
     i = t.i
     if i > s:
       result.append({"text": doc[s:i].text}) 
-    result.append({"text": t.text, "meta": {"sign": "verbed", "gid": index}})
+    result.append({"text": t.text, "meta": {"sign": "verbed", "verb_lemma": t.lemma_ "gid": index}})
     s = i+1
   if s < len(doc):
     result.append({"text": doc[s:].text})

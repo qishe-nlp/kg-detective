@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge, refine
+from kg_detective.lib import merge
 
 def search_out(doc, nlp):
   """Search for comparative adjectives  
@@ -103,7 +103,7 @@ def search_out(doc, nlp):
       raw_matches.append((prep_part[0], prep_part[-1]+1, {"sign": "than_obj", "gid": base_index+index}))
   dep_matcher.remove("adj_comparative")
 
-  refined_matches = refine(raw_matches)
+  refined_matches = merge(raw_matches)
 
   # TODO: mark(doc, refined_matches)
   s = 0

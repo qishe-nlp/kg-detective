@@ -56,6 +56,7 @@ prep_with_verb_sentences = [
   "To start with, I found the job boring, but soon I got used to it.",
   "I'm looking for the kids.",
   "With so much work filling my mind, I’ll almost break down.",
+  "I'm so excited to embark with you on this journey around the world to explore the ins and outs of everything above and below the surface of the Earth over the next year.",
 ]
 
 def test_prep_with_verb():
