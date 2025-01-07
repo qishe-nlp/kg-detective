@@ -23,7 +23,7 @@ def merge_range(first, second):
   if first[1] <= second[0] or first[0] >= second[1]:
     return [first, second]
   else:
-    first[2].update({"gid": second[2]["gid"]})
+    first[2].update({"gid": max(first[2]["gid"], second[2]["gid"])})
     return [(min(first[0], second[0]), max(first[1], second[1]), first[2])]
 
 
