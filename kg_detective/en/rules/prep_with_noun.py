@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge, refine
+from kg_detective.lib import merge
 
 def search_out(doc, nlp):
   """Search for prepositions with noun 

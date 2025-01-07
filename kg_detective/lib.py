@@ -1,87 +1,49 @@
-def merge_range(first, second):
-  """Merge two tuples, which have two elements respectively 
+def clean_gid(first, second, gids):
+  """clean two tuples, which have three elements respectively 
 
   Args:
-    first (tuple): (start, end)
-    second (tuple): (start, end)
+    first (tuple): (start, end, {"gid": gid_x})
+    second (tuple): (start, end, {"gid": gid_y})
+    gids (set): gids should be cleaned
 
   Returns:
-    list: merged tuples
-
-
-  Examples:
-    >>> merge_range((1, 3), (4, 8))
-    [(1, 3), (4, 8)]
-
-    >>> merge_range((1, 3), (3, 8))
-    [(1, 3), (3, 8)]
-
-    >>> merge_range((1, 3), (2, 8))
-    [(1, 8)]
+    int: gid to be cleaned 
   """
 
+  if second[2]["gid"] in gids:
+    return second[2]["gid"]
+  if first[2]["gid"]==second[2]["gid"]:
+    return None
   if first[1] <= second[0] or first[0] >= second[1]:
-    return [first, second]
+    return None
   else:
-    first[2].update({"gid": max(first[2]["gid"], second[2]["gid"])})
-    return [(min(first[0], second[0]), max(first[1], second[1]), first[2])]
-
-
-def merge(ranges):
-  """Merge a list of tuples, which have two elements respectively 
-
-  Args:
-    ranges (list): [(start1, end1), (start2, end2), ...]
-
-  Returns:
-    list: merged tuples
-
-
-  Examples:
-    >>> merge([(1, 4),(3, 6), (4, 7), (9, 12)])
-    [(1, 7), (9, 12)]
-  """
-
-  if len(ranges) == 0:
-    return []
-  ordered = sorted(ranges, key=lambda pair: pair[0])
-  result = [ordered[0]] 
-  for e in ordered[1:]:
-    merged = merge_range(result[-1], e)
-    del result[-1]
-    result.extend(merged)
-  return result
+    return second[2]["gid"]
 
 
 
-def refine(matches):
-  """Make order of a list of lists of tuples, which have four elements
+def merge(matches):
+  """Make order of a list of tuples, which have four elements
 
   Args:
-    matches (list): [(s1, e1, m1, gid1), (s2, e2, m2, gid1), (s3, e3, m3, gid2), ...]
+    matches (list): [(s1, e1, {"gid": gid1}), (s2, e2, {"gid": gid1}), (s3, e3, {"gid": gid2}), ...]
 
   Returns:
     list: tuples
 
   Examples:
-    >>> refine([(1, 4, 'm1', 1), (8, 10, 'm2', 1), (5, 6, 'n1', 2), (12, 14, 'n2', 2)])
-    [(1, 4, 'm1', 1), (5, 6, 'n1', 2), (8, 10, 'm2', 1), (12, 14, 'n2', 2)]
+    >>> refine([(1, 4, {"gid": 1}), (4, 10, {"gid": 1}), (5, 6, {"gid": 2}), (12, 14, {"gid": 2})])
+    [(1, 4, {"gid": 1}), (4, 10, {"gid": 1})]
   """
   
-  if len(matches) == 0:
-    return []
-
-  ordered = sorted(matches, key=lambda p: p[0])
-  return ordered
-
-
-
-
-
-
-
-
-
-
-
+  if len(matches) <= 1:
+    return matches
+  result = [matches[0]]
+  gids = set()
+  for m in matches[1:]: 
+    gid = clean_gid(result[-1], m, gids) 
+    if gid==None:
+      result.append(m)
+    else:
+      gids.add(gid)
+  return result 
 
