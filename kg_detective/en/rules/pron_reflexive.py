@@ -1,4 +1,6 @@
 import os
+from kg_detective.lib import mark
+
 def search_out(doc, nlp):
   """Search for reflexive pronouns 
 
@@ -15,14 +17,6 @@ def search_out(doc, nlp):
 
   _result = [t for t in doc if t.text.lower() in REFLEXIVE]
 
-  result = []
-  s = 0
-  for index, t in enumerate(_result):
-    i = t.i
-    if i > s:
-      result.append({"text": doc[s:i].text}) 
-    result.append({"text": t.text, "meta": {"sign": "reflexive_pron", "gid": index}})
-    s = i+1
-  if s < len(doc):
-    result.append({"text": doc[s:].text})
-  return result
+  refined_matches = [(t.i, t.i+1, {"sign": "reflexive_pron", "gid": index}) for index, t in enumerate(_result)]
+
+  return mark(doc, refined_matches)

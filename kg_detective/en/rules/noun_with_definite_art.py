@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import combine_merge, mark
 
 def search_out(doc, nlp):
   """Search for definite article with noun 
@@ -11,7 +11,6 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-  result = []
 
   dep_matcher = DependencyMatcher(nlp.vocab)
   dep_patterns = [
@@ -46,19 +45,6 @@ def search_out(doc, nlp):
   
   dep_matcher.remove("det_definite_art")
 
-  refined_matches = merge(raw_matches)
+  refined_matches = combine_merge(raw_matches)
 
-  # TODO: mark(doc, refined_matches)
-  s = 0
-  for start, end, meta in refined_matches:
-    if start > s:
-      text = doc[s:start].text
-      result.append({"text": text})
-    text = doc[start:end].text
-    result.append({"text": text, "meta": meta})
-    s = end
-  if s < len(doc):
-    text = doc[s:].text
-    result.append({"text": text})
-
-  return result
+  return mark(doc, refined_matches)

@@ -1,3 +1,22 @@
+def combine(merged, second):
+  first = merged[-1]
+  if first[1] > second[0]:
+    merged[-1] = (first[0], max(first[1], second[1]), first[2])
+  else:
+    merged.append(second)
+  return merged
+
+def combine_merge(matches):
+  _matches = sorted(matches, key=lambda m: m[0])
+ 
+  if len(_matches) <= 1:
+    return _matches
+  result = [_matches[0]]
+  gids = set()
+  for m in _matches[1:]: 
+    result = combine(result, m)
+  return result 
+
 def clean_gid(first, second, gids):
   """clean two tuples, which have three elements respectively 
 
@@ -21,7 +40,7 @@ def clean_gid(first, second, gids):
 
 
 
-def merge(matches):
+def clean_merge(matches):
   """Make order of a list of tuples, which have four elements
 
   Args:
@@ -48,3 +67,20 @@ def merge(matches):
       gids.add(gid)
   return result 
 
+
+def mark(doc, matches):
+  result = []
+  s = 0
+  for start, end, meta in matches:
+    if start > s:
+      text = doc[s:start].text
+      result.append({"text": text, "start": s, "end": start})
+    text = doc[start:end].text
+    result.append({"text": text, "start": start, "end": end, "meta": meta})
+    s = end
+  if s < len(doc):
+    text = doc[s:].text
+    result.append({"text": text, "start": s, "end": len(doc)})
+  
+  return result
+  

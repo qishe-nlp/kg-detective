@@ -46,19 +46,19 @@ prep_of_manner_sentences = [
 ]
 
 prep_with_verb_sentences = [
-  #"And if you need any help, please call me at 010-5558 6390.",
-  #"In the world, more than 30% of schools do not provide safe drinking water for about 570 million children.",
-  #"He drove so fast at the turn that the car almost went off the road.",
-  #"I have a new model car. I got it from my dad.",
-  #"I will give a T-shirt to my brother as a birthday present.",
-  #"Mr. Wang's work goes beyond teaching, and he always thinks of the children first and takes good care of them.",
-  #"Ben was helping his mother when the rain began to beat heavily against the windows.",
-  #"To start with, I found the job boring, but soon I got used to it.",
-  #"I'm looking for the kids.",
-  #"With so much work filling my mind, I’ll almost break down.",
-  #"I'm so excited to embark with you on this journey around the world to explore the ins and outs of everything above and below the surface of the Earth over the next year.",
-  #"But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
-  #"Other cartographers tried something different with a fuller projection that unfolds the Earth and ends up with a completely different orientation without distorting anything.",
+  "And if you need any help, please call me at 010-5558 6390.",
+  "In the world, more than 30% of schools do not provide safe drinking water for about 570 million children.",
+  "He drove so fast at the turn that the car almost went off the road.",
+  "I have a new model car. I got it from my dad.",
+  "I will give a T-shirt to my brother as a birthday present.",
+  "Mr. Wang's work goes beyond teaching, and he always thinks of the children first and takes good care of them.",
+  "Ben was helping his mother when the rain began to beat heavily against the windows.",
+  "To start with, I found the job boring, but soon I got used to it.",
+  "I'm looking for the kids.",
+  "With so much work filling my mind, I’ll almost break down.",
+  "I'm so excited to embark with you on this journey around the world to explore the ins and outs of everything above and below the surface of the Earth over the next year.",
+  "But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
+  "Other cartographers tried something different with a fuller projection that unfolds the Earth and ends up with a completely different orientation without distorting anything.",
   "But cyclones bring cooler water into these shallow ecosystems, and can clean up the reef by whisking away sediment that is built up over time.",
 ]
 

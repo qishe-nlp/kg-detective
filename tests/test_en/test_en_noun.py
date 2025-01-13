@@ -16,6 +16,7 @@ noun_proper_sentences = [
   "Teachers need to work on Teachers' Day.",
   "June 1st is Children's Day.",
   "Michael, how much do you know about the Dragon Boat Festival? People usually eat rice dumplings to remember Qu Yuan.",
+  "Guatemala's tropical regions range between 18 and 35 degrees.",
 ]
 
 def test_noun_proper():

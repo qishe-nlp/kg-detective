@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import clean_merge, mark
 
 def search_out(doc, nlp):
   """Search for  
@@ -11,7 +11,6 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-  result = []
 
   dep_matcher = DependencyMatcher(nlp.vocab)
   dep_patterns = [
@@ -43,16 +42,6 @@ def search_out(doc, nlp):
 
   dep_matcher.remove("nominal_predicative_clause")
 
-  refined_matches = merge(raw_matches)
+  refined_matches = clean_merge(raw_matches)
 
-  # TODO: mark(doc, refined_matches)
-  s = 0
-  for start, end, meta in refined_matches:
-    if start > s:
-      result.append({"text": doc[s:start].text})
-    result.append({"text": doc[start:end].text, "meta": meta})
-    s = end
-  if s < len(doc):
-    result.append({"text": doc[s:].text})
-
-  return result 
+  return mark(doc, refined_matches)

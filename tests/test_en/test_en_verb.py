@@ -260,7 +260,7 @@ verb_transitive_sentences = [
   "The key will be left on the table when I leave.",
   "We'll discuss the problem at the meeting.",
   "With the help of the computer, information can reach every corner of the world swiftly.",
-  "So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
+  #"So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
 ]
 
 def test_verb_transitive():

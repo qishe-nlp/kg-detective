@@ -1,5 +1,5 @@
 from spacy.matcher import DependencyMatcher
-from kg_detective.lib import merge
+from kg_detective.lib import clean_merge, mark
 
 def search_out(doc, nlp):
   """Search for prepositions with adj 
@@ -11,7 +11,6 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-  result = []
 
   # pattern: as ... as ...
   dep_matcher = DependencyMatcher(nlp.vocab)
@@ -29,7 +28,7 @@ def search_out(doc, nlp):
       },
       {
         "LEFT_ID": "adj",
-        "REL_OP": ">",
+        "REL_OP": ">+",
         "RIGHT_ID": "prep",
         "RIGHT_ATTRS": {"DEP": "prep", "POS": "ADP"}
       },
@@ -38,20 +37,13 @@ def search_out(doc, nlp):
   dep_matcher.add("prep_with_adj", dep_patterns)
   matches = dep_matcher(doc)
 
-  s = 0
+  raw_matches = []
   for index, (_, [aux, adj, prep]) in enumerate(matches):
-    if adj == prep-1:
-      if aux > s:
-        result.append({"text": doc[s:aux].text})
-      result.append({"text": doc[aux].text, "meta": {"sign": "aux", "aux_lemma": doc[aux].lemma_, "gid": index}})
-      s = aux+1
-      if adj > s:
-        result.append({"text": doc[s:adj].text})
-      s = prep + 1
-      result.append({"text": doc[adj:s].text, "meta": {"sign": "adj_prep", "adj_lemma": doc[adj].lemma_, "gid": index}})
-  if s < len(doc):
-    result.append({"text": doc[s:].text})
+    raw_matches.append((aux, aux+1, {"sign": "aux", "aux_lemma": doc[aux].lemma_, "gid": index}))
+    raw_matches.append((adj, prep+1, {"sign": "adj_prep", "adj_lemma": doc[adj].lemma_, "gid": index}))
 
   dep_matcher.remove("prep_with_adj")
 
-  return result
+  refined_matches = clean_merge(raw_matches)
+
+  return mark(doc, refined_matches)
