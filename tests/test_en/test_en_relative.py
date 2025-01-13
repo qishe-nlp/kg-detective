@@ -29,9 +29,14 @@ relative_non_restrictive_clause_sentences = [
   "It is fantastic for children to have a harmonious family, where the parents treat their child like a friend.",
 ]
 
+more = [
+  "Local citizens imbue the map with meaning, like which of these buildings are houses, or where there are important community gathering places, hospitals, and businesses.",
+]
+
 
 def test_relative_clause_rules():
   sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
+  #sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["relative_clause"]})

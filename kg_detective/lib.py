@@ -34,12 +34,13 @@ def merge(matches):
     >>> refine([(1, 4, {"gid": 1}), (4, 10, {"gid": 1}), (5, 6, {"gid": 2}), (12, 14, {"gid": 2})])
     [(1, 4, {"gid": 1}), (4, 10, {"gid": 1})]
   """
-  
-  if len(matches) <= 1:
-    return matches
-  result = [matches[0]]
+  _matches = sorted(matches, key=lambda m: m[0])
+ 
+  if len(_matches) <= 1:
+    return _matches
+  result = [_matches[0]]
   gids = set()
-  for m in matches[1:]: 
+  for m in _matches[1:]: 
     gid = clean_gid(result[-1], m, gids) 
     if gid==None:
       result.append(m)

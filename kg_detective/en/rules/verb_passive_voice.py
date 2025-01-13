@@ -23,13 +23,13 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "core_verb",
-      "REL_OP": ">",
+      "REL_OP": ">--",
       "RIGHT_ID": "aux_2",
       "RIGHT_ATTRS": {"DEP": "auxpass", "POS": "AUX", "lemma": "be", "TAG": {"IN": ["VBN", "VBG"]}}
     },
     {
       "LEFT_ID": "core_verb",
-      "REL_OP": ">",
+      "REL_OP": ">--",
       "RIGHT_ID": "aux_1",
       "RIGHT_ATTRS": {"DEP": "aux", "POS": "AUX"}
     }
@@ -41,7 +41,7 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "core_verb",
-      "REL_OP": ">",
+      "REL_OP": ">--",
       "RIGHT_ID": "aux",
       "RIGHT_ATTRS": {"DEP": "auxpass", "POS": "AUX", "lemma": "be", "TAG": {"NOT_IN": ["VBN", "VBG"]}}
     }

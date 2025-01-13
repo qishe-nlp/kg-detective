@@ -23,7 +23,7 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "core_verb",
-      "REL_OP": ">",
+      "REL_OP": ">++",
       "RIGHT_ID": "dobj",
       "RIGHT_ATTRS": {"DEP": {"IN": ["dobj", "nsubjpass"]}}
     },

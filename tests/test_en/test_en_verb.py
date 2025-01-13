@@ -16,6 +16,7 @@ verb_passive_voice_sentences = [
   "He has been sent to Zimbabwe as a volunteer teacher.",
   "The hard work that you do now will be repaid later in life.",
   "The new library is being built; it will be open next year.",
+  "Many maps and borders represent modern geopolitical divisions that have often been decided to be decided without the consultation, permission, or recognition of the land's original inhabitants.",
 ]
 
 def test_verb_passive_voice():
@@ -259,6 +260,7 @@ verb_transitive_sentences = [
   "The key will be left on the table when I leave.",
   "We'll discuss the problem at the meeting.",
   "With the help of the computer, information can reach every corner of the world swiftly.",
+  "So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
 ]
 
 def test_verb_transitive():

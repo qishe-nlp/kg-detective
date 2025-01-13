@@ -35,6 +35,10 @@ nominal_object_clause_sentences = [
   "I don't remember where I bought the book yesterday.",
   "Could you please tell me when they will arrive tomorrow?",
   "And one of the most amazing things I've learned while traveling such a distance and diverse locations is how remarkably connected we are to each other and our planet.",
+  "In the West, red, or the Red Scare, are synonymous with fear of communism, representing a major foe to the United States in red sends an immediate message to the viewer.",
+  "Clear maps of neighborhoods and remote regions of the island before the quake just didn't exist, so international aid workers had no sense of space and no fast way of learning.",
+  "But the Earth is a big and complex place, so traditionally, geography is studied as two interconnected parts, physical geography and human geography.",
+  "The rare combination of glaciers and volcanoes not only influences the land, it also influences the water.",
 ]
 
 
@@ -56,8 +60,11 @@ nominal_predicative_clause_sentences = [
   "The friendly atmosphere is what I like.",
   "Home is where somebody notices when you are no longer there.",
   "The question that puzzled them is how it is that they can get rid of the air pollution in the area.",
-  "And one of the most amazing things I've learned while traveling such a distance and diverse locations is how remarkably connected we are to each other and our planet."
-
+  "And one of the most amazing things I've learned while traveling such a distance and diverse locations is how remarkably connected we are to each other and our planet.",
+  "Covered in ice and snow, this frigid continent has been one of the least mapped areas on Earth, and for good reason.",
+  "Because anyone can update the map as spatial features change, the data is always fresh and ready to be used.",
+  "Since the Great Barrier Reef, like all coral reefs, is life, the reef itself is part of the biosphere.",
+  "Believe it or not, these delicate-looking coral reefs are most successful in areas where the hydrosphere and the atmosphere clash, creating lots of waves.",
 ]
 
 def test_nominal_predicative_clause():

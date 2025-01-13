@@ -22,7 +22,7 @@ def search_out(doc, nlp):
       },
       {
         "LEFT_ID": "noun",
-        "REL_OP": ">",
+        "REL_OP": ">++",
         "RIGHT_ID": "clause",
         "RIGHT_ATTRS": {"DEP": "relcl"}
       },
