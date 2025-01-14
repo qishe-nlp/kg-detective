@@ -23,8 +23,14 @@ def search_out(doc, nlp):
         "LEFT_ID": "noun",
         "REL_OP": ">++",
         "RIGHT_ID": "clause",
-        "RIGHT_ATTRS": {"DEP": "relcl"}
+        "RIGHT_ATTRS": {"DEP": "relcl", "POS": {"IN": ["VERB", "AUX"]}}
       },
+      {
+        "LEFT_ID": "clause",
+        "REL_OP": ">--",
+        "RIGHT_ID": "clause_subj",
+        "RIGHT_ATTRS": {"DEP": "nsubj"}
+      }
     ],
   ]
   dep_matcher.add("relative_clause", dep_patterns)
@@ -33,7 +39,9 @@ def search_out(doc, nlp):
 
   matches = dep_matcher(doc)
 
-  for index, (_, [noun_id, clause_id]) in enumerate(matches):
+  for index, (_, [noun_id, clause_id, clause_subj_id]) in enumerate(matches):
+    if "to" in [e.text for e in doc[clause_id].lefts]:
+      continue
     whole_noun_tree = [e.i for e in doc[noun_id].subtree]
     clause_tree = [e.i for e in doc[clause_id].subtree]
   

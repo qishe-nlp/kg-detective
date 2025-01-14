@@ -101,9 +101,13 @@ prep_with_noun_sentences = [
   "The decrease in profits is due to the bad market.",
   "What was his reaction to the news?",
 ]
+more = [
+  "They're colorful, detailed, and lots of times, difficult to fold.",
+]
 
 def test_prep_with_noun():
-  sentences = prep_with_noun_sentences
+  #sentences = prep_with_noun_sentences
+  sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_noun"]})

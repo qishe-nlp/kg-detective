@@ -19,8 +19,13 @@ noun_proper_sentences = [
   "Guatemala's tropical regions range between 18 and 35 degrees.",
 ]
 
+more =[
+  "The Earth's atmosphere, hydrosphere, lithosphere, and biosphere are driven and influenced by the Sun and insolation, or incoming solar radiation.",
+]
+
 def test_noun_proper():
-  sentences = noun_proper_sentences 
+  #sentences = noun_proper_sentences 
+  sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["noun_proper"]})

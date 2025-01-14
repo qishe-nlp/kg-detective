@@ -44,7 +44,7 @@ def search_out(doc, nlp):
 
   for index, (_, ids) in enumerate(matches):
     core = doc[ids[0]]
-    tree = [e.i for e in core.subtree if e.pos_ not in ["PUNCT"]]
+    tree = [e.i for e in core.subtree]
     tree.sort()
     propn_assertion = len(tree)>1 and len(tree)==tree[-1]-tree[0]+1
 

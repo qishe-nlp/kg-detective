@@ -30,7 +30,15 @@ relative_non_restrictive_clause_sentences = [
 ]
 
 more = [
-  "Local citizens imbue the map with meaning, like which of these buildings are houses, or where there are important community gathering places, hospitals, and businesses.",
+  #"Local citizens imbue the map with meaning, like which of these buildings are houses, or where there are important community gathering places, hospitals, and businesses.",
+  "There's a lot to cover in this series, because geography encompasses all 4.5 billion years or so of the Earth's history, and even makes predictions about our future.",
+  "Geographers look to find connections between the physical processes at work on Earth's surface, and under the surface too, and how people use and interact with the Earth.",
+  "And now it's time to add color.",
+  "With OpenStreetMap, volunteers can look at space as a container, and use it to create images to trace buildings, parks, roads, and more to create a basic digital map.",
+  "Now they could find efficient routes to points they needed to get to and engage with the topology or organization of the space.",
+  "With fewer trees, the soil becomes even more vulnerable to these landslide-like events, setting the stage for even more dramatic changes to come.",
+  "Even when the coral dies, the limestone remains and becomes a spot for new coral to grow and thrive.",
+  "That's a lot of surface area to cover literally.",
 ]
 
 

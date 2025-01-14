@@ -23,7 +23,7 @@ def search_out(doc, nlp):
         "LEFT_ID": "copular",
         "REL_OP": ">++",
         "RIGHT_ID": "predicative",
-        "RIGHT_ATTRS": {"DEP": {"IN": ["ccomp", "advcl"]}}
+        "RIGHT_ATTRS": {"DEP": {"IN": ["ccomp"]}}
       },
     ],
   ]

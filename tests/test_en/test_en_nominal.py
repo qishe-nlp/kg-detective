@@ -41,9 +41,21 @@ nominal_object_clause_sentences = [
   "The rare combination of glaciers and volcanoes not only influences the land, it also influences the water.",
 ]
 
+_more = [
+  "But by shading a whole area, Choropleth maps can make things look a little too simple, which can be a problem.",
+  "So looking at this map might make you feel like the Earth experienced great environmental stress in the 1980s and 1990s.",
+  "A team of mappers organized people around the world to help digitize photos, which means tracing images to create 2D shapes and attaching coordinates that can be plotted on a map.",
+  "We want you to learn about the history of the place you call home through resources like nativelands.ca and by engaging with your local indigenous and aboriginal nations through the websites and resources they provide.",
+  "But remember, human-environment interactions are fundamental to studying geography.",
+  "Puffins, skuas, and kittiwakes make Icelandic sea cliffs their summer nesting home.",
+  "Even still, the usually temperate climate allows the biosphere to thrive.",
+  "Describing those dynamic twists and turns helps us understand our role here, our future, and the future of the planet.",
+  "Could you please tell me that they will arrive tomorrow?",
+]
 
 def test_nominal_object_clause():
-  sentences = nominal_object_clause_sentences 
+  sentences = nominal_object_clause_sentences  + _more
+  #sentences = _more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["nominal_object_clause"]})
@@ -67,8 +79,17 @@ nominal_predicative_clause_sentences = [
   "Believe it or not, these delicate-looking coral reefs are most successful in areas where the hydrosphere and the atmosphere clash, creating lots of waves.",
 ]
 
+more = [
+  "Other banana hotspots like Ecuador, Panama, and India are a bit farther away, so transportation is more expensive.",
+  "With this map, the really populous countries are giant, while ones with smaller populations are teeny.",
+  "It's about 7.7 million square kilometers, while India is less than half the size, with 3.28 million square kilometers.",
+  "But this is your community, so you know where the place is to catch up with a neighbor, like an eclectic coffee shop or walking the sculpture park.",
+  "That's her perception of that space, just like we all have our own perceptions of our individual spaces.",
+  "The global effort to map Haiti was such a success because it brought together those who had technology to digitize the building boundaries and roads, and those who knew the significance of those boundaries and roads.",
+  "And yet magma is also close to the surface, providing heat for geysers and hot springs.",
+]
 def test_nominal_predicative_clause():
-  sentences = nominal_predicative_clause_sentences 
+  sentences = nominal_predicative_clause_sentences + more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["nominal_predicative_clause"]})
