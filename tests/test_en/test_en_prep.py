@@ -62,8 +62,26 @@ prep_with_verb_sentences = [
   "But cyclones bring cooler water into these shallow ecosystems, and can clean up the reef by whisking away sediment that is built up over time.",
 ]
 
+more = [
+  #"Sure, we memorize state and world capitals, because everyone's impressed if you can rattle them off, like the capital of Canada, Ottawa, or we learn that rivers flow downhill, or that the US imports more than 3 billion pounds of bananas from Guatemala each year.",
+  "Let's take a closer look at that last factoid I threw out, and go a little bananas.",
+  "To look just at Guatemala, we'd jump between 13°45' and 17°48' North Latitude, and 88°14' and 92°13' West Longitude.",
+  "It's all about how things vary from place to place and asking, why here?",
+  "But we also know that when we tell a story, we make certain assumptions or we have to leave out facts to make sure there's a beginning, middle and end in a 10 minute video.",
+  "From espressos and cappuccinos to cafe au lait and plain black, there's a coffee out there for almost everyone.",
+  "Like, when you search map on the internet, this world map is one of the first that comes up.",
+  "We might accidentally imply some areas have a closer population density while others are more spread out.",
+  "Our last thematic map for today is a cartogram map, which uses size to compare data, like population density, regardless of the actual space these regions take up on the Earth's surface.",
+  "But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
+  "That's just the beginning, so we sketch out country borders.",
+  "As you can see, with just a few map-making choices, we can actually help stir up some major nationalistic emotion.",
+  "Just as all historians study events in time, based on what's going on or what's normal for a time period, all geographers study events in space.",
+  "No matter the topic, we end up contextualizing places or human-environment interactions based on the space they existed.",
+  "We take in spatial data from satellites, photos, radar and personal observation, and create data that allow us to locate buildings, route around traffic or physical features efficiently, and communicate the meaning communities give their spaces.",
+]
 def test_prep_with_verb():
-  sentences = prep_with_verb_sentences
+  #sentences = prep_with_verb_sentences
+  sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_verb"]})
@@ -101,13 +119,9 @@ prep_with_noun_sentences = [
   "The decrease in profits is due to the bad market.",
   "What was his reaction to the news?",
 ]
-more = [
-  "They're colorful, detailed, and lots of times, difficult to fold.",
-]
 
 def test_prep_with_noun():
-  #sentences = prep_with_noun_sentences
-  sentences = more
+  sentences = prep_with_noun_sentences
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_noun"]})
