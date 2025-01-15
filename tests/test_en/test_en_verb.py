@@ -263,8 +263,30 @@ verb_transitive_sentences = [
   #"So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
 ]
 
+more = [
+  "To peel back the layers, let's go to the Thought Bubble.",
+  #"For example, in 1904, Keith, as Vice President of United Fruit, signed an exclusive deal with President Manuel Estrada Cabrera that gave the company tax exemptions, land grants, and control of all railroads on the Atlantic side of Guatemala.",
+  #"But such a big and profitable company had connections across the US government and were able to set up agreements that persist in some form or other today, which means that the US still gets most of its bananas from Guatemala.",
+  #"But we also know that when we tell a story, we make certain assumptions or we have to leave out facts to make sure there's a beginning, middle and end in a 10 minute video.",
+  #"But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
+  #"Maps can also be used politically, and the choices about where to draw borders on a map are giving spaces a national identity.",
+  #"That's just the beginning, so we sketch out country borders.",
+  #"As you can see, with just a few map-making choices, we can actually help stir up some major nationalistic emotion.",
+  #"Even our phones tell us more than just where the sculpture park is.",
+  #"The radar dataset is also used to measure how quickly glaciers are moving, which gives us insight into the physics of glaciers and lets us better predict how glaciers change.",
+  #"We take in spatial data from satellites, photos, radar and personal observation, and create data that allow us to locate buildings, route around traffic or physical features efficiently, and communicate the meaning communities give their spaces.",
+  #"First, there's the atmosphere, or the layers of air surrounding Earth that give us clouds, weather, the ozone layer, and the air we breathe.",
+  #"And finally, the parts of Earth where life can exist make up the biosphere, whether it's a deep, dark, cold spot in the ocean, a barren mountaintop, or a lush, fertile farm field.",
+  #"But cyclones bring cooler water into these shallow ecosystems, and can clean up the reef by whisking away sediment that is built up over time.",
+  #"For example, the Sun's energy heats up liquid water, causing it to evaporate into water vapor.",
+  #"So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
+  "We're starting to picture the geomorphology of Iceland.",
+  #"But about 1,000 years ago, settlers cut down many of the forests.",
+  #"Iceland is rich in life that makes up biogeography, or the study of distribution of plants and animals in the area.",
+]
 def test_verb_transitive():
   sentences = verb_transitive_sentences
+  #sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["verb_transitive"]})
