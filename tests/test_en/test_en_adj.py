@@ -79,10 +79,14 @@ adj_comparative_sentences = [
   "It is much heavier than mine.",
   "No. I feel even worse.",
   "He is better known for his plays.",
+  "So if we're in St. Petersburg at 60 degrees North Latitude, our speed would be about only half that at the equator, 830 kilometers per hour or about 7 times faster than our cheetah.",
+  "But on a local scale like on your local weather report, a low can also be an area where the pressure is less than in the surrounding area because there's actually slightly less air pressing down on that part of the Earth.",
+  "Wind-current interactions are actually much more complicated than just winds pushing water around, and it's an area oceanographers are still trying to understand.",
 ]
 
 def test_adj_comparative():
   sentences = adj_comparative_sentences
+  #sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["adj_comparative"]})

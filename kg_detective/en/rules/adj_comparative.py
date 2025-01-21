@@ -97,9 +97,11 @@ def search_out(doc, nlp):
     if adj_assertion and prep_assertion:
       prep_part = prep_tree[1:]
       adj_part = list(set(adj_tree)-set(prep_part))
+      adj_part.sort()
 
       raw_matches.append((adj_part[0], adj_part[-1]+1, {"sign": "adjer_than", "adj_lemma": adj_core.lemma_, "gid": base_index+index})) 
       raw_matches.append((prep_part[0], prep_part[-1]+1, {"sign": "than_obj", "gid": base_index+index}))
+
   dep_matcher.remove("adj_comparative")
 
   refined_matches = clean_merge(raw_matches)
