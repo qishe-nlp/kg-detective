@@ -24,7 +24,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "core_verb",
       "REL_OP": ">++",
       "RIGHT_ID": "dobj",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj", "nsubjpass"]}}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj"]}}
     },
     {
       "LEFT_ID": "core_verb",
@@ -44,7 +44,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "core_verb",
       "REL_OP": ">++",
       "RIGHT_ID": "dobj",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj", "nsubjpass"]}}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj"]}}
     },
     {
       "LEFT_ID": "core_verb",
@@ -63,7 +63,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "core_verb",
       "REL_OP": ">++",
       "RIGHT_ID": "dobj",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj", "nsubjpass"]}}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["dobj"]}}
     },
   ]
 

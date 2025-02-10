@@ -17,15 +17,16 @@ noun_proper_sentences = [
   "June 1st is Children's Day.",
   "Michael, how much do you know about the Dragon Boat Festival? People usually eat rice dumplings to remember Qu Yuan.",
   "Guatemala's tropical regions range between 18 and 35 degrees.",
+  "The Earth's atmosphere, hydrosphere, lithosphere, and biosphere are driven and influenced by the Sun and insolation, or incoming solar radiation.",
+  "This seafloor spreading pushes the seafloor away in both directions, and with it, the Earth's land masses, which meant we finally had the evidence Wegener was missing in 1912 for how the Earth's land masses were moving.",
 ]
 
 more =[
-  "The Earth's atmosphere, hydrosphere, lithosphere, and biosphere are driven and influenced by the Sun and insolation, or incoming solar radiation.",
 ]
 
 def test_noun_proper():
-  #sentences = noun_proper_sentences 
-  sentences = more
+  sentences = noun_proper_sentences 
+  #sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["noun_proper"]})

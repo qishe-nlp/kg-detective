@@ -94,11 +94,20 @@ adv_comparative_sentences = [
   "Men lose weight more easily than women.",
   "Could you speak more slowly, please?",
   "He threw the javelin farther than all the others.",
+  "As the Zambezi reaches its lower course, gaining new tributaries along the way, the stream reaches its lowest point and exits the drainage basin, slowing down even more.",
+  "In places where sea levels are rising, the velocity of the river changes because it reaches the sea sooner, changing the whole flow of the lower course.",
+  "At first this movement to East Africa was mostly men, but over time with people wanting to make the trip back to India less frequently, other people eventually joined the men to create families there.",
+  "And all of these human migration patterns grow out of political and economic patterns, which we'll dig into deeper next time with how populations change across the global.",
+  "In the demographic transition model, stage 1 populations have high birth and high death rates, which end up balancing each other out, more or less, so the population size is roughly small but steady.",
+]
+
+more = [
 ]
 
 def test_adv_comparative():
   sentences = adv_comparative_sentences
- 
+  #sentences = more 
+
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["adv_comparative"]})
   display(sentences, nlp)

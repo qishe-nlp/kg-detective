@@ -60,10 +60,6 @@ prep_with_verb_sentences = [
   "But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
   "Other cartographers tried something different with a fuller projection that unfolds the Earth and ends up with a completely different orientation without distorting anything.",
   "But cyclones bring cooler water into these shallow ecosystems, and can clean up the reef by whisking away sediment that is built up over time.",
-]
-
-more = [
-  #"Sure, we memorize state and world capitals, because everyone's impressed if you can rattle them off, like the capital of Canada, Ottawa, or we learn that rivers flow downhill, or that the US imports more than 3 billion pounds of bananas from Guatemala each year.",
   "Let's take a closer look at that last factoid I threw out, and go a little bananas.",
   "To look just at Guatemala, we'd jump between 13°45' and 17°48' North Latitude, and 88°14' and 92°13' West Longitude.",
   "It's all about how things vary from place to place and asking, why here?",
@@ -78,10 +74,18 @@ more = [
   "Just as all historians study events in time, based on what's going on or what's normal for a time period, all geographers study events in space.",
   "No matter the topic, we end up contextualizing places or human-environment interactions based on the space they existed.",
   "We take in spatial data from satellites, photos, radar and personal observation, and create data that allow us to locate buildings, route around traffic or physical features efficiently, and communicate the meaning communities give their spaces.",
+  "For example, we often see a villainous type of cloud hanging over cities, called smog.",
+  "Analysis shows that it can take just a few decades to change from colder to warmer climate patterns.",
+  "It's like how nitrogen moves from being a gas in the atmosphere to a solid in the soil, instead of a one-way system, like aliens dropping gift-wrapped boxes of nitrogen from space or at least not that we know of!",
+  "However, return migration can occur when a person goes back to stay in their country of origin, or citizenship like those with British passports were returned to Britain even though most of them had not lived there before.",
+
+]
+
+_more = [
 ]
 def test_prep_with_verb():
-  #sentences = prep_with_verb_sentences
-  sentences = more
+  sentences = prep_with_verb_sentences
+  #sentences = _more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_verb"]})
@@ -118,10 +122,18 @@ prep_with_noun_sentences = [
   "There was an almost complete lack of awareness of the issues involved.",
   "The decrease in profits is due to the bad market.",
   "What was his reaction to the news?",
+  "As the city sprawls into the surrounding desert, it's increasing its paved, sealed surfaces, making it the fastest warming city in the US as well.",
+  "This seafloor spreading pushes the seafloor away in both directions, and with it, the Earth's land masses, which meant we finally had the evidence Wegener was missing in 1912 for how the Earth's land masses were moving.",
+  "In a polyculture system, it's common to have plants maturing at different times, and even a mix of plants and animals.",
+
+]
+
+more = [
 ]
 
 def test_prep_with_noun():
   sentences = prep_with_noun_sentences
+  #sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_noun"]})

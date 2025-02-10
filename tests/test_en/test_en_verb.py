@@ -1,9 +1,29 @@
 import spacy
 from kg_detective import PKG_INDICES
 from tests.lib import *
+from spacy.lang.char_classes import ALPHA, ALPHA_LOWER, ALPHA_UPPER
+from spacy.lang.char_classes import CONCAT_QUOTES, LIST_ELLIPSES, LIST_ICONS
+from spacy.util import compile_infix_regex
 
 lang = "en"
 pkg = PKG_INDICES[lang]
+
+infixes = (
+  LIST_ELLIPSES
+  + LIST_ICONS
+  + [
+      r"(?<=[0-9])[+\\-\\*^](?=[0-9-])",
+      r"(?<=[{al}{q}])\\.(?=[{au}{q}])".format(
+          al=ALPHA_LOWER, au=ALPHA_UPPER, q=CONCAT_QUOTES
+      ),
+      r"(?<=[{a}]),(?=[{a}])".format(a=ALPHA),
+      # ✅ Commented out regex that splits on hyphens between letters:
+      # r"(?<=[{a}])(?:{h})(?=[{a}])".format(a=ALPHA, h=HYPHENS),
+      r"(?<=[{a}0-9])[:<>=/](?=[{a}])".format(a=ALPHA),
+  ]
+)
+
+infix_re = compile_infix_regex(infixes)
 
 verb_passive_voice_sentences = [
   "Yes, it is being served in the dining room.",
@@ -17,12 +37,17 @@ verb_passive_voice_sentences = [
   "The hard work that you do now will be repaid later in life.",
   "The new library is being built; it will be open next year.",
   "Many maps and borders represent modern geopolitical divisions that have often been decided to be decided without the consultation, permission, or recognition of the land's original inhabitants.",
+  "After being absorbed into the surface, incoming radiation is eventually re-radiated by the Earth as terrestrial radiation.",
+  "In the years following the Revolution, the plate tectonics theory has been fine-tuned.",
+  "And that's helped us figure out some general principles of mining landscapes, which also helps us understand where to look for different types of minerals.",
+
 ]
 
 def test_verb_passive_voice():
   sentences = verb_passive_voice_sentences 
 
   nlp = spacy.load(pkg)
+  nlp.tokenizer.infix_finditer = infix_re.finditer
   nlp.add_pipe('kg', config={"rules": ["verb_passive_voice"]})
   display(sentences, nlp)
 
@@ -114,6 +139,7 @@ def test_verb_present_progressive_tense():
   display(sentences, nlp)
 
 
+
 verb_past_progressive_tense_sentences = [
   "I was having a walk by the river.",
   "People were sleeping when it happened that night.",
@@ -125,6 +151,7 @@ verb_past_progressive_tense_sentences = [
   "He was cooking dinner at that time.",
   "I was doing yoga at that time.",
   "I had intended to buy a ticket, but it was raining.",
+  "I'm sorry, what were we talking about?",
 ]
 
 def test_verb_past_progressive_tense():
@@ -146,7 +173,9 @@ verb_present_perfect_tense_sentences = [
   "We have celebrated the festival since the first pioneers arrived in America.",
   "This medicine has saved millions of people's lives since it was put into use.",
   "Andy doesn't want to see the film Coco because he has seen it twice.",
+  "And how have humans altered the environment to get the water we need?",
 ]
+
 
 def test_verb_present_perfect_tense():
   sentences = verb_present_perfect_tense_sentences
@@ -260,30 +289,26 @@ verb_transitive_sentences = [
   "The key will be left on the table when I leave.",
   "We'll discuss the problem at the meeting.",
   "With the help of the computer, information can reach every corner of the world swiftly.",
-  #"So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
+  "There's an invisible force shaping our lives, affecting the weather, climate, land, economy and whether a flag looks majestic or just kind of sits there.",
+  "And buried in each layer of ice is evidence of past atmospheric conditions, tiny air bubbles which act like time capsules.",
+  "If a bit of biomass is eaten, it passes on its chemical energy to continue the energy flow.",
+  "As the liquid water molecules evaporated, they left behind all the salt that had been dissolved in this water.",
+  "In the nearby fields, Aral Sea water would still be pumped in for the crops, but rapid evaporation continued to leave behind a thick crust of salt on the soil.",
+  "Soils bring together all four spheres of physical geography.",
+  "It took many scientists many years to put together all the puzzle pieces to tell the story of how Earth's broken outer shell rises from the mantle and falls back in.",
+  "Basically all the places we said, rivers got their water.",
+  "Take for instance Indonesia, specifically the island of Java.",
+  "Ultimately the people advocating to put back the name Denali had less power and influence and could be ignored.",
+  "Artifacts like al-Adrisi's map leave behind clues about how people interacted with and saw the world, just like Ptolemy's.",
+  "The people in a diaspora may not have been born in the place they have a cultural affinity for, but at some level, there's a desire to keep a cultural or even physical connection to that place.",
+  "Many migrants only migrate internationally when they feel they have no other option, because an international move can mean leaving behind cultural and family networks which provide emotional support.",
+  "This particular disease brought with it morbidity, which is another way of saying infected with a disease and had a specific mortality rate or the number of deaths in a given population over a set period of time.",
+  "Since the mid-1920s, Venezuela's economy has been based on oil exports, which we think of as bringing in a lot of wealth.",
+  "Throw together disagreements over identity and sovereignty with the interests of larger more powerful countries and sprinkle in a dash of lucrative resources and we've got a recipe for conflict.",
+  "And radiating out from the central market to the periphery are zones of disamenity, which are corridors of squatter settlements made up of thousands of people in the city who can't afford a house or land, but who still need a place to live.",
+
 ]
 
-more = [
-  "To peel back the layers, let's go to the Thought Bubble.",
-  #"For example, in 1904, Keith, as Vice President of United Fruit, signed an exclusive deal with President Manuel Estrada Cabrera that gave the company tax exemptions, land grants, and control of all railroads on the Atlantic side of Guatemala.",
-  #"But such a big and profitable company had connections across the US government and were able to set up agreements that persist in some form or other today, which means that the US still gets most of its bananas from Guatemala.",
-  #"But we also know that when we tell a story, we make certain assumptions or we have to leave out facts to make sure there's a beginning, middle and end in a 10 minute video.",
-  #"But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
-  #"Maps can also be used politically, and the choices about where to draw borders on a map are giving spaces a national identity.",
-  #"That's just the beginning, so we sketch out country borders.",
-  #"As you can see, with just a few map-making choices, we can actually help stir up some major nationalistic emotion.",
-  #"Even our phones tell us more than just where the sculpture park is.",
-  #"The radar dataset is also used to measure how quickly glaciers are moving, which gives us insight into the physics of glaciers and lets us better predict how glaciers change.",
-  #"We take in spatial data from satellites, photos, radar and personal observation, and create data that allow us to locate buildings, route around traffic or physical features efficiently, and communicate the meaning communities give their spaces.",
-  #"First, there's the atmosphere, or the layers of air surrounding Earth that give us clouds, weather, the ozone layer, and the air we breathe.",
-  #"And finally, the parts of Earth where life can exist make up the biosphere, whether it's a deep, dark, cold spot in the ocean, a barren mountaintop, or a lush, fertile farm field.",
-  #"But cyclones bring cooler water into these shallow ecosystems, and can clean up the reef by whisking away sediment that is built up over time.",
-  #"For example, the Sun's energy heats up liquid water, causing it to evaporate into water vapor.",
-  #"So just like you can be a doctor but spend most of your time studying the heart to become a cardiologist, physical geographers break up the geo-ecosphere and specialize in different realms and processes, like, what if we visit Guatemala to look at bananas.",
-  "We're starting to picture the geomorphology of Iceland.",
-  #"But about 1,000 years ago, settlers cut down many of the forests.",
-  #"Iceland is rich in life that makes up biogeography, or the study of distribution of plants and animals in the area.",
-]
 def test_verb_transitive():
   sentences = verb_transitive_sentences
   #sentences = more

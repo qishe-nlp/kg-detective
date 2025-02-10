@@ -82,6 +82,13 @@ adj_comparative_sentences = [
   "So if we're in St. Petersburg at 60 degrees North Latitude, our speed would be about only half that at the equator, 830 kilometers per hour or about 7 times faster than our cheetah.",
   "But on a local scale like on your local weather report, a low can also be an area where the pressure is less than in the surrounding area because there's actually slightly less air pressing down on that part of the Earth.",
   "Wind-current interactions are actually much more complicated than just winds pushing water around, and it's an area oceanographers are still trying to understand.",
+  "It's denser than the continental crust but only a few kilometers thick.",
+  "There can even be a moisture deficit, which is when the amount of moisture that evaporates is more than returns as precipitation.",
+  "Like severe flooding out where no one lives, like in parts of Siberia, is a much less severe threat to humans, so less of a hazard than a mild flood in a densely packed city, like Jakarta.",
+  "They're more likely than adults to put their hands and other objects in their mouths.",
+]
+
+more = [
 ]
 
 def test_adj_comparative():

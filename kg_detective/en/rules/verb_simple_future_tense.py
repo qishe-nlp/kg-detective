@@ -21,7 +21,7 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "core_verb",
-      "REL_OP": ">",
+      "REL_OP": ">--",
       "RIGHT_ID": "aux",
       "RIGHT_ATTRS": {"DEP": "aux", "POS": "AUX", "lemma": "will"}
     },
@@ -36,9 +36,8 @@ def search_out(doc, nlp):
     verb = doc[verb_id]
     aux = doc[aux_id]
 
-    aux_verb_assertion = aux_id<verb_id
-    if aux_verb_assertion:
-      raw_matches.append((aux_id, verb_id+1, {"sign": "will_do", "verb_lemma": verb.lemma_, "gid": index})) 
+    raw_matches.append((aux_id, aux_id+1, {"sign": "aux", "aux_lemma": aux.lemma_, "gid": index})) 
+    raw_matches.append((verb_id, verb_id+1, {"sign": "do", "verb_lemma": verb.lemma_, "gid": index})) 
 
   dep_matcher.remove("verb_simple_future_tense")
 

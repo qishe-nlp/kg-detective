@@ -22,6 +22,12 @@ def search_out(doc, nlp):
       },
       {
         "LEFT_ID": "verb",
+        "REL_OP": ">--",
+        "RIGHT_ID": "subj",
+        "RIGHT_ATTRS": {"DEP": "nsubj"}
+      },
+      {
+        "LEFT_ID": "verb",
         "REL_OP": ">++",
         "RIGHT_ID": "obj",
         "RIGHT_ATTRS": {"DEP": "ccomp", "POS": {"IN": ["VERB", "AUX"]}}
@@ -38,7 +44,7 @@ def search_out(doc, nlp):
   matches = dep_matcher(doc)
 
   raw_matches = []
-  for index, (_, [verb_id, clause_id, sconj_id]) in enumerate(matches):
+  for index, (_, [verb_id, _, clause_id, sconj_id]) in enumerate(matches):
     obj_tree = [e.i for e in doc[clause_id].subtree]
     obj_tree.sort()
 

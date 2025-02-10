@@ -36,7 +36,9 @@ def search_out(doc, nlp):
     predicative_tree.sort()
 
     predicative_assertion = len(predicative_tree) == predicative_tree[-1] - predicative_tree[0] + 1
-    if predicative_assertion:
+    _deps = [e.dep_ for e in doc[copular_id].rights]
+    copular_assertion = all([dep in ["ccomp", "punct"] for dep in _deps]) 
+    if predicative_assertion and copular_assertion:
       raw_matches.append((copular_id, copular_id+1, {"sign": "copular_part", "copular_lemma": doc[copular_id].lemma_, "gid": index})) 
       raw_matches.append((predicative_tree[0], predicative_tree[-1]+1, {"sign": "pred_clause", "gid": index})) 
 

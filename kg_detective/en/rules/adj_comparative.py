@@ -82,6 +82,7 @@ def search_out(doc, nlp):
   base_index = len(raw_matches)
   dep_matcher.add("adj_comparative", [adjer_than, adv_adj_than])
   matches = dep_matcher(doc)
+  
   for index, (_, token_ids) in enumerate(matches):
     adj_core = doc[token_ids[0]]
     prep_core = doc[token_ids[1]]
@@ -91,8 +92,8 @@ def search_out(doc, nlp):
     prep_tree = [e.i for e in prep_core.subtree]
     prep_tree.sort()
 
-    adj_assertion = len(adj_tree)==adj_tree[-1]-adj_tree[0]+1
-    prep_assertion = len(prep_tree)==prep_tree[-1]-prep_tree[0]+1 and prep_core.i==prep_tree[0]
+    adj_assertion = len(adj_tree)==adj_tree[-1]-adj_tree[0]+1 and adj_tree[-1]==prep_tree[-1]
+    prep_assertion = len(prep_tree)==prep_tree[-1]-prep_tree[0]+1 and prep_core.i==prep_tree[0] and len(prep_tree)>1
     
     if adj_assertion and prep_assertion:
       prep_part = prep_tree[1:]
