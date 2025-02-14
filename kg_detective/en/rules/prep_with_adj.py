@@ -39,8 +39,12 @@ def search_out(doc, nlp):
 
   raw_matches = []
   for index, (_, [aux, adj, prep]) in enumerate(matches):
-    raw_matches.append((aux, aux+1, {"sign": "aux", "aux_lemma": doc[aux].lemma_, "gid": index}))
-    raw_matches.append((adj, prep+1, {"sign": "adj_prep", "adj_lemma": doc[adj].lemma_, "gid": index}))
+    adj_assertion = "as" not in [e.lemma_ for e in doc[adj].lefts]
+    if adj_assertion:
+      rt = doc[aux+1]
+      aux_end = aux+2 if rt.head==doc[aux] and rt.lemma_=="not" and rt.dep_=="neg" else aux+1
+      raw_matches.append((aux, aux_end, {"sign": "aux", "aux_lemma": doc[aux].lemma_, "gid": index}))
+      raw_matches.append((adj, prep+1, {"sign": "adj_prep", "adj_lemma": doc[adj].lemma_, "gid": index}))
 
   dep_matcher.remove("prep_with_adj")
 

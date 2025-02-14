@@ -13,7 +13,7 @@ def search_out(doc, nlp):
   """
 
   dep_matcher = DependencyMatcher(nlp.vocab)
-  excluded_lemmas = ["be", "let", "want", "make", "help", "allow"]
+  excluded_lemmas = ["be", "let", "want", "make", "help", "allow", "seem"]
   dep_patterns = [
     [
       {

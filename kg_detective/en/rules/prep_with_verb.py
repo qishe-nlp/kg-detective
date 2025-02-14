@@ -17,7 +17,7 @@ def search_out(doc, nlp):
     [
       {
         "RIGHT_ID": "verb",
-        "RIGHT_ATTRS": {"POS": "VERB", "LEMMA": {"NOT_IN": ["be"]}}
+        "RIGHT_ATTRS": {"POS": "VERB", "LEMMA": {"NOT_IN": ["be", "have", "do"]}, "DEP":{"NOT_IN": ["attr"]}}
       },
       {
         "LEFT_ID": "verb",
@@ -42,12 +42,12 @@ def search_out(doc, nlp):
     prep_core = doc[token_ids[1]]
 
     verb_left_subtree = [list(e.subtree) for e in verb_core.lefts if e.dep_ in ["auxpass"]]
-    verb_right_subtree = [list(e.subtree) for e in verb_core.rights if e.dep_ not in ["cc", "conj", "punct"]]
+    verb_right_subtree = [list(e.subtree) for e in verb_core.rights if e.dep_ not in ["cc", "conj", "punct", "npadvmod", "advcl"]]
     _verb_tree = sum(verb_left_subtree+verb_right_subtree, [])
     _verb_tree.append(verb_core)
     verb_tree = [e.i for e in _verb_tree]
     verb_tree.sort()
-    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1# and verb_core.i==verb_tree[0]
+    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1
  
     prep_tree = [e.i for e in prep_core.subtree]
     prep_tree.sort()

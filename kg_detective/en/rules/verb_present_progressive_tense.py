@@ -36,8 +36,9 @@ def search_out(doc, nlp):
     verb = doc[verb_id]
     aux = doc[aux_id]
 
-    raw_matches.append((aux_id, aux_id+1, {"sign": "aux", "aux_lemma": aux.lemma_, "gid": index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "doing", "verb_lemma": verb.lemma_, "gid": index})) 
+    aux_end = aux_id+2 if doc[aux_id+1].head==verb and doc[aux_id+1].lemma_=="not" and doc[aux_id+1].dep_=="neg" else aux_id+1
+    raw_matches.append((aux_id, aux_end, {"sign": "aux", "aux_lemma": aux.lemma_, "gid": index})) 
+    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb.lemma_, "gid": index})) 
 
   dep_matcher.remove("verb_present_progressive_tense")
 

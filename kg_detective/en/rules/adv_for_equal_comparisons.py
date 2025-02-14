@@ -22,7 +22,7 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "A",
-      "REL_OP": ">",
+      "REL_OP": ">-",
       "RIGHT_ID": "left_as",
       "RIGHT_ATTRS": {"DEP": "advmod", "LOWER": {"IN": ["as", "so"]}}
     },
@@ -34,7 +34,7 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "right_as",
-      "REL_OP": ">",
+      "REL_OP": ">++",
       "RIGHT_ID": "B",
       "RIGHT_ATTRS": {"DEP": "pobj"}
     },
@@ -74,21 +74,21 @@ def search_out(doc, nlp):
     },
     {
       "LEFT_ID": "A",
-      "REL_OP": ">",
+      "REL_OP": ">-",
       "RIGHT_ID": "left_as",
       "RIGHT_ATTRS": {"DEP": "advmod", "LOWER": {"IN": ["as", "so"]}}
     },
     {
       "LEFT_ID": "A",
-      "REL_OP": ">",
+      "REL_OP": ">++",
       "RIGHT_ID": "advcl",
       "RIGHT_ATTRS": {"POS": {"IN": ["VERB", "AUX"]}, "DEP": "advcl"}
     },
     {
       "LEFT_ID": "advcl",
-      "REL_OP": ">",
+      "REL_OP": ">--",
       "RIGHT_ID": "right_as",
-      "RIGHT_ATTRS": {"DEP": "mark", "POS": "SCONJ"}
+      "RIGHT_ATTRS": {"DEP": "mark", "POS": "SCONJ", "LOWER": "as"}
     },
   ]
 

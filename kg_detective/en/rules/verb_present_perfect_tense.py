@@ -22,7 +22,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "core_verb",
       "REL_OP": ">--",
       "RIGHT_ID": "aux",
-      "RIGHT_ATTRS": {"DEP": "aux", "POS": "AUX", "lemma": "have", "TAG": {"IN": ["VB", "VBP", "VBZ"]}}
+      "RIGHT_ATTRS": {"DEP": "aux", "POS": "AUX", "lemma": "have", "TAG": {"IN": ["VBP", "VBZ"]}}
     }
   ]
 
@@ -35,8 +35,15 @@ def search_out(doc, nlp):
     verb = doc[verb_id]
     aux = doc[aux_id]
 
-    raw_matches.append((aux_id, aux_id+1, {"sign": "aux", "aux_lemma": aux.lemma_, "gid": index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "done", "verb_lemma": verb.lemma_, "gid": index})) 
+    aux_end = aux_id+2 if doc[aux_id+1].head==verb and doc[aux_id+1].lemma_=="not" and doc[aux_id+1].dep_=="neg" else aux_id+1
+    raw_matches.append((aux_id, aux_end, {"sign": "aux", "aux_lemma": aux.lemma_, "gid": index}))
+
+    passive_tokens = [e for e in verb.lefts if e.dep_=="auxpass"]
+    if len(passive_tokens)==1:
+      auxpass = passive_tokens[0]
+      raw_matches.append((auxpass.i, auxpass.i+1, {"sign": "auxpass", "auxpass_lemma": auxpass.lemma_, "gid": index}))
+
+    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb.lemma_, "gid": index})) 
 
   dep_matcher.remove("verb_present_perfect_tense")
 

@@ -65,7 +65,6 @@ prep_with_verb_sentences = [
   "It's all about how things vary from place to place and asking, why here?",
   "But we also know that when we tell a story, we make certain assumptions or we have to leave out facts to make sure there's a beginning, middle and end in a 10 minute video.",
   "From espressos and cappuccinos to cafe au lait and plain black, there's a coffee out there for almost everyone.",
-  "Like, when you search map on the internet, this world map is one of the first that comes up.",
   "We might accidentally imply some areas have a closer population density while others are more spread out.",
   "Our last thematic map for today is a cartogram map, which uses size to compare data, like population density, regardless of the actual space these regions take up on the Earth's surface.",
   "But it looks weird to us, or at least to me, because we're used to maps that tell us something about the physical space that countries and continents take up.",
@@ -78,14 +77,14 @@ prep_with_verb_sentences = [
   "Analysis shows that it can take just a few decades to change from colder to warmer climate patterns.",
   "It's like how nitrogen moves from being a gas in the atmosphere to a solid in the soil, instead of a one-way system, like aliens dropping gift-wrapped boxes of nitrogen from space or at least not that we know of!",
   "However, return migration can occur when a person goes back to stay in their country of origin, or citizenship like those with British passports were returned to Britain even though most of them had not lived there before.",
-
+  "But some years, there's a pooling of warm water along the Peruvian coast, which can bring drought until the ocean currents change again.",
+  "If a cultural group is already in their native lands, they have to leave and become refugees or people fleeing violence or persecution across an international border in order to survive.",
+  "Like in Boston in the US, where the city's original financial district can still be found in the same place today, even though it had to be completely rebuilt after the Great Boston Fire.",
+  "Like, when you search map on the internet, this world map is one of the first that comes up.",
 ]
 
-_more = [
-]
 def test_prep_with_verb():
   sentences = prep_with_verb_sentences
-  #sentences = _more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_verb"]})
@@ -102,10 +101,13 @@ prep_with_adj_sentences = [
   "It was obvious that the meeting was concerned with the housing reform and everyone present was concerned for their own interests.",
   "Mary was so surprised at what Tom had do to him.",
   "The funny cartoon 'Xiyangyang and Huitanglang' is popular with kids.",
+  "This can be as simple as how different groups are talked about and how language gets used to signal the good cultures.",
+  "Historically, cities were differentiated from other forms of settlement by their larger population size and if the people living in them weren't directly involved in agriculture.",
 ]
 
 def test_prep_with_adj():
   sentences = prep_with_adj_sentences
+  #sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_adj"]})
@@ -128,12 +130,8 @@ prep_with_noun_sentences = [
 
 ]
 
-more = [
-]
-
 def test_prep_with_noun():
   sentences = prep_with_noun_sentences
-  #sentences = more
  
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["prep_with_noun"]})

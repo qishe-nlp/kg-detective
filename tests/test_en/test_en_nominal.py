@@ -61,11 +61,11 @@ nominal_object_clause_sentences = [
   "For example, another model tells us how a city grows outward in a radial fashion from the city center or central business district.",
   "It can also tell us how we imagine our city in the future, things like how many people might live in the city or what types of industry might be there.",
   "As geographers, when we talk about space-time, we mean more that space and time are becoming one.",
+  "It seemed miraculous that the Earth was so alive while everything around it seemed so not.",
 ]
 
 def test_nominal_object_clause():
   sentences = nominal_object_clause_sentences
-
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["nominal_object_clause"]})
   display(sentences, nlp)

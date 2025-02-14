@@ -76,6 +76,7 @@ adv_for_equal_comparisons_sentences = [
   "Peter speaks Spanish well indeed, but of course not as fluently as a local speaker in Spain.",
   "He speaks English as fluently as he does Chinese.",
   "Read it as carefully as possible.",
+  "That's so far for one speck of plastic, or even a whole water bottle, with or without the secret message, to travel.",
 ]
 
 def test_adv_for_equal_comparisons():
@@ -101,12 +102,8 @@ adv_comparative_sentences = [
   "In the demographic transition model, stage 1 populations have high birth and high death rates, which end up balancing each other out, more or less, so the population size is roughly small but steady.",
 ]
 
-more = [
-]
-
 def test_adv_comparative():
   sentences = adv_comparative_sentences
-  #sentences = more 
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["adv_comparative"]})
