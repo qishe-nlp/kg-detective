@@ -5,52 +5,7 @@ from tests.lib import *
 lang = "es"
 pkg = PKG_INDICES[lang]
 
-adv_afirmación_y_negación_sentences = [
-  "Qué va, nunca bebo.",
-  "Elena nunca sale de noche.",
-  "Su hermano tampoco.",
-  "A mí no, es demasiado picante.",
-  "Este año no tengo vacaciones.",
-  "Yo sí, pero en septiembre.",
-  "Mañana no trabajo.",
-  "Yo sí, trabajo todos los días.",
-  "No sé conducir.",
-  "Yo tampoco.",
-  "Tú también, Marisa.",
-  "Nosotras también.",
-  "Yo no.",
-  "Luis no sabe jugar al tenis.",
-  "Pues Ramón sí.",
-]
-
-def test_adv_afirmación_y_negación():
-  sentences = adv_afirmación_y_negación_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_afirmación_y_negación"]})
-  display(sentences, nlp)
-
-adv_cantidad_sentences = [
-  "Es muy buena.",
-  "No se puede oír nada. La música está demasiado alta.",
-  "Este libro no es nada caro.",
-  "Rubén es demasiado sincero.",
-  "Silvia se lleva muy bien con su hermana.",
-  "Suelo desayunar muy poco: un café con leche nada más.",
-  "Rosa y yo nos vemos mucho, casi todas las semanas.",
-  "Me duele mucho la cabeza.",
-  "Nacho no ayuda mucho a sus padres.",
-  "María no estudia mucho.",
-]
-
-def test_adv_cantidad():
-  sentences = adv_cantidad_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_cantidad"]})
-  display(sentences, nlp)
-
-adv_comparativa_sentences = [
+old = [
   "No hables tan alto, por favor.",
   "Habla más bajo.",
   "Vas muy rápido.",
@@ -66,103 +21,76 @@ adv_comparativa_sentences = [
   "Enrique bebe poco, pero Manuel bebe aún menos que él.",
 ]
 
-def test_adv_comparativa():
-  sentences = adv_comparativa_sentences 
+adv_comparativo_sentences = [
+  "No hables tan alto, por favor.",
+  "Habla más bajo.",
+  "Ve más lento.",
+  "Trabajen menos.",
+  "Hablo español bien, pero Li habla mejor que yo.",
+  "Duermo mucho, pero María duerme más que yo.",
+  "Enrique bebe poco, pero Manuel bebe aún menos que él.",
+  "Ella corre más rápido que yo.",
+  "Habla más claramente que tú.",
+  "Él trabaja menos eficientemente que ella.", 
+  "Camina menos rápido que su hermano.",
+]
+def test_adv_comparativo():
+  sentences = adv_comparativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_comparativa"]})
+  nlp.add_pipe('kg', config={"rules": ["adv_comparativo"]})
   display(sentences, nlp)
 
 
-adv_frecuencia_sentences = [
-  "Casi nunca salgo con Teresa.",
-  "Normalmente, suelo cenar en casa.",
-  "Me levanto siempre a las siete.",
-  "Vamos mucho al cine, tres o cuatro veces al mes.",
-  "Nunca me acuesto antes de las doce.",
-  "Mis padres hacen un viaje de vez en cuando, dos o tres veces al año.",
-  "¿Ves mucho a Lola?",
-  "De vez en cuando.",
-  "Ernesto come siempre en casa.",
-  "Viajo frecuentemente a Argentina.",
-  "¿Van mucho a la disco?",
-  "Una vez al mes o algo así.",
+adv_igualdad_comparativo_sentences = [
+  "No hables tan alto, por favor.",
+  "Jorge estudiaba mucho y ahora estudia tanto como antes.",
+  "Alberto habla mucho y su mujer habla tanto como él.",
+  "Ella corre tan rápido como tú.",
+  "Trabaja tan diligentemente como su colega.",
+  "Esta falda te queda igual de bien que la otra.",
+  "Lo hiciste igual de bien que él.",
+  "El SIS de nueva generación logrará funcionar igual de rápido que el de la antigua.",
+  "Los padres, por un lado, comen igual de mal que sus hijos.",
 ]
 
-def test_adv_frecuencia():
-  sentences = adv_frecuencia_sentences 
+def test_adv_igualdad_comparativo():
+  sentences = adv_igualdad_comparativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_frecuencia"]})
+  nlp.add_pipe('kg', config={"rules": ["adv_igualdad_comparativo"]})
   display(sentences, nlp)
 
-adv_lugar_sentences = [
-  "El perro está fuera de la casa.",
-  "Cerca de tu casa hay un centro comercial.",
-  "Tus zapatos están debajo de ese mueble.",
-  "Enfrente del colegio hay un edificio enorme.",
-  "Hay una sorpresa dentro de la caja.",
-  "Cristina está sentada frente a Paula.",
-  "El chico que está detrás de ti, es mi hermano.",
-  "Ya empieza la película, vamos adentro.",
-  "Nicolás está durminedo encima de la alfombra.",
-  "Una mariposa vuela alrededor de las flores.",
+
+adv_superlativo_sentences =[
+  "Ella es la que corre más rápido de todas.",
+  "Él es el que trabaja menos eficientemente del equipo.",
+  "De todos ellos, él corrió más rápido.",
+  "Este método es el que mejor funciona.",
 ]
 
-
-def test_adv_lugar():
-  sentences = adv_lugar_sentences 
+def test_adv_superlativo():
+  sentences = adv_superlativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_lugar"]})
+  nlp.add_pipe('kg', config={"rules": ["adv_superlativo"]})
   display(sentences, nlp)
 
-adv_modo_sentences = [
-  "Lorena no conduce bien.",
-  "A Rubén le gusta cantar aunque canta muy mal.",
-  "Elisa habla muy rápido, casi no le entienden nada.",
-  "Manuel resultó herido gravemente en el accidente.",
-  "Juan siempre hace su trabajo rápida y eficazmente.",
-  "No hables tan alto por favor.",
-  "Alex es un chico majo pero a veces se porta mal con sus amigos.",
-  "Mario canta muy bien.",
-  "Noelia conoce Cuba perfectamente.",
-  "Conduce muy mal.",
+adv_absoluto_superlativo_sentences = [
+  "Clara corre rapidísimamente.",
+  "Había oído que allá se hacía perfectísimo.",
+  "Una de las cosas le impactó muchísimo.",
+  "Durante una época me preocupó muchísimo el silencio de los acallados.",
 ]
 
-def test_adv_modo():
-  sentences = adv_modo_sentences 
+def test_adv_absoluto_superlativo():
+  sentences = adv_absoluto_superlativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_modo"]})
+  nlp.add_pipe('kg', config={"rules": ["adv_absoluto_superlativo"]})
   display(sentences, nlp)
 
-adv_tiempo_sentences = [
-  "Estoy segura de que nos veremos pronto.",
-  "Mañana nos tenemos que levantar temprano.",
-  "Llamamos al timbre y después salió el marido de Tere.",
-  "Habéis llegado tarde.",
-  "La película ya ha empezado.",
-  "Daos prisa. Los invitados van a llegar pronto.",
-  "Pablo y yo ya no salimos juntos.",
-  "Cuidado. La sopa todavía está caliente.",
-  "Estoy esperando a Lidia desde las seis, pero todavía no ha llegado.",
-  "Todavía no lo sé.",
-  "Sí, ya lo sé.",
-]
-
-
-def test_adv_tiempo():
-  sentences = adv_tiempo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adv_tiempo"]})
-  display(sentences, nlp)
-
-
-_sentences = adv_afirmación_y_negación_sentences + adv_cantidad_sentences + adv_comparativa_sentences + adv_frecuencia_sentences
-_sentences = _sentences + adv_lugar_sentences + adv_modo_sentences + adv_tiempo_sentences
-
+_sentences = adv_comparativo_sentences + adv_igualdad_comparativo_sentences + adv_superlativo_sentences
 
 def test_adv():
   sentences = _sentences

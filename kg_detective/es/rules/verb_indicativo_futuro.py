@@ -1,5 +1,5 @@
-from spacy.matcher import Matcher, PhraseMatcher, DependencyMatcher
-from kg_detective.lib import merge
+from spacy.matcher import Matcher, DependencyMatcher
+from kg_detective.lib import clean_merge, mark
 
 def search_out(doc, nlp):
   """Search for  
@@ -11,22 +11,58 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-  result = []
 
-  token_matcher = Matcher(nlp.vocab)
-  patterns = [
-    [{"POS": {"IN": ["VERB", "AUX"]}, "MORPH": {"IS_SUPERSET": ["Mood=Ind", "Tense=Fut", "VerbForm=Fin"]}}],
+  raw_matches = []
+
+  rule_name = "verb_indicativo_futuro"
+
+  dep_matcher = DependencyMatcher(nlp.vocab)
+
+  # verb 
+  verb = [
+    {
+      "RIGHT_ID": "verb",
+      "RIGHT_ATTRS": {"POS": "VERB", "DEP": "ROOT", "MORPH": {"IS_SUPERSET": ["Mood=Ind", "Tense=Fut"]}}
+    }
   ]
-  token_matcher.add("verb_indicativo_futuro", patterns)
 
-  matches = token_matcher(doc)
-  token_ranges = [(start, end) for _, start, end in matches]
+  dep_matcher.add(rule_name, [verb])
 
-  refined_matches = merge(token_ranges)
-  for start, end in refined_matches:
-    span = doc[start:end].text
-    result.append({"text": span})
+  matches = dep_matcher(doc)
+  for index, (_, [verb_id]) in enumerate(matches):
+    verb_core = doc[verb_id]
+    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": index})) 
+
+  dep_matcher.remove(rule_name)
 
 
-  return result
-   
+  base_index = len(raw_matches)
+  # ser verb 
+  ser_verb = [
+    {
+      "RIGHT_ID": "verb",
+      "RIGHT_ATTRS": {"POS": "VERB", "DEP": "ROOT", "MORPH": {"IS_SUPERSET": ["Tense=Past", "VerbForm=Part"]}}
+    },
+    {
+      "LEFT_ID": "verb",
+      "REL_OP": ">--",
+      "RIGHT_ID": "aux",
+      "RIGHT_ATTRS": {"POS": "AUX", "LEMMA": "ser", "MORPH": {"IS_SUPERSET": ["Mood=Ind", "Tense=Fut"]}}
+    }
+  ]
+
+  dep_matcher.add(rule_name, [ser_verb])
+
+  matches = dep_matcher(doc)
+  for index, (_, [verb_id, aux_id]) in enumerate(matches):
+    aux_core = doc[aux_id]
+    verb_core = doc[verb_id]
+    raw_matches.append((aux_id, aux_id+1, {"sign": "aux_ser", "aux_lemma": aux_core.lemma_, "gid": base_index+index})) 
+    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
+
+  dep_matcher.remove(rule_name)
+
+  refined_matches = clean_merge(raw_matches)
+
+  return mark(doc, refined_matches)
+

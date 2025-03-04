@@ -99,13 +99,6 @@ verb_imperativo_irregulares_sentences = [
   "Por supuesto, id.",
 ]
 
-def test_verb_imperativo_irregulares():
-  sentences = verb_imperativo_irregulares_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_imperativo_irregulares"]})
-  display(sentences, nlp)
-
 verb_imperativo_regulares_sentences = [
   "Me duele la cabeza. Jaime, compra aspirinas, por favor.",
   "Pasen y esperen en la sala, por favor, señores.",
@@ -119,11 +112,11 @@ verb_imperativo_regulares_sentences = [
   "No corráis tanto, niños.",
 ]
 
-def test_verb_imperativo_regulares():
-  sentences = verb_imperativo_regulares_sentences 
+def test_verb_imperativo():
+  sentences = verb_imperativo_regulares_sentences + verb_imperativo_irregulares_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_imperativo_regulares"]})
+  nlp.add_pipe('kg', config={"rules": ["verb_imperativo"]})
   display(sentences, nlp)
 
 
@@ -138,6 +131,15 @@ verb_indicativo_futuro_sentences = [
   "No, pero creo que vendrá más tarde.",
   "No, se lo diré mañana.",
   "No, saldrá dentro de un rato.",
+  "El proyecto será completado por el equipo.",
+  "La casa será construida por los arquitectos.",
+  "El libro será publicado el próximo año.",
+  "Las cartas serán enviadas por correo.",
+  "El problema será resuelto por los expertos.",
+  "La cena será preparada por mi madre.",
+  "Los documentos serán firmados por el director.",
+  "El coche será reparado por el mecánico.",
+  "Las invitaciones serán entregadas personalmente.",
 ]
 
 def test_verb_indicativo_futuro():
@@ -158,6 +160,14 @@ verb_indicativo_futuro_perfecto_sentences = [
   "A esa hora ya habrá llegado.",
   "Para dentro de dos semanas ya habrá mejorado.",
   "Cuando venga Roberto, nosotros nos habremos ido.",
+  "El proyecto habrá sido completado para diciembre.",
+  "La casa habrá sido construida antes de la primavera.",
+  "El libro habrá sido publicado para el próximo mes.",
+  "Las cartas habrán sido enviadas antes del viernes.",
+  "El problema habrá sido resuelto para entonces.",
+  "La cena habrá sido preparada antes de que lleguen los invitados.",
+  "Los documentos habrán sido firmados para mañana.",
+  "El coche habrá sido reparado antes del viaje.",
 ]
 
 
@@ -181,6 +191,22 @@ verb_indicativo_presente_sentences = [
   "Los leones no comen hierba.",
   "¿ Bebe usted alcohol?",
   "¿Qué periódico lees tú?",
+  "El libro es leído por muchos estudiantes.",
+  "La carta es escrita por María.",
+  "El pastel es preparado por mi abuela.",
+  "Las manzanas son vendidas en el mercado.",
+  "El coche es lavado por mi hermano.",
+  "La película es dirigida por un famoso director.",
+  "Los problemas son resueltos por el equipo.",
+  "La casa es decorada por un diseñador profesional.",
+  "Yo me levanto temprano todos los días.",
+  "Tú te lavas las manos antes de comer.",
+  "Él se mira en el espejo.",
+  "Nosotros nos vestimos rápidamente por la mañana.",
+  "Vosotros os divertís en la fiesta.",
+  "Ellos se acuestan a las diez de la noche.",
+  "Ella se peina antes de salir.",
+  "Ustedes se relajan después del trabajo.",
 ]
 
 def test_verb_indicativo_presente():
@@ -203,6 +229,22 @@ verb_indicativo_pretérito_sentences = [
   "¿Quién hizo la cena anoche?",
   "¿Cuánto tiempo estuvo en Colombia, Doña Leo?",
   "El año pasado hicimos un viaje por Brasil.",
+  "El libro fue escrito por un autor famoso.",
+  "La casa fue construida en 1990.",
+  "El pastel fue preparado por mi madre.",
+  "Las cartas fueron enviadas ayer.",
+  "El problema fue resuelto por el equipo.",
+  "La película fue dirigida por un cineasta reconocido.",
+  "Los documentos fueron firmados por el gerente.",
+  "El coche fue reparado por el mecánico.",
+  "Yo me levanté temprano ayer.",
+  "Tú te lavaste las manos antes de comer.",
+  "Él se miró en el espejo antes de salir.",
+  "Nosotros nos vestimos rápidamente por la mañana.",
+  "Vosotros os divertisteis en la fiesta anoche.",
+  "Ellos se acostaron tarde anoche.",
+  "Ella se peinó antes de ir al trabajo.",
+  "Ustedes se relajaron después del trabajo.",
 ]
 
 def test_verb_indicativo_pretérito():
@@ -227,6 +269,22 @@ verb_indicativo_pretérito_imperfecto_sentences = [
   "Vivía en la selva, en Iquitos.",
   "Cuando era pequeño, Ramón iba unos días a la sierra todos los años.",
   "Antes no me gustaba la fruta.",
+  "El libro era leído por muchos estudiantes.",
+  "La casa era construida por un equipo de arquitectos.",
+  "El pastel era preparado por mi abuela cada domingo.",
+  "Las manzanas eran vendidas en el mercado local.",
+  "El coche era lavado por mi hermano todos los sábados.",
+  "La película era dirigida por un famoso director.",
+  "Los problemas eran resueltos por el equipo rápidamente.",
+  "La casa era decorada por un diseñador profesional.",
+  "Yo me levantaba temprano todos los días.",
+  "Tú te lavabas las manos antes de comer.",
+  "Él se miraba en el espejo antes de salir.",
+  "Nosotros nos vestíamos rápidamente por la mañana.",
+  "Vosotros os divertíais en las fiestas.",
+  "Ellos se acostaban tarde los fines de semana.",
+  "Ella se peinaba cuidadosamente antes de ir al trabajo.",
+  "Ustedes se relajaban después del trabajo.",
 ]
 
 
@@ -248,6 +306,17 @@ verb_indicativo_pretérito_perfecto_sentences = [
   "Eugenio, ¿has traído el coche?",
   "Que dos hombres han atracado una joyería.",
   "La oposición ha pedido la dimisión del alcalde.",
+  "El libro ha sido leído por muchos estudiantes.",
+  "La casa ha sido vendida por sus dueños.",
+  "Las cartas han sido enviadas por correo.",
+  "El proyecto ha sido aprobado por el comité.",
+  "La comida ha sido preparada por el chef.",
+  "Yo me he levantado temprano hoy.",
+  "Tú te has duchado antes de salir.",
+  "Él se ha vestido rápidamente.",
+  "Nosotros nos hemos reunido con amigos.",
+  "Vosotros os habéis quejado del ruido.",
+  "Ellos se han acostado tarde.",
 ]
 
 def test_verb_indicativo_pretérito_perfecto():
@@ -267,6 +336,17 @@ verb_indicativo_pretérito_pluscuamperfecto_sentences = [
   "Luisa ya había venido cuando la llamé.",
   "Cuando llegamos la película había empezado.",
   "Cuando llamé, Elisa ya se había acostado.",
+  "El libro había sido leído por muchos estudiantes antes de que lo recomendaran.",
+  "La casa había sido vendida por sus dueños antes de que la visitáramos.",
+  "Las cartas habían sido enviadas por correo antes de que llegara la noticia.",
+  "El proyecto había sido aprobado por el comité antes de que presentaran las quejas.",
+  "La comida había sido preparada por el chef antes de que llegaran los invitados.",
+  "Yo me había levantado temprano antes de que sonara el despertador.",
+  "Tú te habías duchado antes de que llegaran los invitados.",
+  "Él se había vestido rápidamente antes de que comenzara la reunión.",
+  "Nosotros nos habíamos reunido con amigos antes de que empezara a llover.",
+  "Vosotros os habíais quejado del ruido antes de que lo solucionaran.",
+  "Ellos se habían acostado tarde antes de que saliera el sol.",
 ]
 
 def test_verb_indicativo_pretérito_pluscuamperfecto():
@@ -290,13 +370,6 @@ verb_infinitivo_sentences = [
 ]
 
 
-def test_verb_infinitivo():
-  sentences = verb_infinitivo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_infinitivo"]})
-  display(sentences, nlp)
-
 verb_oraciones_impersonales_sentences = [
   "¿Por qué hace tanto frío?",
   "No salí porque era aún un poco pronto.",
@@ -310,13 +383,6 @@ verb_oraciones_impersonales_sentences = [
   "Hoy hay muchas nubes. Va a llover.",
   "Hay que dormir bien.",
 ]
-
-def test_verb_oraciones_impersonales():
-  sentences = verb_oraciones_impersonales_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_oraciones_impersonales"]})
-  display(sentences, nlp)
 
 
 verb_participio_sentences = [
@@ -346,6 +412,33 @@ verb_reflexivos_sentences = [
   "Me duermo en clase de Filosofía.",
   "¿Te encuentras bien?",
   "Siempre me dejo las llaves en casa.",
+  "Yo me levanto temprano.",
+  "Tú te lavas las manos.",
+  "Él se peina antes de salir.",
+  "Yo me levantaba temprano todos los días.",
+  "Tú te lavabas las manos antes de comer.",
+  "Él se peinaba antes de salir.",
+  "Yo me levanté temprano ayer.",
+  "Tú te lavaste las manos antes de comer.",
+  "Él se peinó antes de salir.",
+  "Yo me levantaré temprano mañana.",
+  "Tú te lavarás las manos antes de comer.",
+  "Él se peinará antes de salir.",
+  "Yo me levantaría temprano si tuviera que trabajar.",
+  "Tú te lavarías las manos si te lo pidieran.",
+  "Él se peinaría antes de salir si tuviera tiempo.",
+  "Yo me he levantado temprano hoy.",
+  "Tú te has lavado las manos antes de comer.",
+  "Él se ha peinado antes de salir.",
+  "Yo me había levantado temprano antes de que llegaras.",
+  "Tú te habías lavado las manos antes de comer.",
+  "Él se había peinado antes de salir.",
+  "Es importante que yo me levante temprano.",
+  "Es necesario que tú te laves las manos.",
+  "Es bueno que él se peine antes de salir.",
+  "Si yo me levantara temprano, llegaría a tiempo.",
+  "Si tú te lavaras las manos, estarías más limpio.",
+  "Si él se peinara antes de salir, se vería mejor.",
 ]
 
 
@@ -446,6 +539,24 @@ verb_voz_pasiva_sentences = [
   "Se mezcla el amarillo con el rojo para conseguir el naranja.",
   "Actualmente, muchos ordenadores se fabrican en China.",
   "La mayoría del petróleo venezolano se exporta a Estados Unidos.",
+  "El libro es leído por María.",
+  "Las cartas son escritas por el profesor.",
+  "El libro era leído por María.",
+  "Las cartas eran escritas por el profesor.",
+  "El libro fue leído por María.",
+  "Las cartas fueron escritas por el profesor.",
+  "El libro será leído por María.",
+  "Las cartas serán escritas por el profesor.",
+  "El libro sería leído por María.",
+  "Las cartas serían escritas por el profesor.",
+  "El libro ha sido leído por María.",
+  "Las cartas han sido escritas por el profesor.",
+  "El libro había sido leído por María.",
+  "Las cartas habían sido escritas por el profesor.",
+  "Es posible que el libro sea leído por María.",
+  "Es probable que las cartas sean escritas por el profesor.",
+  "Si el libro fuera leído por María, sería interesante.",
+  "Si las cartas fueran escritas por el profesor, serían más formales.",
 ]
 
 def test_verb_voz_pasiva():

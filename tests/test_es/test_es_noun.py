@@ -5,7 +5,7 @@ from tests.lib import *
 lang = "es"
 pkg = PKG_INDICES[lang]
 
-noun_comparativa_sentences = [
+noun_comparativo_sentences = [
   "Hay menos de veinticinco personas.",
   "Necesitamos más comida.",
   "Compra menos naranjas.",
@@ -18,56 +18,14 @@ noun_comparativa_sentences = [
   "Tienes que trabajar menos horas.",
 ]
 
-def test_noun_comparativa():
-  sentences = noun_comparativa_sentences 
+def test_noun_comparativo():
+  sentences = noun_comparativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_comparativa"]})
+  nlp.add_pipe('kg', config={"rules": ["noun_comparativo"]})
   display(sentences, nlp)
 
-noun_géneros_sentences = [
-  "El bebé es una niña.",
-  "Juan es una buena persona.",
-  "Rodolfo Valentino fue una estrella del cine.",
-  "¿Cómo se llama la víctima?",
-  "El personaje principal de la novela es una mujer.",
-  "¿Es un gorila macho o hembra?",
-  "Hay una serpiente en aquel árbol.",
-  "Una jirafa macho es más alta que una jirafa hembra.",
-  "Un caracol.",
-  "La mariposa es un insecto.",
-]
-
-
-def test_noun_géneros():
-  sentences = noun_géneros_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_géneros"]})
-  display(sentences, nlp)
-
-noun_números_sentences = [
-  "Este río está lleno de peces.",
-  "Me han regalado dos pares de medias.",
-  "El lunes es fiesta.",
-  "Las tijeras no cortan.",
-  "Necesito unos pantalones.",
-  "No trabajo nunca los lunes.",
-  "Me he comprado un par de pantalones.",
-  "El virus de la gripe es muy potente.",
-  "Se me ha roto el paraguas.",
-  "Se me han roto los vaqueros.",
-]
-
-def test_noun_números():
-  sentences = noun_números_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_números"]})
-  display(sentences, nlp)
-
-
-noun_propios_sentences = [
+noun_propio_sentences = [
   "La capital de la provincia de Buenos Aires es La Plata.",
   "Martín llevó a su perro Toby al veterinario.",
   "La próxima reunión de la Organización de las Naciones Unidas tendrá ese tema como eje central.",
@@ -79,14 +37,14 @@ noun_propios_sentences = [
   "Tienes que ver lo bonito que es el nieto de María del Carmen.",
 ]
 
-def test_noun_propios():
-  sentences = noun_propios_sentences 
+def test_noun_propio():
+  sentences = noun_propio_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["noun_propios"]})
+  nlp.add_pipe('kg', config={"rules": ["noun_propio"]})
   display(sentences, nlp)
 
-_sentences = noun_comparativa_sentences + noun_géneros_sentences + noun_números_sentences + noun_propios_sentences
+_sentences = noun_comparativo_sentences + noun_propio_sentences
 
 def test_noun():
   sentences = _sentences

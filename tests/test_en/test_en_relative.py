@@ -43,12 +43,12 @@ relative_non_restrictive_clause_sentences = [
   "Then it's slowed by a series of dams that supply electricity for much of Zambia and Zimbabwe.",
   "And it isn't just the routes that are interesting to geographers, but what moves along those routes and who can access those goods, even the vehicles that do the moving.",
   "Geographers look to find connections between the physical processes at work on Earth's surface, and under the surface too, and how people use and interact with the Earth.",
+  "If less snow accumulates, glaciers lose more ice on their bottom edge than they can replace at the top.",
 ]
 
-
 def test_relative_clause_rules():
-  sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
-  #sentences = more
+  #sentences = relative_restrictive_clause_sentences + relative_non_restrictive_clause_sentences
+  sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["relative_clause"]})

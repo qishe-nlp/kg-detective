@@ -16,6 +16,7 @@ pron_ablativos_sentences = [
   "Todos quieren que me vaya, hasta tú, Pedro.",
   "¿Un paquete para mí?",
   "Quiero bailar contigo.",
+  "El ejercicio de ese derecho llevaba consigo deberes y responsabilidades especiales.",
 ]
 
 def test_pron_ablativos():
@@ -23,68 +24,6 @@ def test_pron_ablativos():
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["pron_ablativos"]})
-  display(sentences, nlp)
-
-pron_demostrativo_sentences = [
-  "¿Es esto suyo? Estaba en el suelo.",
-  "¡Eso no es verdad!",
-  "Léeme esto, por favor.",
-  "No sé por qué dices eso.",
-  "Lleva esto a tu madre.",
-  "En esta habitación hay dos camas.",
-  "Mira, te presento, esta es mi hermana.",
-  "¿Cómo son aquellas negras?",
-  "Sí, este rubio y aquel alto, al lado del árbol.",
-  "Escucha esto: 'Han detenido a dos personas de una tienda...'",
-]
-
-
-def test_pron_demostrativo():
-  sentences = pron_demostrativo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_demostrativo"]})
-  display(sentences, nlp)
-
-pron_indefinido_sentences = [
-  "Todas tienen alas muy bonitas.",
-  "Están todos en el jardín.",
-  "Se la han comido toda.",
-  "Es igual. Me gustan todos.",
-  "Se la han bebido toda.",
-  "No, enséñeme otros, por favor.",
-  "No he encontrado mis llaves, pero Juan tiene otras.",
-  "¿Cuándo hay otro?",
-  "Coge uno si quieres.",
-  "Préstame una.",
-]
-
-def test_pron_indefinido():
-  sentences = pron_indefinido_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_indefinido"]})
-  display(sentences, nlp)
-
-
-pron_interrogativo_sentences = [
-  "¿Quién es tu profesor?",
-  "¿Quiénes son las amigas de Ana?",
-  "¿Qué llevas en la bolsa?",
-  "¿Quién tiene mi diccionario?",
-  "¿Qué te dijo Sofía?",
-  "¿Cuál de tus hermanos trabaja en Aerolíneas?",
-  "¿Cuál es tu comida preferida?",
-  "¿Qué deportes practicas?",
-  "¿En qué ciudad de México vive María?",
-  "¿Con qué líneas aéreas va a viajar Sol?",
-]
-
-def test_pron_interrogativo():
-  sentences = pron_interrogativo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_interrogativo"]})
   display(sentences, nlp)
 
 pron_personales_de_objeto_directo_sentences = [
@@ -101,15 +40,23 @@ pron_personales_de_objeto_directo_sentences = [
   "Sí, me conocen mucho.",
   "Sí, los quiero.",
   "No, no la quiero.",
+	"Los compré en ese supermercado.",
+	"¿La has visto últimamente?",
+	"Mis padres las echaron mucho de menos durante sus vacaciones.",
+	"Os llamarán cuando esté todo listo.",
+	"Los ordené alfabéticamente.",
+	"Para el casamiento, la maquilló su hermana.",
+	"Muchas gracias por el consejo, lo tendré en cuenta.",
+	"Lo mandé por correo.",
+	"Me lo explicó muy bien el profesor.",
+	"Os tendré en cuenta para la próxima vez.",
+	"Los fui a buscar en auto porque se largó a llover.",
+	"Esta vez, lo voy a anotar así no me olvido de nada.",
+	"Cuando sepa algo, os haré saber.",
+	"Las tendré en cuenta para la próxima ocasión.",
+	"Los llevé a la casa de Juanito.",
+	"Nunca me lo avisaron.",
 ]
-
-
-def test_pron_personales_de_objeto_directo():
-  sentences = pron_personales_de_objeto_directo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_personales_de_objeto_directo"]})
-  display(sentences, nlp)
 
 pron_personales_de_objeto_indirecto_sentences = [
   "¿Qué te han dicho?",
@@ -132,35 +79,31 @@ pron_personales_de_objeto_indirecto_sentences = [
   "Le han preguntado por su madre.",
   "¿Qué les han regalado a tus hijas?",
   "Les han regalado dos muñecas.",
+	"Nos avisaron que se había desocupado una habitación.",
+	"Te llamé varias veces, pero no estabas.",
+	"Me invitaron varias veces a participar, pero nunca puedo.",
+	"Si no te molesta, te voy a dar un consejo.",
+	"Le avisé que no podremos ir hasta mañana.",
+	"En el hotel nos dieron un desayuno delicioso.",
+	"Os sugiero que partan antes de que empiece a oscurecer.",
+	"Les conté a mis padres que nos mudaremos el año que viene.",
+	"Me han contado lo sucedido.",
+	"Les regalé un chocolate.",
+	"En esta ocasión, me ha tocado a mí hablar delante de todos.",
+	"Quiero que te vaya bien.",
+	"A los niños les encanta bailar.",
+	"No os preocupes porque hay lugar para todos.",
+	"Les cantaré una canción.",
+	"No me interesa nada de esto.",
+	"Quería que les compara un refresco.",
 ]
 
-def test_pron_personales_de_objeto_indirecto():
+def test_pron_personales_de_objeto():
+  sentences = pron_personales_de_objeto_directo_sentences 
   sentences = pron_personales_de_objeto_indirecto_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_personales_de_objeto_indirecto"]})
-  display(sentences, nlp)
-
-pron_personales_de_sujeto_sentences = [
-  "¿De dónde sois Adolfo y tú ?",
-  "Nosotros somos de Uruguay.",
-  "Perdone, ¿de dónde son ustedes?",
-  "Nosotros somos de Arequipa.",
-  "Nosotros estudiamos Medicina.",
-  "Yo quiero un café, y vosotros ¿qué queréis?",
-  "Ellas son amigas de Blanca.",
-  "Yo trabajo todo el día y vosotras no hacéis nada.",
-  "¿Quiere usted algo, Sr. Hernández?",
-  "Él está en su habitación.",
-  "Yo. Lo necesito unos minutos.",
-  "Tú eres la ganadora.",
-]
-
-def test_pron_personales_de_sujeto():
-  sentences = pron_personales_de_sujeto_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_personales_de_sujeto"]})
+  nlp.add_pipe('kg', config={"rules": ["pron_personales_de_objeto"]})
   display(sentences, nlp)
 
 pron_posesivo_sentences = [
@@ -175,6 +118,10 @@ pron_posesivo_sentences = [
   "No, el suyo es más grande.",
   "No, la nuestra es rubia.",
   "No, las nuestras las tiene Ángel.",
+  "No, el nuestro es más grande.",
+  "El suyo es azul.",
+  "Las mías son más pequeñas.",
+  "No, el tuyo está más atrás.",
 ]
 
 def test_pron_posesivo():
@@ -195,37 +142,8 @@ pron_reflexivo_sentences = [
   "¿Cuándo te afeitas?",
 ]
 
-def test_pron_reflexivo():
-  sentences = pron_reflexivo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_reflexivo"]})
-  display(sentences, nlp)
-
-pron_relativo_sentences = [
-  "Rocío es la dueña de la casa donde vive Matías.",
-  "Son los domingos cuando más gente viene.",
-  "Esta es la dirección adonde tienes que mandar el paquete.",
-  "Haz el ejercicio como lo hace la profesora.",
-  "Normalmente es a las dos cuando comemos.",
-  "Fue en Colombia donde conocí a mi marido.",
-  "¿Cuál es el pueblo adonde vais en verano?",
-  "La película acabó como yo pensaba. Se casan.",
-  "Este es el hotel donde nos alojamos el año pasado.",
-  "Recuerdo una época cuando no había muchos coches en Madrid.",
-]
-
-def test_pron_relativo():
-  sentences = pron_relativo_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_relativo"]})
-  display(sentences, nlp)
-
-
-_sentences = pron_ablativos_sentences + pron_demostrativo_sentences + pron_indefinido_sentences + pron_interrogativo_sentences
-_sentences = _sentences + pron_personales_de_objeto_directo_sentences + pron_personales_de_objeto_indirecto_sentences + pron_personales_de_sujeto_sentences
-_sentences = _sentences + pron_posesivo_sentences + pron_reflexivo_sentences + pron_relativo_sentences
+_sentences = pron_ablativos_sentences + pron_personales_de_objeto_directo_sentences + pron_personales_de_objeto_indirecto_sentences 
+_sentences = _sentences + pron_posesivo_sentences + pron_reflexivo_sentences
 
 
 def test_pron():

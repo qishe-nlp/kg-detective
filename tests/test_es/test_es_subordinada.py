@@ -5,7 +5,7 @@ from tests.lib import *
 lang = "es"
 pkg = PKG_INDICES[lang]
 
-subordinada_substantiva_sentences = [
+subordinada_substantivo_sentences = [
   "Dicen que son amigos de Andrés.",
   "Estoy convencido de que no me conocen.",
   "Saben que estoy casado.",
@@ -16,16 +16,18 @@ subordinada_substantiva_sentences = [
   "Creen que somos españoles.",
   "Marga se olvidó de que venía su familia.",
   "Le convencieron de que tenían razón.",
+  "Conviene que aproveches el tiempo.",
+  "Me gusta que mi padre grabe mis entrenamientos y mis partidos.",
 ]
 
-def test_subordinada_substantiva():
-  sentences = subordinada_substantiva_sentences 
+def test_subordinada_substantivo():
+  sentences = subordinada_substantivo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_substantiva"]})
+  nlp.add_pipe('kg', config={"rules": ["subordinada_substantivo"]})
   display(sentences, nlp)
 
-subordinada_adjetiva_sentences = [
+subordinada_relativo_sentences = [
   "Arnaldo, a quien te presenté ayer, vive con Tita.",
   "Mi abuela, que nació a principios del siglo xx, tiene más de cien años.",
   "No encuentro la corbata que me regalaste.",
@@ -39,11 +41,11 @@ subordinada_adjetiva_sentences = [
 ]
 
 
-def test_subordinada_adjetiva():
-  sentences = subordinada_adjetiva_sentences 
+def test_subordinada_relativo():
+  sentences = subordinada_relativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_adjetiva"]})
+  nlp.add_pipe('kg', config={"rules": ["subordinada_relativo"]})
   display(sentences, nlp)
 
 subordinada_temporal_sentences = [
@@ -59,13 +61,6 @@ subordinada_temporal_sentences = [
   "Siempre que voy a la playa, llueve.",
 ]
 
-def test_subordinada_temporal():
-  sentences = subordinada_temporal_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_temporal"]})
-  display(sentences, nlp)
-
 
 subordinada_locativa_sentences = [
   "Podemos quedar donde te apetezca.",
@@ -79,13 +74,6 @@ subordinada_locativa_sentences = [
   "Compro la fruta donde la compra Belén.",
   "Aparca donde encuentres sitio.",
 ]
-
-def test_subordinada_locativa():
-  sentences = subordinada_locativa_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_locativa"]})
-  display(sentences, nlp)
 
 subordinada_modal_sentences = [
   "Hemos repartido la herencia como nuestro padre quería.",
@@ -101,13 +89,6 @@ subordinada_modal_sentences = [
 ]
 
 
-def test_subordinada_modal():
-  sentences = subordinada_modal_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_modal"]})
-  display(sentences, nlp)
-
 subordinada_comparativa_sentences = [
   "Vive tan lejos del centro como yo.",
   "No es tan complicado como parece.",
@@ -120,13 +101,6 @@ subordinada_comparativa_sentences = [
   "Ella se dedica más al cine que al estudio.",
   "Cuanto menos hablas, mejor para ti.",
 ]
-
-def test_subordinada_comparativa():
-  sentences = subordinada_comparativa_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_comparativa"]})
-  display(sentences, nlp)
 
 subordinada_causal_sentences = [
   "Es que le han llamado.",
@@ -141,13 +115,6 @@ subordinada_causal_sentences = [
   "Porque la tengo averiada.",
 ]
 
-def test_subordinada_causal():
-  sentences = subordinada_causal_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_causal"]})
-  display(sentences, nlp)
-
 subordinada_consecutiva_sentences = [
   "Hacía mucho calor, por eso abrí todas las ventanas.",
   "Esta noche hay partido, así que no podemos quedar con Pedro.",
@@ -160,14 +127,6 @@ subordinada_consecutiva_sentences = [
   "Había tanta gente que no pudimos ver nada.",
   "Somos tan pocos en clase que practicamos muchísimo.",
 ]
-
-def test_subordinada_consecutiva():
-  sentences = subordinada_consecutiva_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_consecutiva"]})
-  display(sentences, nlp)
-
 
 subordinada_final_sentences = [
   "Tienes que venir a casa para que te conozcan mis padres.",
@@ -182,13 +141,6 @@ subordinada_final_sentences = [
   "Vinieron a Madrid para ver la final del campeonato.",
 ]
 
-def test_subordinada_final():
-  sentences = subordinada_final_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_final"]})
-  display(sentences, nlp)
-
 subordinada_concesiva_sentences = [
   "Aunque me llame Roberto, no le contestaré.",
   "A pesar de trabajar mucho, ganamos poco ahora.",
@@ -201,13 +153,6 @@ subordinada_concesiva_sentences = [
   "Cristina siempre se cansa por poco que ande.",
   "Enrique nunca te deja el coche, por mucho que se lo pidas.",
 ]
-
-def test_subordinada_concesiva():
-  sentences = subordinada_concesiva_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_concesiva"]})
-  display(sentences, nlp)
 
 subordinada_condicional_sentences = [
   "¿Qué pasa si quemas un plástico?",
@@ -222,15 +167,9 @@ subordinada_condicional_sentences = [
   "Si cogieran un taxi, llegarían a tiempo al aeropuerto.",
 ]
 
-def test_subordinada_condicional():
-  sentences = subordinada_condicional_sentences 
+_sentences = subordinada_substantivo_sentences + subordinada_relativo_sentences
 
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["subordinada_condicional"]})
-  display(sentences, nlp)
-
-
-_sentences = subordinada_substantiva_sentences + subordinada_adjetiva_sentences + subordinada_temporal_sentences + subordinada_locativa_sentences
+_sentences = _sentences + subordinada_temporal_sentences + subordinada_locativa_sentences
 _sentences = _sentences + subordinada_modal_sentences + subordinada_comparativa_sentences + subordinada_causal_sentences + subordinada_consecutiva_sentences
 _sentences = _sentences + subordinada_final_sentences + subordinada_concesiva_sentences + subordinada_condicional_sentences
 

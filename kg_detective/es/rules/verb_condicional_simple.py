@@ -1,5 +1,5 @@
-from spacy.matcher import Matcher, PhraseMatcher, DependencyMatcher
-from kg_detective.lib import merge
+from spacy.matcher import Matcher, DependencyMatcher
+from kg_detective.lib import clean_merge, mark
 
 def search_out(doc, nlp):
   """Search for  
@@ -11,22 +11,13 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-  result = []
 
-  token_matcher = Matcher(nlp.vocab)
   patterns = [
     [{"POS": {"IN": ["VERB", "AUX"]}, "MORPH": {"IS_SUPERSET": ["Mood=Cnd", "VerbForm=Fin"]}}],
   ]
-  token_matcher.add("verb_condicional_simple", patterns)
 
-  matches = token_matcher(doc)
-  token_ranges = [(start, end) for _, start, end in matches]
+  raw_matches = []
+  rule_name = "verb_condicional_simple"
 
-  refined_matches = merge(token_ranges)
-  for start, end in refined_matches:
-    span = doc[start:end].text
-    result.append({"text": span})
-
-
-  return result
+  return []
    

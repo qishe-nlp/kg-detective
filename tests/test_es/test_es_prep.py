@@ -15,6 +15,9 @@ prep_con_adjetivo_sentences = [
   "El agua es algo esencial para la vida.",
   "Juana no está satisfecha con el resultado del examen.",
   "Iré acompañado de unos amigos.",
+  "La vuelta a la calma ha ido acompañada de un refuerzo de la censura.",
+  "Llegué exhausta pero contenta a Ciudad Guatemala.",
+  "Mi hija va loca por Halloween Juegos.",
 ]
 
 def test_prep_con_adjetivo():

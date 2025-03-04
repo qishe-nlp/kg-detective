@@ -11,7 +11,7 @@ def search_out(doc, nlp):
   Returns:
     list: list of spacy.tokens.Span
   """
-   
+
   raw_matches = []
 
   rule_name = "verb_imperativo"

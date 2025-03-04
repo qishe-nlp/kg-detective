@@ -5,27 +5,78 @@ from tests.lib import *
 lang = "es"
 pkg = PKG_INDICES[lang]
 
-adj_comparativa_sentences = [
+adj_comparativo_sentences = [
   "Cristina es más simpática que Marina.",
-  "Lucas es el más simpático de sus amigos.",
-  "Julia es la chica más alegre que conozco.",
+  "Juan es más alto que Pedro.",
+  "Este libro es menos interesante que aquel.",
+  "Este vino es mejor que aquel.", 
+  "Mi hermano es mayor que yo.",
   "Marieta es más vieja que parece.",
-  "Para mí, el café de Colombia es el mejor del mundo.",
-  "Santiago y Pedro son los peores estudiantes de la clase.",
-  "Las ruinas de Machu Picchu son las más impresionantes que he visto.",
-  "Mis hermanas son igual de altas.",
-  "Ana es tan alta como su madre.",
-  "Ana es igual de estudiosa que Sofía.",
 ]
 
-def test_adj_comparativa():
-  sentences = adj_comparativa_sentences 
+def test_adj_comparativo():
+  sentences = adj_comparativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_comparativa"]})
+  nlp.add_pipe('kg', config={"rules": ["adj_comparativo"]})
   display(sentences, nlp)
 
-adj_demostrativos_sentences = [
+adj_igualdad_comparativo_sentences = [
+  "Ella es tan inteligente como su hermana.",
+  "Ana es tan alta como su madre.",
+  "Ana es igual de estudiosa que Sofía.",
+  "Mis hermanas son igual de altas.",
+  "Este coche es igual de viejo que ese.",
+  "La producción consistente de baño de impregnación es igual de importante que el tratamiento térmico del tejido.",
+  "La familia de la niña es igual de pobre que ellos.",
+  "Los demás vehículos son iguales de lujosos.",
+  "Todos los políticos son iguales de corruptos.",
+]
+
+def test_adj_igualdad_comparativo():
+  sentences = adj_igualdad_comparativo_sentences 
+
+  nlp = spacy.load(pkg)
+  nlp.add_pipe('kg', config={"rules": ["adj_igualdad_comparativo"]})
+  display(sentences, nlp)
+
+
+adj_superlativo_sentences = [
+  "Ella es la más inteligente de la clase.",
+  "Este es el menos caro de todos.",
+  "Lucas es el más simpático de sus amigos.",
+  "Julia es la chica más alegre que conozco.",
+  "Santiago y Pedro son los peores estudiantes de la clase.",
+  "Rosa es la mejor jugadora de su equipo.",
+  "Este es el cuadro más perfecto que alguien haya hecho.",
+  "Esta es la carretera más lenta de todo el estado.",
+  "Él es el mejor director de cine de todos los tiempos.",
+  "La escalada es uno de los deportes más peligrosos.",
+  "Las ruinas de Machu Picchu son las más impresionantes que he visto.",
+  "Para mí, el café de Colombia es el mejor del mundo.",
+]
+
+def test_adj_superlativo():
+  sentences = adj_superlativo_sentences 
+
+  nlp = spacy.load(pkg)
+  nlp.add_pipe('kg', config={"rules": ["adj_superlativo"]})
+  display(sentences, nlp)
+
+
+adj_absoluto_superlativo_sentences =[
+  "Este pastel es riquísimo.",
+  "La película fue interesantísima.",
+]
+
+def test_adj_absoluto_superlativo():
+  sentences = adj_absoluto_superlativo_sentences 
+
+  nlp = spacy.load(pkg)
+  nlp.add_pipe('kg', config={"rules": ["adj_absoluto_superlativo"]})
+  display(sentences, nlp)
+
+adj_demostrativo_sentences = [
   "Este verano vamos a ir a Ibiza.",
   "Son muy caros estos zapatos. Vamos a ver otros.",
   "¿Qué vais a hacer este domingo?",
@@ -38,58 +89,14 @@ adj_demostrativos_sentences = [
   "Fíjate en aquel chico que está al lado de la puerta, es muy guapo.",
 ]
 
-
-def test_adj_demostrativos():
-  sentences = adj_demostrativos_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_demostrativos"]})
-  display(sentences, nlp)
-
-adj_género_y_número_sentences = [
-  "Alberto tiene la nariz grande.",
-  "Me gustan los coches veloces.",
-  "Luisa es una persona encantadora.",
-  "Luisa y su hermano son rubios.",
-  "Estoy cansada.",
-  "Ha sido un día agotador.",
-  "Rosa y Luis están divorciados.",
-  "Me he comprado una falda marrón.",
-  "Necesito una talla mayor.",
-  "¿Dónde está mi camisa gris?",
-  "Compra esa otra cámara.",
-  "Es mejor.",
-]
-
-def test_adj_género_y_número():
-  sentences = adj_género_y_número_sentences 
+def test_adj_demostrativo():
+  sentences = adj_demostrativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_género_y_número"]})
+  nlp.add_pipe('kg', config={"rules": ["adj_demostrativo"]})
   display(sentences, nlp)
 
-
-adj_indefinidos_sentences = [
-  "Conozco a toda tu familia, Pedro.",
-  "Todas sus maletas están ya en el coche, Don Manuel.",
-  "Lucas gasta todo el dinero en novelas.",
-  "¿Dónde están todos los alumnos, Srta.",
-  "Todos nuestros amigos nos quieren mucho.",
-  "Con todas mis amigas.",
-  "Hoy no puedo, pero podemos ir otro día.",
-  "Ponte otros zapatos.",
-  "Son demasiadas.",
-  "Tenemos muy poco tiempo.",
-]
-
-def test_adj_indefinidos():
-  sentences = adj_indefinidos_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_indefinidos"]})
-  display(sentences, nlp)
-
-adj_posesivos_sentences = [
+adj_posesivo_sentences = [
   "¿Cuál es tu color preferido, Berta?",
   "Mi hermano y yo jugamos mucho al tenis.",
   "Es nuestro deporte preferido.",
@@ -106,16 +113,15 @@ adj_posesivos_sentences = [
 ]
 
 
-def test_adj_posesivos():
-  sentences = adj_posesivos_sentences 
+def test_adj_posesivo():
+  sentences = adj_posesivo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["adj_posesivos"]})
+  nlp.add_pipe('kg', config={"rules": ["adj_posesivo"]})
   display(sentences, nlp)
 
-_sentences = adj_comparativa_sentences + adj_demostrativos_sentences + adj_género_y_número_sentences + adj_indefinidos_sentences
-_sentences = _sentences + adj_posesivos_sentences
-# + xxxx_sentences
+_sentences = adj_comparativo_sentences + adj_igualdad_comparativo_sentences + adj_superlativo_sentences + adj_absoluto_superlativo_sentences
+_sentences = _sentences + adj_demostrativo_sentences + adj_posesivo_sentences
 
 
 def test_adj():
@@ -123,5 +129,4 @@ def test_adj():
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"labels": ["ADJ"]})
   display(sentences, nlp)
-
 
