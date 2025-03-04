@@ -5,7 +5,7 @@ from tests.lib import *
 lang = "es"
 pkg = PKG_INDICES[lang]
 
-pron_ablativos_sentences = [
+pron_ablativo_sentences = [
   "Nuestros hijos vienen con nosotros a todas partes.",
   "Tengo algo para ellas.",
   "Según tú y tus amigos, yo tengo la culpa.",
@@ -19,11 +19,11 @@ pron_ablativos_sentences = [
   "El ejercicio de ese derecho llevaba consigo deberes y responsabilidades especiales.",
 ]
 
-def test_pron_ablativos():
-  sentences = pron_ablativos_sentences 
+def test_pron_ablativo():
+  sentences = pron_ablativo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["pron_ablativos"]})
+  nlp.add_pipe('kg', config={"rules": ["pron_ablativo"]})
   display(sentences, nlp)
 
 pron_personales_de_objeto_directo_sentences = [
@@ -142,7 +142,7 @@ pron_reflexivo_sentences = [
   "¿Cuándo te afeitas?",
 ]
 
-_sentences = pron_ablativos_sentences + pron_personales_de_objeto_directo_sentences + pron_personales_de_objeto_indirecto_sentences 
+_sentences = pron_ablativo_sentences + pron_personales_de_objeto_directo_sentences + pron_personales_de_objeto_indirecto_sentences 
 _sentences = _sentences + pron_posesivo_sentences + pron_reflexivo_sentences
 
 

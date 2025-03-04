@@ -405,7 +405,7 @@ def test_verb_participio():
   nlp.add_pipe('kg', config={"rules": ["verb_participio"]})
   display(sentences, nlp)
 
-verb_reflexivos_sentences = [
+verb_reflexivo_sentences = [
   "Me llamo Andrés.",
   "Tania siempre se despide con un beso.",
   "¿A quién te pareces, a tu padre o a tu madre?",
@@ -442,11 +442,11 @@ verb_reflexivos_sentences = [
 ]
 
 
-def test_verb_reflexivos():
-  sentences = verb_reflexivos_sentences 
+def test_verb_reflexivo():
+  sentences = verb_reflexivo_sentences 
 
   nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_reflexivos"]})
+  nlp.add_pipe('kg', config={"rules": ["verb_reflexivo"]})
   display(sentences, nlp)
 
 verb_subjuntivo_presente_sentences = [
@@ -571,7 +571,7 @@ _sentences = verb_condicional_compuesto_sentences + verb_condicional_simple_sent
 _sentences = _sentences + verb_imperativo_irregulares_sentences + verb_imperativo_regulares_sentences + verb_indicativo_futuro_sentences
 _sentences = _sentences + verb_indicativo_futuro_perfecto_sentences + verb_indicativo_presente_sentences + verb_indicativo_pretérito_sentences + verb_indicativo_pretérito_imperfecto_sentences
 _sentences = _sentences + verb_indicativo_pretérito_perfecto_sentences + verb_indicativo_pretérito_pluscuamperfecto_sentences + verb_infinitivo_sentences + verb_oraciones_impersonales_sentences
-_sentences = _sentences + verb_participio_sentences + verb_reflexivos_sentences + verb_subjuntivo_presente_sentences + verb_subjuntivo_pretérito_imperfecto_sentences
+_sentences = _sentences + verb_participio_sentences + verb_reflexivo_sentences + verb_subjuntivo_presente_sentences + verb_subjuntivo_pretérito_imperfecto_sentences
 _sentences = _sentences + verb_subjuntivo_pretérito_perfecto_sentences + verb_subjuntivo_pretérito_pluscuamperfecto_sentences + verb_voz_pasiva_sentences
  
 

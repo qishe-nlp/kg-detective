@@ -10,9 +10,9 @@ NOUN_RULES = ["noun_propio", "noun_comparativo"]
 
 PREP_RULES = ["prep_con_verbo", "prep_con_adjetivo"]
 
-PRON_RULES = ["pron_ablativos", "pron_personales_de_objeto", "pron_posesivo"]
+PRON_RULES = ["pron_ablativo", "pron_personales_de_objeto", "pron_posesivo"]
 
-VERB_RULES = ["verb_indicativo_presente", "verb_indicativo_pretérito", "verb_indicativo_pretérito_perfecto", "verb_indicativo_pretérito_imperfecto", "verb_indicativo_pretérito_pluscuamperfecto", "verb_indicativo_futuro", "verb_indicativo_futuro_perfecto", "verb_condicional_simple", "verb_condicional_compuesto", "verb_subjuntivo_presente", "verb_subjuntivo_pretérito_perfecto", "verb_subjuntivo_pretérito_imperfecto", "verb_subjuntivo_pretérito_pluscuamperfecto", "verb_imperativo", "verb_imperativo_con_pron", "verb_voz_pasiva", "verb_participio", "verb_gerundio", "verb_reflexivos"]
+VERB_RULES = ["verb_indicativo_presente", "verb_indicativo_pretérito", "verb_indicativo_pretérito_perfecto", "verb_indicativo_pretérito_imperfecto", "verb_indicativo_pretérito_pluscuamperfecto", "verb_indicativo_futuro", "verb_indicativo_futuro_perfecto", "verb_condicional_simple", "verb_condicional_compuesto", "verb_subjuntivo_presente", "verb_subjuntivo_pretérito_perfecto", "verb_subjuntivo_pretérito_imperfecto", "verb_subjuntivo_pretérito_pluscuamperfecto", "verb_imperativo", "verb_imperativo_con_pron", "verb_voz_pasiva", "verb_participio", "verb_gerundio", "verb_reflexivo"]
 
 SEN_LABELS = ["SUBORDINADA"]
 

@@ -14,7 +14,7 @@ def search_out(doc, nlp):
 
   raw_matches = []
 
-  rule_name = "verb_reflexivos"
+  rule_name = "verb_reflexivo"
 
   dep_matcher = DependencyMatcher(nlp.vocab)
 

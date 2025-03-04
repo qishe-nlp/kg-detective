@@ -18,7 +18,7 @@ def search_out(doc, nlp):
 
   raw_matches = []
 
-  rule_name = "pron_ablativos"
+  rule_name = "pron_ablativo"
 
   dep_matcher = DependencyMatcher(nlp.vocab)
 
