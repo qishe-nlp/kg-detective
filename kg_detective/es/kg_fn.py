@@ -2,7 +2,7 @@ import sys
 
 VOCAB_LABELS = ["NOUN", "VERB", "ADJ", "PREP", "PRON", "ADV"]
 
-ADJ_RULES = ["adj_comparativo", "adj_igualdad_comparativo", "adj_superlativo", "adj_absoluto_superlativo", "adj_demostrativo", "adj_posesivo" ]
+ADJ_RULES = ["adj_comparativo", "adj_igualdad_comparativo", "adj_superlativo", "adj_absoluto_superlativo", "adj_demostrativo", "adj_posesivo"]
 
 ADV_RULES = ["adv_comparativo", "adv_igualdad_comparativo", "adv_superlativo", "adv_absoluto_superlativo"]
 

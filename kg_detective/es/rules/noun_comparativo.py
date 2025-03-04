@@ -72,8 +72,9 @@ def search_out(doc, nlp):
     cmp_de_assertion = cmp_id+1==de_id and cmp_id==noun_left_tree[0]
     noun_assertion = len(noun_left_tree)==noun_left_tree[-1]-noun_left_tree[0]+1 and noun_left_tree[-1]==noun_id
 
-    raw_matches.append((cmp_id, de_id+1, {"sign": "cmp_de", "gid": base_index+index})) 
-    raw_matches.append((de_id+1, noun_id+1, {"sign": "noun", "gid": base_index+index})) 
+    if cmp_de_assertion and noun_assertion:
+      raw_matches.append((cmp_id, de_id+1, {"sign": "cmp_de", "gid": base_index+index})) 
+      raw_matches.append((de_id+1, noun_id+1, {"sign": "noun", "gid": base_index+index})) 
 
   dep_matcher.remove(rule_name)
 

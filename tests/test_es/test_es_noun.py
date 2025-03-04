@@ -16,7 +16,9 @@ noun_comparativo_sentences = [
   "Si cuesta menos de diez euros, es barato.",
   "Tiene menos de dieciocho años.",
   "Tienes que trabajar menos horas.",
+  "Y de postre melón, que este año están más dulces que un caramelo.",
 ]
+
 
 def test_noun_comparativo():
   sentences = noun_comparativo_sentences 
