@@ -76,8 +76,12 @@ def search_out(doc, nlp):
   for index, (_, [verb_id, pron_id]) in enumerate(matches):
     pron_core = doc[pron_id]
     verb_core = doc[verb_id]
-    raw_matches.append((pron_id, pron_id+1, {"sign": "pron", "pron_lemma": pron_core.lemma_, "gid": base_index+index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
+    
+    exclude_assertion = verb_id not in [e[0] for e in raw_matches if e[2]["sign"]=="verb"]
+    filter_assertion = " ".join([e.lemma_ for e in doc[verb_id-2: verb_id]]) != "ir a"
+    if exclude_assertion and filter_assertion:
+      raw_matches.append((pron_id, pron_id+1, {"sign": "pron", "pron_lemma": pron_core.lemma_, "gid": base_index+index})) 
+      raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
 
   dep_matcher.remove(rule_name)
 

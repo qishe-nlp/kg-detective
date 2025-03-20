@@ -48,9 +48,27 @@ def search_out(doc, nlp):
     iobj_core = doc[iobj_id]
     obj_core = doc[obj_id]
 
-    raw_matches.append((iobj_id, iobj_id+1, {"sign": "iobj", "iobj_lemma": iobj_core.lemma_, "gid": index})) 
-    raw_matches.append((obj_id, obj_id+1, {"sign": "obj", "obj_lemma": obj_core.lemma_, "gid": index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": index})) 
+    verb_tree = [e.i for e in verb_core.lefts if e.dep_=="aux"]
+    verb_tree.append(verb_id)
+    verb_tree.sort()
+
+    iobj_tree = [e.i for e in iobj_core.subtree]
+    iobj_tree.sort()
+    obj_tree = [e.i for e in obj_core.subtree]
+    obj_tree.sort()
+    
+    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1
+    iobj_assertion = len(iobj_tree)==iobj_tree[-1]-iobj_tree[0]+1
+    obj_assertion = len(obj_tree)==obj_tree[-1]-obj_tree[0]+1
+
+
+    if verb_assertion and iobj_assertion and obj_assertion:
+      if iobj_core.dep_ == "expl:pv" or "Reflex=Yes" in iobj_core.morph:
+        raw_matches.append((iobj_tree[0], iobj_tree[-1]+1, {"sign": "reflex_pron", "pron_lemma": iobj_core.lemma_, "gid": index})) 
+      else:
+        raw_matches.append((iobj_tree[0], iobj_tree[-1]+1, {"sign": "iobj", "iobj_lemma": iobj_core.lemma_, "gid": index})) 
+      raw_matches.append((obj_tree[0], obj_tree[-1]+1, {"sign": "obj", "obj_lemma": obj_core.lemma_, "gid": index})) 
+      raw_matches.append((verb_tree[0], verb_tree[-1]+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": index})) 
 
   dep_matcher.remove(rule_name)
 
@@ -76,8 +94,19 @@ def search_out(doc, nlp):
     verb_core = doc[verb_id]
     obj_core = doc[obj_id]
 
-    raw_matches.append((obj_id, obj_id+1, {"sign": "obj", "obj_lemma": obj_core.lemma_, "gid": base_index+index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
+    verb_tree = [e.i for e in verb_core.lefts if e.dep_=="aux"]
+    verb_tree.append(verb_id)
+    verb_tree.sort()
+
+    obj_tree = [e.i for e in obj_core.subtree]
+    obj_tree.sort()
+    
+    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1
+    obj_assertion = len(obj_tree)==obj_tree[-1]-obj_tree[0]+1 and "Reflex=Yes" not in obj_core.morph
+
+    if verb_assertion and obj_assertion:
+      raw_matches.append((obj_tree[0], obj_tree[-1]+1, {"sign": "obj", "obj_lemma": obj_core.lemma_, "gid": base_index+index})) 
+      raw_matches.append((verb_tree[0], verb_tree[-1]+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
 
   dep_matcher.remove(rule_name)
 
@@ -103,8 +132,19 @@ def search_out(doc, nlp):
     verb_core = doc[verb_id]
     iobj_core = doc[iobj_id]
 
-    raw_matches.append((iobj_id, iobj_id+1, {"sign": "iobj", "iobj_lemma": iobj_core.lemma_, "gid": base_index+index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
+    verb_tree = [e.i for e in verb_core.lefts if e.dep_=="aux"]
+    verb_tree.append(verb_id)
+    verb_tree.sort()
+
+    iobj_tree = [e.i for e in iobj_core.subtree]
+    iobj_tree.sort()
+    
+    verb_assertion = len(verb_tree)==verb_tree[-1]-verb_tree[0]+1
+    iobj_assertion = len(iobj_tree)==iobj_tree[-1]-iobj_tree[0]+1 and "Reflex=Yes" not in iobj_core.morph
+
+    if verb_assertion and iobj_assertion:
+      raw_matches.append((iobj_tree[0], iobj_tree[-1]+1, {"sign": "iobj", "iobj_lemma": iobj_core.lemma_, "gid": base_index+index})) 
+      raw_matches.append((verb_tree[0], verb_tree[-1]+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
 
   dep_matcher.remove(rule_name)
 

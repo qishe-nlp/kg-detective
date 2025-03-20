@@ -8,12 +8,28 @@ pkg = PKG_INDICES[lang]
 verb_condicional_compuesto_sentences = [
   "Lo siento, Luisa. Yo te habría acompañado al médico, pero no sabía nada.",
   "Estoy segura de que Luis nos habría ayudado, pero no estaba en casa.",
-  "Sin Jorge, no habríamos podido acabar el trabajo a tiempo la semana pasada.",
   "Yo habría llamado a Carla, pero no tenía su teléfono.",
   "Yo no habría acabado la carrera sin la ayuda de mi hermana.",
   "Jorge no vino con nosotros a Tánger porque no le habrían dejado sus padres.",
   "No sé. No habrían desayunado nada.",
   "Raquel no pudo estudiar porque habría estado enferma.",
+  "¿Qué habría hecho usted en mi lugar?",
+  "Si hubiera conocido su opinión, jamás le habría propuesto matrimonio.",
+  "Habría podido decir algo antes.",
+  "El otro día Gema estaba muy triste...habría tenido una pelea con su novio.",
+  "Sin Jorge, no habríamos podido acabar el trabajo a tiempo la semana pasada.",
+  "La fiesta estuvo bien, pero habría estado mejor con otro tipo de música.",
+  "Si el problema se hubiera detectado antes, habría sido solucionado a tiempo.",
+  "De haber recibido la carta, la reunión habría sido programada para ayer.",
+  "Si la inversión se hubiera realizado, muchas familias habrían sido beneficiadas.",
+  "Con mejores medidas de seguridad, el robo habría sido evitado.",
+  "Con una mejor planificación, se habría completado el proyecto a tiempo.",
+  "Si no hubiera habido retrasos, se habría publicado el libro el año pasado.",
+  "Si se hubieran seguido las instrucciones, se habría logrado el objetivo.",
+  "De haberse aprobado la ley, se habrían implementado nuevas medidas de seguridad.",
+  "Me habría vestido más formal si lo hubiera sabido.",
+  "Si tú hubieras estudiado, te habrías sentido más seguro en el examen.",
+  "¿Se habrían arrepentido de su decisión si hubieran tenido más información?",
 ]
 
 def test_verb_condicional_compuesto():
@@ -35,6 +51,24 @@ verb_condicional_simple_sentences = [
   "Yo no diría nada.",
   "Yo tendría más cuidado.",
   "¿Cuándo dijo Marta que vendría?",
+  "¿Le gustaría pagar menos en su factura de la luz?",
+  "Querría vivir en una gran ciudad.",
+  "Deberíamos respetar más a las personas mayores.",
+  "Buenos días, querría dos barras de pan y un bollo.",
+  "¿Sería usted tan amable de darme sus datos de contacto?",
+  "Si tuviera más tiempo, haría más cosas. ",
+  "Te acompañaría si me dieran el día libre.",
+  "El error sería corregido si alguien lo notara.",
+  "La propuesta sería aceptada si cumpliera con los requisitos.",
+  "Si hubiera más presupuesto, más viviendas serían construidas.",
+  "Con un mejor equipo, el trabajo sería realizado más rápido.",
+  "Con mejor organización, se entregarían los informes más rápido.",
+  "Con una buena estrategia, se aumentarían las ventas fácilmente.",
+  "Si se diera más promoción, se venderían más boletos.",
+  "Si hubiera más tiempo, se revisarían todos los documentos con calma.",
+  "Yo me levantaría más temprano si no estuviera tan cansado.",
+  "Nos mudaríamos a otra ciudad si tuviéramos la oportunidad.",
+  "¿Se peinarían diferente si tuvieran otro tipo de cabello?",
 ]
 
 def test_verb_condicional_simple():
@@ -77,6 +111,23 @@ verb_imperativo_con_pron_sentences = [
   "Sí. Dáselo.",
   "- ¿Os lavo la ropa? - No nos la laves. Ya la lavaremos nosotros.",
   "Sí, arréglasela.",
+  "Míreme",
+  "Quédele agradecida por el detalle, porque por el momento eso la va a salvar de ir a la cárcel.",
+  "Acompáñeme",
+  "Apúntelo en la cuenta de las que me debe.",
+  "Dile a la señora Candelaria que ya he engordado los 3 kg que me pidió.",
+  "Déjanos solos, Jamila, por favor.",
+  "Yo no soy la manera, créame.",
+  "Escúcheme.",
+  "Escúcheme bien, porque no volveré a repetirlo.",
+  "Espérate que voy a dejar esto dentro y nos vamos a dar una vuelta.",
+  "Venga, niña, demuéstrale lo bien que lo haces.",
+  "Déjeme la revista, por favor.",
+  "Apúntamelo, Rosa.",
+  "Échala ahí, échala.",
+  "Y dile a tu amigo que no sea tímido e invita a los siguientes.",
+  "Tantear, chiquilla, tantear el terreno, tú déjame a mí.",
+  "Entra, entra, chiquilla, y cuéntamelo todo, que estoy mala sin saber qué ha pasado.",
 ]
 
 def test_verb_imperativo_con_pron():
@@ -112,8 +163,40 @@ verb_imperativo_regulares_sentences = [
   "No corráis tanto, niños.",
 ]
 
+more_1 = [
+  "No se preocupe, ya me encargo yo.",
+  "Pero no se preocupe, porque esto también me ha llevado a creerla.",
+  "No se me ahogue en un vaso de agua, señorita Quiroga, por favor, que seguro que al problema de la vivienda le encontramos remedio.",
+  "Y no se le ocurra meterla en ninguno de sus líos.",
+  "Señorita, no se preocupe, Jamila recoge todo esto.",
+  "No te rías, Juanito, que reírse seca las entendederas.",
+  "No se meta en líos.",
+  "Pero tú no te desesperes, chiquilla, que algo encontraremos.",
+  "Pero no se nos suba a la Parra, Candelaria.",
+  "Pues entonces, Candelaria, no se monte el cuento de la lechera.",
+  "Como no se meta ahoro mismo en la cama, mañana por la mañana lo primero que hago es decirle a la Benita que se está usted viendo con el practicante los viernes en la cornisa.",
+  "No se preocupe, todo va a salir bien.",
+  "Sí, madre, no se preocupe, que yo puedo solo.",
+  "Candelaria, no se meta.",
+]
+
+more_2 = [
+  "No llore, señorita.",
+  "Venga, levántate, que se enfría el desayuno.",
+  "¿ Sabéis lo que me han pedido por estas dos gallinas viejas?",
+  "Pero bueno, Candelaria, vaya vestido fino que llevas.",
+  "Venga, tira.",
+]
+
+more_3 = [
+  "Disculpe.",
+  "Anda, niña, sigue con el desayuno mientras yo me cambio.",
+  "Pero bueno, pero bueno, no acapare usted la revista, que yo también tengo derecho.",
+  "Cuando la pases, usa la carretera de Ceuta y que encontrarás de frente con la estación.",
+  "Esconde el dinero.",
+]
 def test_verb_imperativo():
-  sentences = verb_imperativo_regulares_sentences + verb_imperativo_irregulares_sentences 
+  sentences = verb_imperativo_regulares_sentences + verb_imperativo_irregulares_sentences + more_1 + more_2 + more_3
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["verb_imperativo"]})
@@ -245,6 +328,7 @@ verb_indicativo_pretérito_sentences = [
   "Ellos se acostaron tarde anoche.",
   "Ella se peinó antes de ir al trabajo.",
   "Ustedes se relajaron después del trabajo.",
+  "Fue secundada por la sirvienta de la casa.",
 ]
 
 def test_verb_indicativo_pretérito():
@@ -439,8 +523,10 @@ verb_reflexivo_sentences = [
   "Si yo me levantara temprano, llegaría a tiempo.",
   "Si tú te lavaras las manos, estarías más limpio.",
   "Si él se peinara antes de salir, se vería mejor.",
+  "No se me ahogue en un vaso de agua, señorita Quiroga, por favor, que seguro que al problema de la vivienda le encontramos remedio.",
+  "Pues esta tarde tú y yo nos vamos a dar una vuelta.",
+  "Espérate que voy a dejar esto dentro y nos vamos a dar una vuelta.",
 ]
-
 
 def test_verb_reflexivo():
   sentences = verb_reflexivo_sentences 
@@ -460,6 +546,25 @@ verb_subjuntivo_presente_sentences = [
   "¡Ojalá no aparezcan los López por la cena!",
   "Quiero que Raúl me consiga entradas para su próximo concierto.",
   "¡Ojalá no me pida Mariela el coche para el fin de semana!",
+  "Quizá nos visite mañana.",
+  "Quizá nos casemos.",
+  "Quizás vuelva algún día.",
+  "Quizás lleguemos tarde.",
+  "Tal vez vaya al concierto esta noche.",
+  "Tal vez tengas la gripe.",
+  "Tal vez seáis felices algún día.",
+  "Tal vez quieran cenar tarde.",
+  "Es importante que el informe sea revisado antes de enviarlo.",
+  "Es necesario que las propuestas sean aprobada por el comité.",
+  "Espero que los documentos sean enviados antes del viernes.",
+  "Dudo que el proyecto sea terminado a tiempo.",
+  "Quiero que las reglas sean explicadas claramente a todos.",
+  "Es probable que el examen sea revisado por otro profesor.",
+  "Es importante que se respete la normativa.",
+  "Espero que se realicen los cambios necesarios.",
+  "Ojalá se construyan más parques en la ciudad.",
+  "Espero que te levantes temprano para llegar a tiempo.",
+  "Tal vez se acuerden de traer los documentos.",
 ]
 
 def test_verb_subjuntivo_presente():
@@ -481,6 +586,24 @@ verb_subjuntivo_pretérito_imperfecto_sentences = [
   "Era normal que muriera el perro.",
   "Sería difícil que el niño apagara la televisión.",
   "Sería raro que hiciera Luis la paella.",
+  "Si trabajara desde casa, viviría en una casita en el campo.",
+  "Mis jefes han sugerido que trabajáramos desde casa unos días como prueba.",
+  "No creo que me cansara de la vida en el campo.",
+  "Quizá teletrabajara dos días a la semana.",
+  "Puede que propusiera teletrabajar solo dos días a la semana.",
+  "Si el problema fuera resuelto, podríamos continuar con el plan.",
+  "Me gustaría que las reglas fueran respetadas por todos.",
+  "Si el paquete fuera enviado hoy, llegaría mañana.",
+  "Dudaba que la propuesta fuera aceptada sin modificaciones.",
+  "Ojalá que las casas fueran restauradas por el gobierno.",
+  "Me gustaría que se revisara el contrato antes de firmarlo.",
+  "Dudaba que se considerara la propuesta seriamente.",
+  "Ojalá se invirtiera más en educación.",
+  "Si se planificara mejor, habría menos problemas.",
+  "Me gustaría que te callaras por un momento.",
+  "Si se sintieran mejor, podrían venir a la reunión.",
+  "Quisiera que nos viéramos más seguido.",
+  "Ojalá se atreviera a decir lo que siente.",
 ]
 
 def test_verb_subjuntivo_pretérito_imperfecto():
@@ -501,6 +624,28 @@ verb_subjuntivo_pretérito_perfecto_sentences = [
   "Es una vergüenza que Inge y Peter todavía no hayan aprendido español.",
   "¡Qué pena que no hayáis ido nunca a Perú!",
   "Dudo que Luisa haya vivido en Berlín.",
+  "Los familiares podrán ver al paciente en cuanto haya salido del quirófano.",
+  "Me tranquilizaré cuando haya salido del quirófano.",
+  "Me alegra que la operación haya salido bien.",
+  "Espero la operación haya salido bien.",
+  "¡Ojalá todo haya salido bien!",
+  "Es necesario que los familiares se hayan apuntado en la lista de visitantes para pasar.",
+  "No creo que haya salido ya del quirófano.",
+  "Quizá hayan tenido alguna complicación.",
+  "Me alegra que las quejas hayan sido atendidas rápidamente.",
+  "No creo que el informe haya sido corregido todavía.",
+  "Es posible que los archivos hayan sido eliminados por error.",
+  "Lamento que el pago no haya sido procesado aún.",
+  "Ojalá que las pruebas hayan sido evaluadas con justicia.",
+  "Me alegra que se haya solucionado el problema.",
+  "No creo que se hayan cumplido todas las expectativas.",
+  "Ojalá se hayan corregido los errores a tiempo.",
+  "Me sorprende que se haya cerrado el negocio tan rápido.",
+  "Me extraña que te hayas enojado por eso.",
+  "No puedo creer que se hayan despedido sin avisar.",
+  "Es increíble que nos hayamos acostumbrado a este clima.",
+  "Espero que te hayas recuperado pronto de la gripe.",
+  "Ojalá se haya dado cuenta de su error.",
 ]
 
 def test_verb_subjuntivo_pretérito_perfecto():
@@ -521,6 +666,32 @@ verb_subjuntivo_pretérito_pluscuamperfecto_sentences = [
   "Nos habría sentado mal que Jacinto no hubiera cumplido su promesa de llevar a los niños al circo.",
   "A Sandra le molestó que Javier hubiera reservado ya el hotel en Cancún sin pedirle opinión.",
   "Sinceramente, me habría molestado que hubieras invitado a tus amigos sin avisarme.",
+  "Si me hubieras avisado, habría ido contigo.",
+  "Si hubieras estudiado más, habrías aprobado el examen.",
+  "Si ella hubiera llegado a tiempo, no habríamos perdido el autobús.",
+  "Si nosotros hubiéramos sabido antes la verdad, las cosas habrían sido diferentes.",
+  "Si tú hubieras participado en el proyecto, habría tenido más éxito.",
+  "Si ellos hubieran escuchado nuestras advertencias, no habría pasado nada malo.",
+  "Si me hubieras avisado, habría ido contigo.",
+  "Si hubieras estudiado más, habrías aprobado el examen.",
+  "Si ella hubiera llegado a tiempo, no habríamos perdido el autobús.",
+  "Si nosotros hubiéramos sabido antes la verdad, las cosas habrían sido diferentes.",
+  "Si tú hubieras participado en el proyecto, habría tenido más éxito.",
+  "Si ellos hubieran escuchado nuestras advertencias, no habría pasado nada malo.",
+  "Si la decisión hubiera sido tomada antes, habríamos evitado problemas.",
+  "Ojalá las cuentas hubieran sido pagadas a tiempo.",
+  "Me molestó que los informes no hubieran sido entregados como se acordó.",
+  "Si el plan hubiera sido ejecutado correctamente, habría funcionado mejor.",
+  "Era necesario que los documentos hubieran sido revisados con más cuidado.",
+  "Si se hubiera avisado antes, habríamos podido asistir.",
+  "Ojalá se hubiera solucionado el inconveniente a tiempo.",
+  "Me molestó que no se hubiera respetado el acuerdo.",
+  "Si se hubiera investigado más, se habrían evitado errores.",
+  "Si te hubieras esforzado, habrías aprobado el examen.",
+  "Me habría gustado que se hubieran quedado más tiempo.",
+  "Ojalá nos hubiéramos reído más en la reunión.",
+  "Si te hubieras vestido mejor, habrías causado una mejor impresión.",
+  "Me sorprendió que se hubieran reconciliado tan rápido.",
 ]
 
 def test_verb_subjuntivo_pretérito_pluscuamperfecto():

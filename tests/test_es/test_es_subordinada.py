@@ -20,8 +20,36 @@ subordinada_substantivo_sentences = [
   "Me gusta que mi padre grabe mis entrenamientos y mis partidos.",
 ]
 
+more = [
+  "Pues nada, que he pensado que ya va a ser hora de que me busque un trabajito.",
+  "Me temo que de momento no va a poder ser.",
+  "Pero ¿cómo se le ocurre ponerle los grilletes?",
+  "Tanto si le gusta como si no, hará lo que le pido.",
+  "Descuide, mi comisario, que la Candelaria se encarga de todo.",
+  "Y no se le ocurra meterla en ninguno de sus líos.",
+  "Y si supieran lo que me ha costado un escándalo.",
+  "Pues comida y ni se le ocurra dejarla en el plato.",
+  "Trabaja en Aduanas y por la tarde se dedica a lo que todos, a comprar y vender todo lo que se pueda comprar y vender.",
+  "Ni yo ni nadie que yo conozco se dedique a lo que usted insinúa.",
+  "Y no se le ocurra meterla en ninguno de sus líos.",
+  "Para tratar con las clientas solo hace falta decirles lo guapas y lo sanas que están, así tengan un pie en la tumba.",
+  "A lo mejor no necesito dinero para conseguir lo que quiero.",
+  "A lo mejor me basta hacerle una visita al comisario Vázquez y decirle que alguien en la pensión trafica con pasaportes.",
+  "¿ Sabéis lo que me han pedido por estas dos gallinas viejas?",
+  "No hace falta que me pague nada, con la tela ya está.",
+  "Tu madre tiene lo que hay que tener.",
+  "Ay, parece mentir a lo inocente que sigues siendo con los mandobles que te ha propinado la vida últimamente.",
+  "Como no se meta ahoro mismo en la cama, mañana por la mañana lo primero que hago es decirle a la Benita que se está usted viendo con el practicante los viernes en la cornisa.",
+  "Deja que te abrace, que vales más que el oro del Perú.",
+  "Perdone que no esté más presentable, pero me acabo de despertar.",
+  "No se le ocurre negármelo.",
+  "Mire, a mí me rompe el corazón no estar con mi madre, pero yo sé que tengo que solucionar mis problemas y no huir de ellos.",
+  "El tuerto me ha dado un soplo y mire lo que he requisado.",
+]
+
 def test_subordinada_substantivo():
-  sentences = subordinada_substantivo_sentences 
+  #sentences = subordinada_substantivo_sentences 
+  sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["subordinada_substantivo"]})
@@ -40,9 +68,36 @@ subordinada_relativo_sentences = [
   "Rodolfo, del que estuve enamorada hace unos años, se acaba de casar.",
 ]
 
+_more = [
+  "Como no se meta ahoro mismo en la cama, mañana por la mañana lo primero que hago es decirle a la Benita que se está usted viendo con el practicante los viernes en la cornisa.",
+  "No hay manera de parar la hemorragia.",
+  "Así que con la que está cayendo, no creo que tengan interés en andar persiguiendo por Marruecos a una presunta ladrona.",
+  "Pero por los clavos de Cristo, mi comisario, desde que empezó el alzamiento no para de venir gente buscando hospedaje, que tengo hasta colchones por los suelos.",
+  "Tú vete acomodándote, yo voy a salir, que tengo unos asuntos pendientes, pero a la hora de comer me lo tienes que contar todo despacio.",
+  "Y de postre melón, que este año están más dulces que un caramelo.",
+  "El masón pidiendo paz.",
+  "Cuanto más entretenida estés, menos tiempo de darle a la cabeza.",
+  "Mira, si tienes fuerzas para ayudarme, tienes fuerzas para salir.",
+  "Pues nada, que he pensado que ya va a ser hora de que me busque un trabajito.",
+  "Rosa, que te estoy diciendo que esta chiquilla es una joya.",
+  "Si ya se lo dije, no están los tiempos como para conseguir dinero.",
+  "Esta comida del demonio me pone kilos donde no tenía.",
+  "Tú coges la tela que más te guste y te haces un vestido.",
+  "Palomares, yo le juro por lo más sagrado que ninguno sabía a qué se dedicaba este señor.",
+  "Niña, tú no me digas a mí que tú sabías que ese hombre no era trigo limpio.",
+  "Si tú y yo hemos tenido suficiente mala suerte como para vivir dos vidas enteras.",
+  "Todo es sobre cuestión de hacer los contactos adecuados.",
+  "¿Pero quién va a querer vacas teniendo terneras?",
+  "Somos nosotras las que tenemos una mercancía para vender.",
+  "Olvídate de tu taller, de traer a tu madre.",
+  "Salta la tapia con cuidado de no dejar que los morros en el suelo.",
+  "¿Tengo cara de haber nacido ayer?",
+  "Princesa, la única manera de vencer nuestros demonios es plantarles cara.",
+]
 
 def test_subordinada_relativo():
-  sentences = subordinada_relativo_sentences 
+  #sentences = subordinada_relativo_sentences 
+  sentences = _more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["subordinada_relativo"]})

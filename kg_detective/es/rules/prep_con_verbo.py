@@ -26,13 +26,13 @@ def search_out(doc, nlp):
       "LEFT_ID": "verb",
       "REL_OP": ">++",
       "RIGHT_ID": "x",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["xcomp", "obj", "advcl"]}}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["xcomp"]}}
     },
     {
       "LEFT_ID": "x",
       "REL_OP": ">--",
       "RIGHT_ID": "prep",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["case", "mark"]}, "POS": "ADP"}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["mark"]}, "POS": "ADP"}
     },
   ]
 

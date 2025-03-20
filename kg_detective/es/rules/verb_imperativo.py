@@ -48,6 +48,9 @@ def search_out(doc, nlp):
       raw_matches.append((neg_id, neg_id+1, {"sign": "neg", "neg_lemma": neg_core.lemma_, "gid": index})) 
     verb_id = ids[0]
     verb_core = doc[verb_id]
+    reflex_pron = [e for e in verb_core.lefts if e.dep_ in ["expl:pv", "iobj"] and "Reflex=Yes" in e.morph]
+    if len(reflex_pron)>0:
+      raw_matches.append((reflex_pron[0].i, reflex_pron[0].i+1, {"sign": "pron", "pron_lemma": reflex_pron[0].lower_, "gid": index})) 
     raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": index})) 
 
   dep_matcher.remove(rule_name)

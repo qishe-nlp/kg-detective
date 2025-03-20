@@ -12,10 +12,6 @@ def search_out(doc, nlp):
     list: list of spacy.tokens.Span
   """
 
-  patterns = [
-    [{"POS": "ADP", "DEP": "case"}, {"POS": "PRON", "MORPH": {"IS_SUPERSET": ["Case=Acc", "PronType=Prs"]}}],
-  ]
-
   raw_matches = []
 
   rule_name = "pron_ablativo"
@@ -25,7 +21,7 @@ def search_out(doc, nlp):
   prep_pron = [
     {
       "RIGHT_ID": "pron",
-      "RIGHT_ATTRS": {"POS": "PRON"}
+      "RIGHT_ATTRS": {"POS": "PRON", "LOWER": {"IN": ["mí", "ti", "él", "ella", "usted", "nosotros", "nosotras", "vosotros", "vosotras", "ellos", "ellas", "ustedes"]}}
     },
     {
       "LEFT_ID": "pron",

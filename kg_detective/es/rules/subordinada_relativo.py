@@ -28,12 +28,18 @@ def search_out(doc, nlp):
       "RIGHT_ID": "acl",
       "RIGHT_ATTRS": {"DEP": "acl"}
     },
+    {
+      "LEFT_ID": "acl",
+      "REL_OP": ">--",
+      "RIGHT_ID": "key",
+      "RIGHT_ATTRS": {"DEP": {"IN": ["obj", "obl", "nsubj"]}, "POS": "PRON", "LEMMA": {"IN": ["que", "quien", "donde", "adonde"]}}
+    },
   ]
 
   dep_matcher.add(rule_name, [pattern])
 
   matches = dep_matcher(doc)
-  for index, (_, [noun_id, acl_id]) in enumerate(matches):
+  for index, (_, [noun_id, acl_id, _]) in enumerate(matches):
     noun_core = doc[noun_id]
     acl_core = doc[acl_id]
 

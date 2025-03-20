@@ -26,7 +26,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "adj",
       "REL_OP": ">++",
       "RIGHT_ID": "obj",
-      "RIGHT_ATTRS": {"DEP": {"IN": ["nmod", "advcl", "acl", "obj"]}}
+      "RIGHT_ATTRS": {"DEP": {"IN": ["nmod", "acl", "obj"]}}
     },
     {
       "LEFT_ID": "obj",
@@ -40,12 +40,14 @@ def search_out(doc, nlp):
 
   matches = dep_matcher(doc)
   for index, (_, [adj_id, obj_id, prep_id]) in enumerate(matches):
+    adj_core = doc[adj_id]
     obj_core = doc[obj_id]
     obj_tree = [e.i for e in obj_core.subtree]
     obj_tree.sort()
 
+    adj_assertion = not (doc[adj_id-1] in adj_core.children and doc[adj_id-1].dep_=="det")
     obj_assertion = prep_id==obj_tree[0] and len(obj_tree)==obj_tree[-1]-obj_tree[0]+1
-    if obj_assertion:
+    if adj_assertion and obj_assertion:
       raw_matches.append((adj_id, adj_id+1, {"sign": "adj", "adj_lemma": doc[adj_id].lemma_, "gid": index})) 
       raw_matches.append((prep_id, prep_id+1, {"sign": "prep", "gid": index})) 
       raw_matches.append((obj_tree[1], obj_tree[-1]+1, {"sign": "obj", "gid": index})) 

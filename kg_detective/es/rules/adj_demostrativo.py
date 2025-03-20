@@ -26,7 +26,7 @@ def search_out(doc, nlp):
       "LEFT_ID": "noun",
       "REL_OP": ">-",
       "RIGHT_ID": "det",
-      "RIGHT_ATTRS": {"POS": "DET", "MORPH": {"IS_SUPERSET": ["PronType=Dem"]}}
+      "RIGHT_ATTRS": {"POS": "DET", "MORPH": {"IS_SUPERSET": ["PronType=Dem"]}, "LEMMA": {"NOT_IN": ["tanto"]}}
     }
   ]
 

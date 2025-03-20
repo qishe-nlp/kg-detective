@@ -89,9 +89,17 @@ adj_demostrativo_sentences = [
   "Fíjate en aquel chico que está al lado de la puerta, es muy guapo.",
 ]
 
-def test_adj_demostrativo():
-  sentences = adj_demostrativo_sentences 
+more = [
+  "Por eso se ha tenido que levantar el Ejército, para acabar con tanta risa, con tanta alegría y con tanto libertinaje, que estaban llevando a España a la ruina.",
+  "¿ Tanto paripé por una botella de brandy?",
+  "Pero que tienes tantas denuncias pendientes que en cuanto pongas un pie en España te encierran y tiran la llave.",
+  "A ver cuándo aprendes que esto es África, no la plaza mayor de tu pueblo.",
+]
 
+
+def test_adj_demostrativo():
+  #sentences = adj_demostrativo_sentences 
+  sentences = more
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["adj_demostrativo"]})
   display(sentences, nlp)

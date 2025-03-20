@@ -39,8 +39,19 @@ noun_propio_sentences = [
   "Tienes que ver lo bonito que es el nieto de María del Carmen.",
 ]
 
+more = [
+  "Madre.",
+  "Y llegó usted a Tetuán el pasado 15 de junio, procedente de Tánger, donde se hospedaba desde el 13 de mayo en el hotel Continental.",
+  "Por lo pronto le hemos requisado el pasaporte y no podrá salir del Protectorado.",
+  "Qué lástima, tantos buenos mozos que se habrán sacrificado por el Gobierno de la República.",
+  "Mamá, ¿qué pasa?",
+  "Como no se meta ahoro mismo en la cama, mañana por la mañana lo primero que hago es decirle a la Benita que se está usted viendo con el practicante los viernes en la cornisa.",
+  "Hola, mamá.",
+]
+
 def test_noun_propio():
-  sentences = noun_propio_sentences 
+  #sentences = noun_propio_sentences 
+  sentences = more
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["noun_propio"]})
