@@ -120,9 +120,22 @@ adj_posesivo_sentences = [
   "Son nuestros.",
 ]
 
+ap = [
+  "Esa bicicleta es suya.",
+  "Los cuadros de la pared son nuestros.",
+  "Lo mío son las plantas; lo tuyo, la decoración.",
+  "Lo tuyo está en el maletero.",
+  "Esta no es mi bicicleta, es suya.",
+  "Ese coche es mío. ",
+  "La culpa no es tuya. ",
+  "Los problemas son suyos. ",
+  "Las ideas nuestras son innovadoras.",
+  "Las decisiones vuestras serán respetadas. ",
+  "Las opiniones suyas son importantes. ",
+]
 
 def test_adj_posesivo():
-  sentences = adj_posesivo_sentences 
+  sentences = adj_posesivo_sentences + ap
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["adj_posesivo"]})

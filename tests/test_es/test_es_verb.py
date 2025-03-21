@@ -130,13 +130,6 @@ verb_imperativo_con_pron_sentences = [
   "Entra, entra, chiquilla, y cuéntamelo todo, que estoy mala sin saber qué ha pasado.",
 ]
 
-def test_verb_imperativo_con_pron():
-  sentences = verb_imperativo_con_pron_sentences 
-
-  nlp = spacy.load(pkg)
-  nlp.add_pipe('kg', config={"rules": ["verb_imperativo_con_pron"]})
-  display(sentences, nlp)
-
 verb_imperativo_irregulares_sentences = [
   "No hagas ruido, Fernando.",
   "Tobías, sal de aquí ahora mismo.",
@@ -196,7 +189,8 @@ more_3 = [
   "Esconde el dinero.",
 ]
 def test_verb_imperativo():
-  sentences = verb_imperativo_regulares_sentences + verb_imperativo_irregulares_sentences + more_1 + more_2 + more_3
+  sentences = verb_imperativo_con_pron_sentences + verb_imperativo_regulares_sentences + verb_imperativo_irregulares_sentences
+  sentences = sentences + more_1 + more_2 + more_3
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["verb_imperativo"]})
@@ -567,8 +561,52 @@ verb_subjuntivo_presente_sentences = [
   "Tal vez se acuerden de traer los documentos.",
 ]
 
+sp_1 = [
+  "No se preocupe, ya me encargo yo.",
+  "No sufra.",
+  "Pero no se preocupe, porque esto también me ha llevado a creerla.",
+  "No se me ahogue en un vaso de agua, señorita Quiroga, por favor, que seguro que al problema de la vivienda le encontramos remedio.",
+  "No me vaya a fallar, señorita.",
+  "Y no se le ocurra meterla en ninguno de sus líos.",
+  "Señorita, no se preocupe, Jamila recoge todo esto.",
+  "No te rías, Juanito, que reírse seca las entendederas.",
+  "Sagrario, no entres al trapo, que no tienen educación.",
+  "A mi hermana no la llames tía vinagres, adorador de Satanás.",
+  "Pues comida y ni se le ocurra dejarla en el plato.",
+  "No me digas que hay alguien que se está olvidando ya de su enamorado.",
+  "No diga tonterías.",
+  "No se meta en líos.",
+  "Pero tú no te desesperes, chiquilla, que algo encontraremos.",
+  "Tú no me digas a mí que tú sabes coser.",
+  "No sufra, Herminia, que entre todos hacemos una colecta para que vaya corriendo a calentarlos.",
+  "No sufran, que a mí solo me ha costado la tela.",
+  "Pero no se nos suba a la Parra, Candelaria.",
+  "No me digan que se han apuntado de voluntarias en el frente.",
+  "No me sea antiguo.",
+  "Y no veas el acento que se gasta la tipa",
+  "Pues entonces, Candelaria, no se monte el cuento de la lechera.",
+  "Niña, tú no me digas a mí que tú sabías que ese hombre no era trigo limpio.",
+  "Bueno, tampoco se quite méritos, que usted aún está de muy buen ver.",
+  "No le hagas caso, está de broma.",
+  "Por favor, guarde eso, no vaya a provocar una desgracia.",
+  "Tú no sufras, mi alma, de eso me encargo yo.",
+  "No se preocupe, todo va a salir bien.",
+  "Sí, madre, no se preocupe, que yo puedo solo.",
+  "No sea malpensado, comisario.",
+  "Candelaria, no se meta.",
+]
+
+sp_2 = [
+  "Y ahora váyase a dar una vuelta.",
+  "Haya paz, haya paz.",
+]
+
+sp_3 = [
+  "Que no puede ser que lleves dos semanas aquí y no hayas pisado la calle.",
+]
+
 def test_verb_subjuntivo_presente():
-  sentences = verb_subjuntivo_presente_sentences 
+  sentences = verb_subjuntivo_presente_sentences + sp_1 + sp_2 + sp_3
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('kg', config={"rules": ["verb_subjuntivo_presente"]})

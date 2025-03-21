@@ -52,7 +52,7 @@ def search_out(doc, nlp):
   verb = [
     {
       "RIGHT_ID": "verb",
-      "RIGHT_ATTRS": {"POS": {"IN": ["AUX", "VERB"]}, "MORPH": {"IS_SUPERSET": ["Mood=Sub", "Tense=Imp"]}}
+      "RIGHT_ATTRS": {"POS": {"IN": ["VERB"]}, "MORPH": {"IS_SUPERSET": ["Mood=Sub", "Tense=Imp"]}}
     }
   ]
 

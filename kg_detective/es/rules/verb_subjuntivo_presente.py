@@ -49,7 +49,7 @@ def search_out(doc, nlp):
   verb = [
     {
       "RIGHT_ID": "verb",
-      "RIGHT_ATTRS": {"POS": {"IN": ["AUX", "VERB"]}, "MORPH": {"IS_SUPERSET": ["Mood=Sub", "Tense=Pres"]}}
+      "RIGHT_ATTRS": {"POS": {"IN": ["VERB"]}, "MORPH": {"IS_SUPERSET": ["Mood=Sub", "Tense=Pres"]}}
     }
   ]
 
@@ -59,10 +59,14 @@ def search_out(doc, nlp):
   for index, (_, [verb_id]) in enumerate(matches):
     verb_core = doc[verb_id]
 
-    reflex_pron = [t for t in verb_core.lefts if t.dep_ in ["obj", "iobj", "expl:pv", "expl:pass"] and "Reflex=Yes" in t.morph]
-    if len(reflex_pron)==1:
-      raw_matches.append((reflex_pron[0].i, reflex_pron[0].i+1, {"sign": "pron_se", "pron_lemma": reflex_pron[0].lemma_, "gid": base_index+index})) 
-    raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
+    negation = [e for e in verb_core.lefts if e.dep_=="advmod" and e.lemma_ in ["no", "ni", "tampoco"]]
+    assertion = len(negation)==0
+
+    if assertion:
+      reflex_pron = [t for t in verb_core.lefts if t.dep_ in ["obj", "iobj", "expl:pv", "expl:pass"] and "Reflex=Yes" in t.morph]
+      if len(reflex_pron)==1:
+        raw_matches.append((reflex_pron[0].i, reflex_pron[0].i+1, {"sign": "pron_se", "pron_lemma": reflex_pron[0].lemma_, "gid": base_index+index})) 
+      raw_matches.append((verb_id, verb_id+1, {"sign": "verb", "verb_lemma": verb_core.lemma_, "gid": base_index+index})) 
 
   dep_matcher.remove(rule_name)
 
